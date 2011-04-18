@@ -1,0 +1,41 @@
+/* board */
+#side-menu-wrap {
+    margin-top: 250px;
+    margin-left:100px;
+}
+#side-menu-wrap div {
+    color: #555555;
+    font-size:0.8em;
+    /* margin-left:120px; */
+}
+
+#side-menu-wrap div a:hover {
+    color:gray;
+}
+
+
+.view_content {
+ /*   font-family: 바탕체; */
+}
+
+#board table tr td {
+    font-family: 돋움;
+    font-size: 0.8em;
+}
+
+#worryboard_view span.view_title {
+        font-family: 돋움;
+}
+
+.comment-content {
+        font-family: 돋움;
+}
+
+.pagination {
+    text-align: center;
+    font-family: 돋움;
+    font-size: 0.8em;
+    margin: auto;
+    width: 500px;
+}
+

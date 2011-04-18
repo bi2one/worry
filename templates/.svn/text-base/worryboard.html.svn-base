@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}WORRY BOARD{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="/site_media/css/worryboard.css" />
+{% endblock %}
+
+{% block content %}
+<div id="board-wrap">
+<div id="login-join">
+  login | join
+</div>
+{% include "board_list.html" %}
+</div>
+{% endblock %}

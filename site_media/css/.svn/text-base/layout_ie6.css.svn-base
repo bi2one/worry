@@ -1,0 +1,92 @@
+#top {
+    width: 760px;
+    height: 30px
+    margin:auto;
+}
+
+#content-wrap {
+    margin: auto;
+    background: #f7f6f4 url(../images/repeat.jpg) repeat-y;
+    width: 1000px;
+/*    width: 760px; */
+}
+
+#menu {
+    width: 760px;
+    margin: 0 auto 0 auto;
+    height: 147px;
+    background: #f7f6f4 url(../images/menu_kor.jpg) no-repeat;
+}
+
+#menu img {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+#sunray-smile {
+    width: 171px;
+    height:14px;
+    background: #f7f6f4 url(../images/sunray_smile.png) no-repeat;
+    margin-top: 6px;
+    margin-right: 10px;
+    float: right;
+    cursor: pointer;
+}
+
+#music-on-off {
+    width: 25px;
+    height: 20px;
+    background: #f7f6f4 url(../images/music_on_btn.png) no-repeat;
+    margin-top: 3px;
+    margin-right: 5px;
+    float: right;
+    cursor: pointer;
+}
+
+#english-kor {
+    width: 48px;
+    height: 25px;
+    background: #f7f6f4 url(../images/english_btn.png) no-repeat;
+    float: right;
+    cursor: pointer;
+    margin-right:10px;
+}
+
+#content {
+    margin: auto;
+    width: 760px;
+}
+
+#footer {
+    margin-top:40px;
+    width: 760px;
+    height:20px;
+    text-align:left;
+}
+
+#copyright {
+    width: 145px;
+    height: 16px;
+    background: #f7f6f4 url(../images/copy_right.png) repeat-y;
+}
+
+#side-menu {
+    position:absolute;
+    color: #aaaaaa;
+    left:0;
+}
+
+#side-menu ul {
+    list-style:none;
+    list-style-position: inside;
+    padding:0px;
+    margin:0px;
+    border:0px;
+}
+
+#side-menu ul li{
+    padding:0px;
+    margin:0px;
+    border:0px;
+}

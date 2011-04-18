@@ -1,0 +1,8 @@
+body {
+    margin:0;
+    border:0;
+/*    padding-top:10px; */
+    background: #f7f6f4 url(../images/background_color.jpg) repeat;
+/*     font-family: serif, 명조체,바탕체,돋움체; */
+    font-family: 바탕체;
+}

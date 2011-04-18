@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block title %}GUEST{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="/site_media/css/guest.css" />
+{% endblock %}
+{% load document_filter %}
+{% block content %}
+<div id="guest-wrap">
+  <div class="article">
+<<<<<<< .mine
+    {% include "commentform.html" %}
+    <div class="article-comment-area">
+      <ul>
+	{% for doc in docs %}
+	<li>
+	  <div class="comment-item">
+	    <div class="comment-user-name">
+	      {% if doc.user.nick_name %}{{doc.user.nick_name}}{% else %}{{doc.user.username}}{% endif %}
+	    </div>
+	    <div class="comment-entry">
+	      {% if doc.is_secret %}
+
+	      {% if user.is_superuser %}
+	      <p>{{doc.content}}</p><br />
+	      {% else %}{% ifequal user.id doc.user.id %}
+	      <p>{{doc.content}}</p><br />
+	      {% else %}{% endifequal %}
+	      <p>비밀글 입니다.</p>
+	      {% endif %}
+	      {% else %}
+	      <p>{{doc.content}}</p><br />
+	      {% endif %}
+	      <div class="comment-date small">
+		{{doc.pub_date}}
+		{% if doc.is_secret and not user.is_superuser %}
+		[비밀글]
+		{% else %}
+		[<a href="/guest/modify/{{doc.id}}/">EDIT</a>/ <a href="/guest/delete/{{doc.id}}/">DEL</a>
+		: <a href="/guest/write_comment/{{doc.id}}/">REPLY</a>]
+		{% endif %}
+	      </div>
+
+	    </div>
+	    <div class="clear_both"></div>
+	    {% include "guest_comment.html" %}
+	  </div>
+	</li>
+	{% endfor %}
+      </ul>
+    </div>
+
+=======
+    {% include "guest_doc_write_form.html" %}
+    <ul id="doc-element-area">
+      {% for doc in docs %}
+      <li class="doc-element-block">
+	{% include "guest_doc_element.html" %}
+	{% include "guest_comment.html" %}
+      </li>
+      {% endfor %}
+    </ul>
+>>>>>>> .r97
+  </div>
+  <div class="guest_pagination">
+    {% if prev_page %}
+    <a class="prev-btn" href="/guest/{{prev_page}}/{{option_string}}" ><img src="/site_media/images/prev_btn.png" alt="previous" /></a>&nbsp;
+    {% endif %}
+    
+    {% for page in pages %}
+    {% ifequal page page_number %}
+    <a href="/guest/{{page}}/{{option_string}}" style="font-weight:bold"><span class="page-number">{{page}}</span></a>
+    {% else %}
+    <a href="/guest/{{page}}/{{option_string}}" ><span class="page-number">{{page}}</span></a>
+    {% endifequal %}
+
+    {% endfor %}
+    
+    {% if next_page %}
+    &nbsp;<a class="next-btn" href="/guest/{{next_page}}/{{option_string}}" ><img src="/site_media/images/next_btn.png" alt="next" /></a>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

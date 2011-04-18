@@ -1,0 +1,35 @@
+{% load document_filter %}
+<div class="doc-element" style="border:0px solid gray;padding-top:10px;">
+  <div class="doc-username bold float_left">
+      {% if doc.username %}
+      <td>{{ doc.username }}</td>
+      {% else %}
+      {% if doc.user.nick_name %}
+      <td>{{ doc.user.nick_name }}</td>
+      {% else %}
+      <td>{{ doc.user.username }}</td>
+      {% endif %}
+      {% endif %}
+  </div>
+  <div class="doc-content">
+    {% if doc|has_view_auth_on_doc:user %}
+    <p class="guest-content float_left">
+      {{ doc.content|spacify|linebreaksbr }}
+      &nbsp;&nbsp;{{ doc.pub_date|date:"Y-m-d H:i" }}
+    </p>
+    {% else %}
+    <p class="guest-content float_left">비밀글 입니다.</p>
+    {% endif %}
+    <div class="clear_both"></div>
+  </div>
+  <div class="clear_both"></div>
+  <div class="doc-date small float_right">
+    {% if doc|has_edit_auth_on_doc:user %}
+    [
+    <a href="/guest/write/?docid={{doc.id}}">EDIT</a>/ <a href="javascript:moveWithConfirm('정말 삭제 합니까?', '/guest/delete/{{doc.id}}/?refer=/guest')">DEL</a>
+    :
+    <a href="/guest/write_comment/{{doc.id}}/">REPLY</a> ]
+    {% endif %}
+  </div>
+  <div class="clear_both"></div>
+</div>

@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}GUEST{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="/site_media/css/guest.css" />
+{% endblock %}
+
+{% block content %}
+<div id="guest-wrap">
+  <div class="article">
+    {% include "guest_doc_write_form.html" %}
+  </div>
+</div>
+{% endblock %}

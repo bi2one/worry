@@ -1,0 +1,14 @@
+/* board */
+#side-menu-wrap {
+    margin-top: 273px;
+    margin-left:90px;
+}
+#side-menu-wrap div {
+    color: #555555;
+    font-size:0.8em;
+    /* margin-left:120px; */
+}
+
+#side-menu-wrap div a:hover {
+    color:gray;
+}

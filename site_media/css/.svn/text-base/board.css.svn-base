@@ -1,0 +1,166 @@
+/* board */
+
+#board #board-button-box {
+    padding-top:7px;
+    width: 100%;
+}
+
+#login-join {
+    margin: auto;
+    margin-bottom: 7px;
+    width: 100%;
+}
+
+#board {
+    margin: auto;
+    width: 100%;
+    /* width: 600px; */
+}
+
+#board div {
+    margin: auto;
+}
+
+#board-tool {
+    text-align: center;
+}
+
+#board table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #f0f0f0 url(../images/board_bg.jpg) repeat;
+}
+
+#board table td {
+    padding: 2px 2px;
+    font-size: 0.7em;
+    border: 1px solid #dfdfdf;
+    text-align:center;
+}
+
+#board table td:first-child {
+    border-left:0;
+    text-align:left;
+}
+
+#board table td:last-child {
+    border-right:0;
+}
+
+#worryboard_view {
+     /* width:600px; */
+     margin:auto;
+     color: #797876;
+     width: 100%;
+}
+
+#worryboard_view .view_title_bar {
+    padding: 5px;
+}
+
+.view_title {
+    font-weight: bold;
+}
+
+.view_content {
+    margin: 3px 0 3px 0;
+    padding: 10px;
+    font-size:0.75em;
+    font-family: serif, 명조체;
+    padding-top:30px;
+    /* overflow: auto; */
+}
+
+.input {
+    border: 1px solid #bbbbbb;
+}
+
+.pagination {
+    font-size: 0.8em;
+    text-align: center;
+    margin: auto;
+    width: 500px;
+}
+
+#board-wrap {
+    margin: 40px auto;
+    width: 650px;
+}
+
+#side-menu-wrap {
+    /* width: 110px; */
+    margin-top: 255px;
+    margin-left: 110px;
+}
+
+
+
+#side-menu-wrap div {
+    color: #555555;
+    font-size:0.8em;
+    /* margin-left:120px; */
+}
+
+#side-menu-wrap div a:hover {
+    color:gray;
+}
+
+/* comment */
+
+.comment-area {
+    font-family: serif, 명조체;
+    margin: 20px 10px 0 10px;
+}
+
+.comment-content {
+    padding: 0;
+    float: left;
+}
+
+.background {
+    background-image: url(../images/board_bg.jpg);
+}
+
+.comment_textarea,
+.comment-textarea {
+    width: 608px;
+    height: 80px;
+    font-size: 1em;
+}
+
+.comment-area ul {
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+
+.comment-area ul li {
+    background-color: #cccccc;
+    color: black;
+    margin: 10px auto;
+    padding: 10px;
+    opacity: 0.4;
+    filter:alpha(opacity=70);
+    z-index: 100;
+    /* for ie */
+    width:590px;
+}
+
+/* div.comment-li { */
+/*     border: 1px solid red; */
+/*     background-color: #eeeeee; */
+/*     color: black; */
+/*     opacity: 0.4; */
+/*     padding: 10px; */
+/*     margin-top: 10px; */
+/*     /\* z-index: 100; *\/ */
+/* } */
+
+.arrow {
+    float: left;
+    margin: 3px 20px 0 0;
+}
+
+.comment-username {
+    width: 80px;
+}

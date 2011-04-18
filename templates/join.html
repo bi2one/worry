@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block title %}JOIN{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+  var rpxJsHost = (("https:" == document.location.protocol) ? "https://" : "http://static.");
+  document.write(unescape("%3Cscript src='" + rpxJsHost +
+"rpxnow.com/js/lib/rpx.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  RPXNOW.overlay = true;
+  RPXNOW.language_preference = 'en';
+</script>
+{% endblock %}
+
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="/site_media/css/login.css" />
+<link rel="stylesheet" type="text/css" href="/site_media/css/join.css" />
+<script src="/site_media/js/join.js" type="text/javascript"></script>
+<!--[if IE ]><link rel="stylesheet" type="text/css" href="/site_media/css/join_ie6.css" /><![endif]--> 
+{% endblock %}
+
+{% block content %}
+<div id="join-wrap">
+  <form method="post" name="join_form" action=".">
+    <ul class="join-form-list">
+      <li class="id-input">
+	<div class="id-label"></div>
+	{{ form.username }}
+	<div class="id-checkbutton" onclick="javascript:id_check_submit();"></div>
+	<p id="id-check-result" class="check-result">{{ form.username.errors.0 }}</p>
+      </li>
+      <li class="pw-input">
+	<div class="pw-label"></div>
+	{{ form.password }}
+	{{ form.password_confirm }}
+	<p class="check-result">{{ form.password_confirm.errors.0 }}</p>
+      </li>
+      <li class="name-input">
+	<div class="name-label"></div>
+	{{ form.nick_name }}
+	<p class="check-result">{{ form.nick_name.errors.0 }}</p>
+      </li>
+      <li class="email-input">
+	<div class="email-label"></div>
+	{{ form.email }}
+	<p class="check-result">{{ form.email.errors.0 }}</p>
+      </li>
+    </ul>
+    <div class="submit-wrap">
+      <input type="image" src="/site_media/images/bttn_join.png" class="join-button"
+	     alt="join" />
+      <div class="cancel-button" onclick="javascript:history.back(-1);"></div>
+      <div style="clear:both;"></div>
+    </div>
+  </form>
+  <div class="alter-login-block">
+    <div class="alter-description float_left"></div>
+    <a class="rpxnow" onclick="return false;"
+       href="https://dontworryworry.rpxnow.com/openid/v2/signin?token_url=http%3A%2F%2Fallak23.cafe24.com%2Faccounts%2Frpx%3Fnext%3D{{next}}"></a>
+    <div class="alter-picture"></div>
+  </div>
+</div>
+{% endblock %}

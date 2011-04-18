@@ -1,0 +1,27 @@
+#content-wrap {
+    -moz-background-clip: border;
+    -moz-background-inline-policy: continuous;
+    -moz-background-origin: padding;
+    margin: auto;
+    background: #f7f6f4 url(../images/index_background.jpg) repeat-y scroll 0 0;
+    width: 760px;
+    height: 650px;
+    padding-top:150px;
+}
+
+.top-margin {
+    padding-top: 150px;
+    height: 1px;
+}
+
+#flash-wrap {
+    cursor: pointer;
+}
+
+.index-enter {
+    background: #f7f6f4 url(../images/index_enter_btn.png) no-repeat;
+    width: 85px;
+    height: 70px;
+    margin: auto;
+    cursor: pointer;
+}

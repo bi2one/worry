@@ -1,0 +1,128 @@
+{% load document_filter %}
+<div class="comment-area">
+  <div class="comments">
+    {% if doc.comment_set %}
+    <ul>
+      {% for cmt in doc.comment_set.all %}
+      <li id="comment_{{cmt.id}}">
+	<div class="comment">
+	  <div class="comment-username">
+	    {% if cmt.user.nick_name %}
+	    {{ cmt.user.nick_name }}
+	    {% else %}
+	    {{ cmt.user.username }}
+	    {% endif %}
+	  </div>
+	  <div class="comment-content">
+<<<<<<< .mine
+	      {% if cmt.is_secret %}
+	      {% if user.is_superuser %}
+	      {{ cmt.content|linebreaksbr }}
+	      {% else %}{% ifequal user.id cmt.user.id %}
+	      {{ cmt.content|linebreaksbr }}
+	      {% else %}
+	      비밀댓글 입니다.
+	      {% endifequal %}
+	      {% endif %}
+	      {% else  %}
+	      {{ cmt.content|linebreaksbr }}
+	      {% endif %}
+=======
+	    {% if cmt|has_view_auth_on_cmt:user %}
+	    {{ cmt.content|linebreaksbr|spacify }}
+	    {% else %}
+	    비밀댓글 입니다.
+	    {% endif %}
+>>>>>>> .r97
+	  </div> <!-- ~comment-entry -->
+	  <div class="comment-date small float_right">
+	    <span>{{cmt.pub_date}}</span>
+	    [ <a href="/edit_comment/{{cmt.id}}">EDIT</a>/ <a href="/delete_comment/{{cmt.id}}/">DEL</a> : <a href="/comment_reply/{{doc.id}}/?cmt_id={{cmt.id}}&depth={{cmt.depth}}">REPLY</a> ]
+	  </div>
+
+
+	  <div class="clear_both"></div>
+	  {% if cmt.comment_set.all %}
+	  {% for inner in cmt.comment_set.all %}
+	  <!-- ~inner -->
+	  <div class="comment" style="border-bottom: 1px solid #cdcdcd">
+	    <div class="arrow"></div>
+	    <div class="comment-username">
+	      {% if inner.user.nick_name %}
+	      {{ inner.user.nick_name }}
+	      {% else %}
+	      {{ inner.user.username }}
+	      {% endif %}
+	    </div>
+	    <div class="clear_both"></div>
+	    <div class="inner-comment-content">
+<<<<<<< .mine
+	      {% if inner.is_secret %}
+	      {% if user.is_superuser %}
+	      {{ inner.content|linebreaksbr }}
+	      {% else %}{% ifequal user.id inner.user.id %}
+	      {{ inner.content|linebreaksbr }}
+=======
+	      {% if inner|has_view_auth_on_inner:user %}
+	      {{ inner.content|linebreaksbr|spacify }}
+>>>>>>> .r97
+	      {% else %}
+<<<<<<< .mine
+	      비밀댓글 입니다.
+	      {% endifequal %}
+=======
+	      비밀댓글 입니다.
+>>>>>>> .r97
+	      {% endif %}
+<<<<<<< .mine
+	      {% else  %}
+	      {{ inner.content|linebreaksbr }}
+	      {% endif %}
+=======
+>>>>>>> .r97
+	    </div>
+	    <div class="clear_both"></div>
+	    <div class="comment-date small float_right">
+	      <span>{{cmt.pub_date}}</span>
+	      [ <a href="/edit_comment/{{inner.id}}">EDIT</a>/ <a href="/delete_comment/{{inner.id}}/">DEL</a>]
+	    </div>
+
+	    <div class="clear_both"></div>
+	  </div> <!-- ~inner -->
+	  {% endfor %}
+	  {% endif %}
+
+	</div> <!-- ~comment-item -->
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif%}
+  </div>
+
+  <form name="blog_comment_form" method="post" action="/write_comment/{{doc.id}}/">
+    <div class="comment-write">
+      <div class="center">
+	<textarea class="comment_textarea input" name="content"></textarea>
+      </div>
+
+
+      <div class="comment-bottom-wrap">
+	<div class="float_right">
+	  <input type="image" src="/site_media/images/confirm_btn.png" />
+	</div>
+
+	<div class="float_right" style="margin-right:10px">
+	  <input type="checkbox" name="is_secret" />
+	  <span class="small">Secret</span>
+	</div>
+	<div class="clear_both"></div>
+      </div>
+    </div>
+  </form>
+</div>
+<script type="text/javascript">
+    window.onload = function() {
+	var oFrmvalidator = new Validator("blog_comment_form");
+	oFrmvalidator.addValidation("content", "req", "내용을 입력해주세요.");
+    }
+</script>

@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+
+{% block script %}
+{% if user.is_superuser %}
+<script type="text/javascript">
+    function updateImg() {
+      var imgs = $(".traffic");
+      var i = 0;
+      for (i = 0; i < 3; ++i) {
+	  var addr = $(imgs[i]).attr('src');
+	  $(imgs[i]).attr('src', addr+'?g=' + new Date().getTime());
+      }
+      setTimeout('updateImg()', 1000 * 60);
+    }
+
+    $(document).ready( function() {
+	    setTimeout('updateImg()', 1000 * 60);
+    });
+
+</script>
+
+
+<style>
+      img {
+          margin-bottom:30px;
+      }
+</style>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+{% if user.is_superuser %}
+<div style="text-align:center;margin-top;30px;">
+  <img class="traffic" src="http://vsu-001.cafe24.com/allak23_day.png" alt="traffic" />
+  <img class="traffic" src="http://vsu-001.cafe24.com/allak23_week.png" alt="traffic" />
+  <img class="traffic" src="http://vsu-001.cafe24.com/allak23_month.png" alt="traffic" />
+</div>
+{% endif %}
+{% endblock %}
+

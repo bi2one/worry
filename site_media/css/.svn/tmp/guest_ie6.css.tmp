@@ -1,0 +1,135 @@
+<<<<<<< .mine
+.cmt-element-area .arrow {
+    background: url(../images/indentArrow.png) no-repeat;
+    width: 7%;
+    height: 20px;
+    margin-left:10px;
+}
+
+.cmt-element-area .cmt-element {
+   padding-left:100px;
+}
+ 
+
+
+.doc-date {
+    margin-top:10px;
+    margin-right:8px;
+}=======
+#comment-form *{
+    /* border: 1px black solid; */
+}
+
+.article {
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    margin: auto;
+    margin-bottom:30px;
+    font-size: 0.75em;
+}
+
+/* commentform start */
+#comment-form {
+    margin-top:18px;
+}
+
+#comment-form #comment-textarea {
+    background: url(../images/background_color.jpg);
+    border:1px solid #D0D0D0;
+    width: 660px;
+    height: 80px;
+    padding: 5px;
+    font-size: 12px;
+}
+
+#comment-form #guest-button-area {
+    padding: 5px 10px 0 0;
+    /* margin: 0 10px 10px 10px; */
+    /* margin: auto; */
+    /* margin-top: 10px; */
+    /* margin-bottom: 10px; */
+    /* width: 95%; */
+}
+
+#comment-form .confirm-btn {
+    margoin-left: 7px;
+}
+/* commentform end */
+/* guest start */
+#guest-wrap {
+    width: 703px;
+    margin: auto;
+    padding: 20px;
+}
+
+#guest-wrap ul {
+    list-style:none;
+    list-style-position: inside;
+    padding:0;
+}
+
+#guest-wrap .doc-element-block {
+    margin: 10px;
+    /* opacity: 0.80; */
+    /* filter:alpha(opacity=60); */
+    padding: 10px;
+    /* background-color:#e3e3e3; */
+}
+
+#guest-wrap .doc-username {
+    width: 70px;
+    float:left;
+    /* margin: 0 0 0 10px; */
+}
+
+#guest-wrap .guest-content {
+    margin: 0;
+}
+
+#guest-wrap .doc-content {
+    overflow: hidden;
+}
+
+#guest-wrap .doc-element {
+    margin: 0;
+    padding: 0;
+}
+/* guest end */
+/* guest_comment start */
+.cmt-element-area .cmt-element-block {
+    /* background-color: #eeeeee; */
+    height: 1%;
+    /* width: 100%; */
+    /* margin: auto; */
+    color: #000000;
+    /* opacity: 0.60; */
+    /* border: solid #909090; */
+    /* border-width: 1px 0 0 0; */
+    margin-top: 6px;
+}
+
+
+.cmt-element-area .arrow {
+    background: url(../images/indentArrow.png) no-repeat;
+    background-position: 10px 5px;
+    /* width: 7%; */
+    /* height: 20px; */
+}
+
+.cmt-element-area .cmt-element {
+    float: left;
+    margin-top: 4px;
+}
+
+.cmt-elemen-area .cmt-content {
+    margin: 2px 0 2px 0 ;
+}
+/* guest_comment end */
+/* pagination start */
+.guest_pagination {
+    font-size:0.8em;
+    color:gray;
+    text-align:center;
+    margin:auto;
+}
+/* pagination end */>>>>>>> .r132

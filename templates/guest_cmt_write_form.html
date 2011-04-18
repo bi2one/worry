@@ -1,0 +1,31 @@
+<form method="post" action="/guest/write_comment/{{doc.id}}/"
+      id="comment-form" name="guest_write_form">
+  <div class="center">
+    {% if cmt %}
+    <textarea id="comment-textarea" name="content">{{cmt.content}}</textarea>
+    {% else %}
+    <textarea id="comment-textarea" name="content"></textarea>
+    {% endif %}
+  </div>
+  <div id="guest-button-area">
+    <input class="float_right confirm-btn" type="image" src="/site_media/images/confirm_btn.png" alt="submit"/>
+    <div class="float_right">
+      <input type="checkbox" id="secret" name="is_secret" class="checkbox" value="1" />
+      <label for="secret">secret</label>
+    </div>
+    <div class="clear_both"></div>
+  </div>
+  <div class="clear_both"></div>
+</form>
+
+<script type="text/javascript">
+    window.onload = function() {
+	var oFrmvalidator = new Validator("guest_write_form");
+	oFrmvalidator.addValidation("content", "req", "내용을 입력해주세요.");
+
+	// set initial state of secret checkbox
+	{% if cmt.is_secret %}
+	document.getElementById("secret").checked = true;
+	{% endif %}
+    }
+</script>

@@ -1,0 +1,29 @@
+<div class="comment-area">
+  <ul>
+    {% for cmt in doc.comment_set.all %}
+    <li id="comment_{{cmt.id}}">
+      <div class="float_left">
+	username
+      </div>
+      <div class="comment-content">
+	2010-10-10&nbsp;[Reply]&nbsp;[Edit]&nbsp;[Delete]<br />
+	This is a first comment.
+      </div>
+      <div class="clear_left"></div>
+    </li>
+    {% if cmt.comment_set %}
+    {% for inner in cmt.comment_set.all %}
+    <li style="margin-left: 15px;">
+      <div class="float_left">
+	username
+      </div>
+      <div class="comment-content">
+	2010-10-10&nbsp;[Reply]&nbsp;[Edit]&nbsp;[Delete]<br />
+	This is a first comment.
+      </div>
+    </li>
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+  </ul>
+</div>

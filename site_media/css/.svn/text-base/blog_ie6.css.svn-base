@@ -1,0 +1,60 @@
+#blog_wrap {
+/*     border: 1px solid black; */
+}
+
+#blog_wrap .comment-write {
+}
+
+#blog_wrap .comment {
+}
+
+#blog_wrap .comment-bottom-wrap {
+    width: 100%;
+    height: 1%;
+    margin: 0;
+/*     height: 100px; */
+/*     height: 100px; */
+}
+
+#blog_wrap .comment_reply_textarea {
+}
+
+#blog_wrap .article {
+    margin: auto;
+    width: 650px;
+    margin-bottom: 30px;
+    padding-bottom: 0;
+}
+
+#blog_wrap .blog-top {
+    margin-top: 10px;
+    height: 1%;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    display: hidden;
+    clear:both;
+}
+
+#side-menu-wrap {
+    margin-left: 50px;
+    margin-top: 310px;
+    font-size:0.8em;
+    font-family:돋움;
+}
+
+#side-menu-wrap div {
+    margin-bottom:5px;
+}
+
+
+.article-content {
+}
+
+.comment_reply_textarea {
+    padding-left: 0;
+}
+
+#blog_wrap .arrow-reply {
+    height: auto;
+    margin: 0 0 15px 20px;
+}

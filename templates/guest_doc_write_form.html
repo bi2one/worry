@@ -1,0 +1,22 @@
+<form method="post" action="/guest/write/?docid={{doc.id}}" name="guest_write_form" id="comment-form">
+  <div class="center">
+    <textarea id="comment-textarea" name="tx_content">{{doc.content}}</textarea>
+  </div>
+  <div id="guest-button-area">
+    <input class="float_right confirm-btn" type="image" src="/site_media/images/confirm_btn.png" alt="submit"/>
+    <div class="float_right">
+      <input type="checkbox" id="secret" name="is_secret"
+      class="checkbox" value="1" {% if doc.is_secret %}checked="checked"{%endif%}/>
+      <label for="secret">secret</label>
+    </div>
+    <div class="clear_both"></div>
+  </div>
+  <div class="clear_both"></div>
+</form>
+
+<script type="text/javascript">
+    window.onload = function() {
+	var oFrmvalidator = new Validator("guest_write_form");
+	oFrmvalidator.addValidation("tx_content", "req", "내용을 입력해주세요.");
+    }
+</script>

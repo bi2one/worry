@@ -1,0 +1,7 @@
+#about-wrap p {
+    font-family: 돋움;
+    color:#797876;
+    font-size:0.75em;
+    line-height:25px;
+    margin-bottom:28px;
+}

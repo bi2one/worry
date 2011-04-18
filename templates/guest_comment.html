@@ -1,0 +1,36 @@
+{% load document_filter %}
+{% if doc.comment_set %}
+<ul class="cmt-element-area">
+  {% for cmt in doc.comment_set.all %}
+  <li class="cmt-element-block">
+    <div class="arrow float_left"></div>
+    <div class="cmt-element" >
+      <div class="cmt-username bold">
+	{% if cmt.user.nick_name %}
+	{{ cmt.user.nick_name }}
+	{% else %}
+	{{ cmt.user.username }}
+	{% endif %}
+      </div>
+      {% if cmt|has_view_auth_on_cmt:user %}
+      <p class="cmt-content">{{ cmt.content|linebreaksbr|spacify }}</p>
+      {% else %}
+      {% ifequal doc.user.id user.id %}
+      <p class="cmt-content">{{ cmt.content|linebreaksbr|spacify }}</p>
+      {% else %}
+      <p class="cmt-content">비밀덧글입니다.</p>
+      {% endifequal %}
+      {% endif %}
+      <div class="cmt-date small">
+	{% if cmt|has_edit_auth_on_cmt:user %}
+	{{ doc.pub_date|date:"Y-m-d h:i A" }}
+	[<a href="/edit_comment/{{cmt.id}}?module_name={{module_name}}">EDIT</a>/
+	<a onclick="javascript:moveWithConfirm('정말 삭제 합니까?', '/delete_comment/{{cmt.id}}/?refer=/guest/')">DEL</a>]
+	{% endif %}
+      </div>
+    </div>
+  </li>
+  <div style="clear:both;"></div>
+  {% endfor %}
+</ul>
+{% endif %}

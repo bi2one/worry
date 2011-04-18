@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}INTRO{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="/site_media/css/intro.css" />
+{% endblock %}
+
+{% block content %}
+{% ifequal LANGUAGE_CODE "ko" %}
+<div id="intro_content_ko">
+</div>
+{% else %}
+<div id="intro_content_en">
+</div>
+{% endifequal %}
+
+{% endblock %}

@@ -1,0 +1,17 @@
+#about-wrap {
+    margin: auto;
+    width: 660px;
+}
+
+#about-wrap p {
+    font-family: Serif, 명조체, 바탕체, 돋움체;
+    color:#797876;
+    font-size:0.75em;
+    line-height:25px;
+    margin-bottom:28px;
+}
+
+#about-pic {
+    width: 660px;
+    height: 459px;
+}

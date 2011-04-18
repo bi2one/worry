@@ -1,0 +1,71 @@
+/* input, img, div { behavior: url(/site_media/css/iepngfix.htc) }  */
+body {
+    margin:0;
+    border:0;
+/*    padding-top:10px; */
+    background: #f7f6f4 url(../images/background_color.jpg) repeat;
+    font-family: serif, “¸í“Á¶“Ã¼,“¹Ù“ÅÁ“Ã¼,“µ¸“¿ò“Ã¼; 
+
+}
+
+img {
+    border:0;
+}
+
+a:hover {
+}
+
+a:visited {
+    text-decoration:none;
+}
+
+a {
+    color:#5c5c5c;
+    text-decoration:none;
+    outline: none;
+}
+
+.float_right {
+    float: right;
+}
+
+.float_left {
+    float: left;
+}
+
+.clear_right {
+    clear: right;
+}
+
+.clear_left {
+    clear: left;
+}
+
+.clear_both {
+    clear: both;
+}
+
+.center {
+    text-align: center;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+
+.small {
+    font-size: 0.9em;
+}
+
+.large {
+    font-size: 1.1em;
+}
+
+.bold {
+    font-weight: bold;
+}

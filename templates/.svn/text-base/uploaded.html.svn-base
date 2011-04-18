@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>File attachment</title> 
+<script src="/site_media/daumeditor/js/popup.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="/site_media/daumeditor/css/popup.css" type="text/css"  charset="utf-8"/>
+</head>
+<body>
+<script>
+	    var _opener = PopupUtil.getOpener();
+	    if (!_opener) {
+	        alert("잘못된 경로로 접근하셨습니다.");
+	    }
+	    
+	    var _attacher = getAttacher("file", _opener);
+	    registerAction(_attacher);
+</script>
+<script type="text/javascript">
+if (typeof(execAttach) == "undefined") { //Virtual Function
+}
+
+var _mockdata = {
+  "attachurl": "{{ file_url }}",
+  "filemime": "{{ file_mime }}",
+  "filename": "{{ file_name }}",
+  "filesize": {{ file_size }}
+};
+
+var obj = window.opener.document.getElementById("attach_files");
+obj.value += "{{file_id}},";
+
+execAttach(_mockdata);
+closeWindow();
+</script>
+</body>
+</html>

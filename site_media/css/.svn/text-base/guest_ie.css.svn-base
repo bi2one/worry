@@ -1,0 +1,24 @@
+.article * {
+    color: gray;
+    font-family:돋움;
+}
+
+.cmt-element-area .arrow {
+    background: url(../images/indentArrow.png) no-repeat;
+    width: 7%;
+    height: 20px;
+    margin-left:10px;
+}
+
+.cmt-element-area .cmt-element {
+   padding-top:0;
+}
+
+.doc-date {
+    margin-top:10px;
+    margin-right:8px;
+}
+
+.cmt-element-area .cmt-element-block {
+    margin-left: 0;
+}

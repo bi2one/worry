@@ -1,0 +1,80 @@
+{% load document_filter %}
+<div id="board">
+  <table>
+    <colgroup>
+      <col width="400px">
+      <col width="100px">
+      <col />
+      <col />
+    </colgroup>
+    {% for doc in docs %}
+    <tr>
+      <td style="text-align:left" class="td-padding"><a href="/{{ module_name }}/view/{{ doc.id }}/{{ option_string }}&current_page={{current_page}}">
+	{% if doc.is_secret %}
+	<div style="float:left; margin:0 3px 0 1px;">
+	  <img src="/site_media/images/white_circle.png" style="width:5px"/>
+	</div>
+	{% endif %}
+	  {% if doc.is_notice %}
+	  [공지사항]&nbsp;
+	  {% endif %}
+	  {{ doc.title|cut_long_str:30 }}
+	  {% ifnotequal doc.comment_set.count 0 %}
+	  ({{ doc.comment_set.count }})
+	  {% endifnotequal %}
+	</a>
+	<div class="clear_right"></div>
+      </td>
+
+      {% if doc.user.nick_name %}
+      <td class="td-padding">{{ doc.user.nick_name }}</td>
+      {% else %}
+      {% if doc.username %}
+      <td class="td-padding">{{ doc.username }}</td>
+      {% else %}
+      <td class="td-padding">{{ doc.user.username }}</td>
+      {% endif %}
+      {% endif %}
+
+      <td class="td-padding">{{ doc.hit }}</td>
+      <td style="text-align:center">{{ doc.pub_date.date }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <div id="board-button-box" >
+    <a class="float_left" href="/admin/"><img src="/site_media/images/bttn_admin.png" class="png_bg" alt="admin"/></a>
+
+    {% ifequal module_name "shop" %}
+    <a class="float_left" style="margin:0 0 0 5px" href="/{{module_name}}/?category={{category}}"><img class="png_bg" src="/site_media/images/bttn_list.png" alt="list" /></a>
+    {% else %}
+    <a class="float_right" href="/{{module_name}}/write/?category={{category}}"><img class="png_bg" src="/site_media/images/bttn_write.png" alt="write" /></a>
+    <a class="float_right" href="/{{module_name}}/?category={{category}}"><img class="png_bg" src="/site_media/images/bttn_list.png" alt="list" /></a>
+    {% endifequal%}
+    
+    
+
+    <div class="pagination">
+      {% if prev_page %}
+      <a href="/{{module_name}}/1/{{option_string}}"><img src="/site_media/images/first_btn.png" alt="first" /></a>
+      <a href="/{{module_name}}/{{prev_page}}/{{option_string}}"><img src="/site_media/images/prev_btn.png" alt="previous" /></a>
+      {% endif %}
+      {% for page in pages %}
+      <a href="/{{module_name}}/{{page}}/{{option_string}}">
+	<span class="page-number">
+	  {% ifequal page current_page %}
+	  <span style="font-weight:bold">{{ page }}</span>
+	  {% else %}
+	  {{ page }}
+	  {% endifequal %}
+	</span>
+      </a>
+      {% endfor %}
+      {% if next_page %}
+      <a href="/{{module_name}}/{{next_page}}/{{option_string}}"><img style="vertical-align:text-bottom;" src="/site_media/images/next_btn.png" alt="next" /></a>
+      <a href="/{{module_name}}/{{last_page}}/{{option_string}}"><img style="vertical-align:text-bottom;" src="/site_media/images/last_btn.png" alt="last" /></a>
+      {% endif %}
+    </div>
+    <div class="clear_both"></div>
+    {% include "search_area.html" %}
+  </div>
+</div>

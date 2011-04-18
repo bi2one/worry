@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block title %}COMMENT{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="/site_media/css/board.css" />
+{% endblock %}
+
+{% load document_filter %}
+{% block content %}
+<div id="board-wrap" class="background" style="font-size:0.8em;margin:auto;">
+  {% if not edit %}
+  <div class="comment-area" style="padding:10px;">
+      <div class="comment-username float_left">
+	{% if cmt.username %} {{ cmt.username }} {% else %}
+
+	{% if cmt.user.nick_name %}
+	{{ cmt.user.nick_name }}
+	{% else %}
+	{{ cmt.user.username }}
+	{% endif %}
+
+	{% endif %}
+      </div>
+      <div class="comment-content">
+	{{ cmt.pub_date.date }}&nbsp;
+	<br /><br />
+	{% if cmt|has_view_auth_on_cmt:user %}
+	{{ cmt.content|linebreaksbr }}
+	{% else %}
+	비밀댓글 입니다.
+	{% endif %}
+      </div>
+      <div class="clear_left"></div>
+      <br />
+      <div class="arrow"></div>
+      <form method="post" action="/comment_reply/{{doc_id}}/?cmt_id={{cmt.id}}&depth={{depth}}" name="comment_write_form">
+	<input type="hidden" name="module_name" value="{{module_name}}" />
+	<textarea class="comment-textarea input" name="content"></textarea>
+	<div class="comment-bottom-wrap">
+	  <input class="float_right" type="image" src="/site_media/images/confirm_btn.png" />
+	  <span class="small float_right" style="margin:3px;">Secret</span>
+	  <input class="float_right" type="checkbox" name="is_secret" />
+	  <div class="clear_both"></div>
+	</div>
+      </form>
+  </div>
+  {% else %}
+  <form method="post" action="/edit_comment/{{cmt.id}}/">
+    <input type="hidden" name="depth" value="{{depth}}" />
+    <input type="hidden" name="cmt_id" value="{{cmt.id}}" />
+    <input type="hidden" name="module_name" value="{{module_name}}" />
+    <div class="comment-write" style="margin-right:10px;">
+      <div class="center">
+	<textarea class="comment_textarea input" name="content">{{cmt.content}}</textarea>
+      </div>
+
+      <div class="comment-bottom-wrap">
+	<div class="float_right">
+	  <input type="image" src="/site_media/images/confirm_btn.png" />
+	</div>
+
+	<div class="float_right" style="margin-right:10px">
+	  <input type="checkbox" name="is_secret" />
+	  <span class="small">Secret</span>
+	</div>
+	<div class="clear_both"></div>
+      </div>
+    </div>
+  </form>
+  {% endif %}
+</div>
+{% endblock %}

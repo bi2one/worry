@@ -1,0 +1,6 @@
+from worry.document.models import Document, Comment
+from django.contrib import admin
+
+admin.site.register(Document)
+admin.site.register(Comment)
+# admin.site.register(File)

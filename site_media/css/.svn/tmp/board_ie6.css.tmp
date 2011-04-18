@@ -1,0 +1,176 @@
+<<<<<<< .mine
+/* board */
+#side-menu-wrap {
+    margin-top: 273px;
+    margin-left:100px;
+}
+#side-menu-wrap div {
+    color: #555555;
+    font-size:0.8em;
+    /* margin-left:120px; */
+}
+
+#side-menu-wrap div a:hover {
+    color:gray;
+}
+=======
+/* board */
+#board-wrap * {
+    /* border: 1px black solid ; */
+}
+
+#board-wrap {
+    /* border: 1px red solid; */
+}
+
+#board-button-box {
+    padding-top:7px;
+}
+
+#login-join {
+    width: 500px;
+    margin: auto;
+    margin-bottom: 7px;
+}
+
+#board {
+    margin: auto;
+}
+
+#board div {
+    width: 500px;
+    margin: auto;
+}
+
+#board-tool {
+    text-align: center;
+}
+
+
+#board table {
+    width: 500px;
+    border-collapse: collapse;
+    background: #f0f0f0 url(../images/board_bg.jpg) repeat;
+}
+
+#board table td {
+    padding: 2px 2px;
+    font-size: 0.7em;
+    border: 1px solid #dfdfdf;
+    text-align:center;
+}
+
+#board table td:first-child {
+    border-left:0;
+    text-align:left;
+}
+
+#board table td:last-child {
+    border-right:0;
+}
+
+#worryboard_view {
+     width:500px;
+     margin:auto;
+     color: #797876;
+}
+
+.view_title_bar {
+    padding: 5px;
+}
+
+.view_title {
+    font-weight: bold;
+}
+.view_content {
+    margin: 3px 0 3px 0;
+    padding: 10px;
+    font-size:0.75em;
+    font-family: serif, 명조체;
+    overflow: hidden;
+}
+
+/* comment */
+
+.comment-area {
+    font-family: serif, 명조체;
+    margin-top:0;
+}
+
+.comments {
+    overflow: hidden;
+}
+
+.comment {
+    overflow: hidden;
+    margin: 10px;
+    padding: 10px;
+    background-color: #eeeeee;
+    color: black;
+    opacity: 0.4;
+}
+
+.comment-username {
+    width: 90px;
+    float:left;
+    margin-left: 10px;
+}
+
+.comment-content {
+    padding: 0;
+    margin-left: 100px;
+}
+
+.comment-write {}
+
+.background {
+    background-image: url(../images/board_bg.jpg);
+}
+
+.comment_textarea {
+    width: 458px;
+    height: 80px;
+    font-size: 1em;
+}
+
+.input {
+    border: 1px solid #bbbbbb;
+}
+
+.pagination {
+    font-size: 0.8em;
+    text-align: center;
+    margin: auto;
+    width: 500px;
+}
+
+#board-wrap {
+    /* margin: 40px auto; */
+    width: 500px;
+    /* overflow-x: auto; overflow-y: hidden; */
+    /* width: expression(document.body.offsetWidth - 400); */
+}
+
+#side-menu-wrap {
+    margin: 45px 0 0 0;
+}
+
+#side-menu-wrap ul li a{
+    color: #cdcdcd;
+    font-size:0.8em;
+    margin-left:120px;
+}
+
+.comments ul {
+    list-style:none;
+    list-style-position: inside;
+    margin:0;
+    padding:0;
+}
+
+.arrow {
+    float: left;
+    background: url(../images/indentArrow.png) no-repeat scroll;
+    width: 30px;
+    height: 60px;
+}>>>>>>> .r132

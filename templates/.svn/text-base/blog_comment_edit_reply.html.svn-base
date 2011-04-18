@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+{% load document_filter %}
+{% block title %}{% if category_name %}{{category_name}}&nbsp;{%endif%}Blog{% endblock %}
+{% block link %}
+<script type="text/javascript" src="/site_media/js/search_area.js"/></script>
+<script type="text/javascript">
+    window.onload = function() {
+	var oFrmvalidator = new Validator("comment_form");
+	oFrmvalidator.addValidation("content", "req", "내용을 입력해주세요.");
+    }
+</script>
+<link rel="stylesheet" type="text/css" href="/site_media/css/search_area.css" />
+<link rel="stylesheet" type="text/css" href="/site_media/css/blog.css" />
+<!--[if IE ]><link rel="stylesheet" type="text/css" href="/site_media/css/blog_ie6.css" /><![endif]--> 
+{% endblock %}
+
+{% block side_menu %}
+{% endblock %}
+
+
+
+{% block content %}
+<!-- <a href="/blog/"><img src="/site_media/images/bttn_list.png" class="float_right clear_both" alt="list" /></a> -->
+<div id="blog_wrap">
+{% if edit %}
+  <div class="article">
+    <div class="comment">
+      <img src="/site_media/images/indentArrow.png" class="arrow"/>
+<!-- <div class="arrow"></div> -->
+    <form method="post" action="/edit_comment/{{cmt.id}}/?module_name={{module_name}}"
+	  name="comment_form">
+    <div class="comment-write">
+      <div class="center">
+	<textarea class="comment_reply_textarea input" name="content">{{ cmt.content }}</textarea>
+      </div>
+
+      <div class="comment-bottom-wrap">
+	<div class="float_right">
+	  <input type="image" src="/site_media/images/confirm_btn.png" />
+	</div>
+
+	<div class="float_right" style="margin-right:10px">
+	  <input type="checkbox" name="is_secret" {% if cmt.is_secret %}checked="checked"{%endif%}/>
+	  <span class="small">Secret</span>
+	</div>
+	<div class="clear_both"></div>
+      </div>
+      </div>
+    </form>
+    </div>
+  </div> <!-- ~article -->
+
+{% else %}
+  <div class="article">
+    <div class="comment">
+    <div class="comment-username">
+      {% if cmt.user.nick_name %}
+      {{ cmt.user.nick_name }}
+      {% else %}
+      {{ cmt.user.username }}
+      {% endif %}
+    </div>
+    <div class="comment-content">
+      {{ cmt.content|linebreaksbr }}
+    </div>
+
+    <div class="clear_both"></div>
+    </div>
+
+    <div class="comment">
+      <img src="/site_media/images/indentArrow.png" class="arrow-reply"/>
+<!--       <div class="arrow"></div> -->
+    <form method="post" action="/comment_reply/{{doc_id}}/" name="comment_form">
+    <input type="hidden" name="depth" value="{{depth}}" />
+    <input type="hidden" name="cmt_id" value="{{cmt.id}}" />
+
+    <div class="comment-write">
+      <div class="center">
+	<textarea class="comment_reply_textarea input" name="content"></textarea>
+      </div>
+
+      <div class="comment-bottom-wrap">
+	<div class="float_right">
+	  <input type="image" src="/site_media/images/confirm_btn.png" />
+	</div>
+
+	<div class="float_right" style="margin-right:10px">
+	  <input type="checkbox" name="is_secret" />
+	  <span class="small">Secret</span>
+	</div>
+	<div class="clear_both"></div>
+      </div>
+      </div>
+    </form>
+    </div>
+  </div> <!-- ~article -->
+{% endif %}
+</div>
+{% endblock %}

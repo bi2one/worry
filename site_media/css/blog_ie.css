@@ -1,0 +1,36 @@
+#side-menu-wrap {
+    margin-left: 65px;
+    margin-top: 278px;
+    font-size:0.8em;
+    font-family: 돋움;
+}
+
+#side-menu-wrap div {
+    margin-bottom:5px;
+}
+
+#blog_wrap .blog-top {
+    margin-top: 10px;
+    height: 1%;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    display: hidden;
+    clear:both;
+}
+
+
+
+
+.blog_pagination {
+    text-align: center;
+    font-family: 돋움;
+    font-size: 0.8em;
+    margin: auto;
+    width: 500px;
+}
+
+div.article * {
+    font-family: 돋움;
+}
+
+

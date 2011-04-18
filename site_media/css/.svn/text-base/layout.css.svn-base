@@ -1,0 +1,149 @@
+/* #force-scroll { */
+/*     width:1em; */
+/*     position:fixed; */
+/*     top:0; */
+/*     right: 0; */
+/*     bottom:-0.1px; */
+/*     z-index:-1; */
+/*     border: 1px solid red; */
+/* } */
+
+#container {
+    margin:auto;
+    width: 1000px;
+}
+html {					/* non-standard */
+    overflow-y: scroll;			/* ie chrome safari */
+    overflow: -moz-scrollbars-vertical; /* firefox */
+}
+
+#top {
+    width: 760px;
+    height: 30px;
+    margin: auto;
+}
+
+#content-wrap {
+    margin: auto;
+    background: #f7f6f4 url(../images/repeat.jpg) repeat-y;
+    width: 760px; 
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    filter: chroma(color=white);
+}
+
+*html #content-wrap
+{
+border-color: pink;
+filter:progid:DXImageTransform.Microsoft.Chroma(color=pink);
+
+
+}
+
+
+
+
+#menu-en {
+    width: 760px;
+    margin: 0 auto 0 auto;
+    height: 147px;
+    background: #f7f6f4 url(../images/menu_eng.jpg) no-repeat;
+    margin-bottom:20px;
+}
+
+#menu-en img {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+
+
+#menu-ko {
+    width: 760px;
+    margin: 0 auto 0 auto;
+    height: 147px;
+    background: #f7f6f4 url(../images/menu_kor.jpg) no-repeat;
+}
+
+#menu-ko img {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+#sunray-smile {
+    width: 171px;
+    height:14px;
+    background: #f7f6f4 url(../images/sunray_smile.png) no-repeat;
+    margin-top: 6px;
+    margin-right: 10px;
+    float: right;
+    cursor: pointer;
+}
+
+#music-on-off {
+    width: 25px;
+    height: 20px;
+    background: #f7f6f4 url(../images/music_blank_btn.png) no-repeat;
+    margin-top: 3px;
+    margin-right: 5px;
+    float: right;
+    cursor: pointer;
+}
+
+#english-kor {
+    width: 48px;
+    height: 25px;
+
+    float: right;
+    cursor: pointer;
+    margin-right:10px;
+}
+
+#content {
+/*     border: 1px solid black; */
+    margin: auto;
+    width: 760px;
+}
+
+#footer {
+    margin:auto;
+    margin-top:40px;
+    width: 760px;
+    height:20px;
+    text-align:left;
+}
+
+#footer ul {
+    list-style: none;
+}
+
+#footer ul li{
+
+}
+
+#copyright {
+    width: 145px;
+    height: 16px;
+    background: #f7f6f4 url(../images/copy_right.png) repeat-y;
+}
+
+#side-menu {
+    position:absolute;
+    color: #aaaaaa;
+}
+
+#side-menu ul {
+    list-style:none;
+    list-style-position: inside;
+    padding:0px;
+    margin:0px;
+    border:0px;
+}
+
+#side-menu ul li{
+    padding:0px;
+    margin:0px;
+    border:0px;
+}

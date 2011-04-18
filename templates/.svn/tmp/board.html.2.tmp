@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+{% load document_filter %}
+{% block title %}Worry board{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="/site_media/css/board.css" />
+<link rel="stylesheet" tyep="text/css" href="/site_media/css/search_area.css" />
+<!--[if IE]><link rel="stylesheet" type="text/css" href="/site_media/css/board_ie.css" /><![endif]--> 
+<!--[if IE 6]><link rel="stylesheet" type="text/css" href="/site_media/css/board_ie6.css" /><![endif]--> 
+<script src="/site_media/js/search_area.js"
+	type="text/javascript"></script>
+<!--[if IE ]><link rel="stylesheet" type="text/css" href="/site_media/css/search_area_ie6.css" /><![endif]-->
+<!--[if IE ]><link rel="stylesheet" type="text/css" href="/site_media/css/board_ie6.css" /><![endif]--> 
+
+{% endblock %}
+
+{% block side_menu %}
+{% ifnotequal module_name "worryboard" %}
+<div id="side-menu-wrap">
+  <div><a href=".?category=3"><img src="http://bump.turitzin.com/app/webroot/img/icons/white_circle.png" style="width:5px;margin-bottom:3px;"/> Notice</a></div>
+  <div><a href=".?category=2"><img src="http://bump.turitzin.com/app/webroot/img/icons/white_circle.png" style="width:5px;margin-bottom:3px;"/> Shop</a></div>
+  <div><a href=".?category=4"><img src="http://bump.turitzin.com/app/webroot/img/icons/white_circle.png" style="width:5px;margin-bottom:3px;"/> QnA</a></div>
+</div>
+{% endifnotequal %}
+{% endblock %}
+
+
+{% block content %}
+<div id="board-wrap">
+  <div class="float_left" id="login-join">
+    {% if not user.is_authenticated %}
+    <a class="float_left" href="/accounts/login/"><img class="png_bg" src="/site_media/images/small_login_btn.png" alt="login" /></a>
+    <a class="float_left" href="/accounts/join/" style="margin-left:5px;"><img class="png_bg" src="/site_media/images/small_join_btn.png" alt="join" /></a>
+    {% else %}
+    <a class="float_left" href="/accounts/logout/"><img src="/site_media/images/small_logout_btn.png" alt="logout" /></a>
+    {% endif %}
+    {% if doc %}
+    {% if user.is_superuser %}
+    <a class="float_right" href="/{{module_name}}/delete/{{doc.id}}/"><img src="/site_media/images/delete_btn.png" alt="delete" /></a>
+    <a class="float_right" href="/{{module_name}}/modify/{{doc.id}}/"><img src="/site_media/images/modify_btn.png" alt="modify" /></a>
+    {% else %}
+    {% ifequal doc.user.id user.id  %}
+    <a class="float_right" href="/{{module_name}}/delete/{{doc.id}}/"><img src="/site_media/images/delete_btn.png" alt="delete" /></a>
+    <a class="float_right" href="/{{module_name}}/modify/{{doc.id}}/"><img src="/site_media/images/modify_btn.png" alt="modify" /></a>
+    {% endifequal %}
+    {% endif %}
+    {% endif %}
+  </div>
+  <div class="clear_both"></div>
+  {% if doc %}
+  {% if doc|has_view_auth_on_doc:user %}
+  <div id="worryboard_view">
+    <div class="view_title_bar background" style="font-size:0.8em;text-align:center;">
+      <span class="view_title">{{ doc.title }}</span>
+      <div class="clear_both"></div>
+      <div class="float_right small">
+	{{ doc.pub_date.date }}&nbsp;
+	{% if doc.username %}
+	{{ doc.username }}
+	{% else %}
+	{% if doc.user.nick_name %}
+	{{ doc.user.nick_name }}
+	{% else %}
+	{{ doc.user.username }}
+	{% endif %}
+	{% endif %}
+      </div>
+      <div class="clear_both"></div>
+    </div>
+    <div class="view_content background">
+      {% autoescape off %}
+      {{ doc.content }}
+      {% endautoescape %}
+      {% include "comment.html" %}
+    </div>
+    <div style="margin:50px;"></div>
+  </div>
+  {% else %}
+  <script type="text/javascript">
+    alert("비밀글 입니다.")
+    history.back(-1);
+  </script>
+  {% endif %}
+  {% endif %}
+  {% include "board_list.html" %}
+</div>
+{% endblock %}

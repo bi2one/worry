@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}GUEST{% endblock %}
+
+{% block link %}
+{% load document_filter %}
+<link rel="stylesheet" type="text/css" href="/site_media/css/guest.css" />
+<!--[if IE]><link rel="stylesheet" type="text/css" href="/site_media/css/guest_ie.css" /><![endif]--> 
+<!--[if IE 6]><link rel="stylesheet" type="text/css" href="/site_media/css/guest_ie6.css" /><![endif]--> 
+{% endblock %}
+
+{% block content %}
+<div id="guest-wrap">
+  <div class="article">
+    <div class="doc-element-block" style="margin-bottom:15px;border-bottom:1px solid #cdcdcd">
+      {% include "guest_doc_element.html" %}
+      {% include "guest_comment.html" %}
+    </div>
+    {% include "guest_cmt_write_form.html" %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,153 @@
+{% extends "layout.html" %}
+{% load document_filter %}
+{% block title %}{% if category_name %}{{category_name}}&nbsp;{%endif%}Blog{% endblock %}
+{% block link %}
+<script type="text/javascript" src="/site_media/js/search_area.js" /></script>
+<link rel="stylesheet" type="text/css" href="/site_media/css/search_area.css" />
+<link rel="stylesheet" type="text/css" href="/site_media/css/blog.css" />
+<!--[if IE ]><link rel="stylesheet" type="text/css" href="/site_media/css/blog_ie6.css" /><![endif]--> 
+{% endblock %}
+
+{% block side_menu %}
+<div id="side-menu-wrap">
+<ul>
+  <li><a href=".?category=2">- 내걱정이가요</a></li>
+  <li><a href=".?category=1">- allak이가요</a></li>
+</ul>
+</div>
+{% endblock %}
+
+
+
+{% block content %}
+<!-- <a href="/blog/"><img src="/site_media/images/bttn_list.png" class="float_right clear_both" alt="list" /></a> -->
+<div id="blog_wrap">
+  <div id="login-join">
+    {% if not user.is_authenticated %}
+    <a href="/accounts/login/"><img class="png_bg" src="/site_media/images/small_login_btn.png" alt="login" /></a>
+    <a href="/accounts/join/"><img class="png_bg" src="/site_media/images/small_join_btn.png" alt="join" /></a>
+    {% else %}
+    <a href="/accounts/logout/"><img src="/site_media/images/small_logout_btn.png" alt="logout" /></a>
+    {% endif %}
+  </div>
+  {% if doc %}
+  <div class="blog-top">
+    <div class="blog-date">
+      {{ doc.pub_date }}
+    </div>
+    
+    <div class="blog-category">
+      <a href="/blog/?category={{doc.category}}">{{ doc.category_name }} blog</a>
+    </div>
+  </div>
+
+  <div class="clear_both"></div>
+  <div class="article">
+    <div class="article-title">
+      <a class="float_left" href="/blog/view/{{doc.id}}/">{{ doc.title }}</a>
+      
+      {% if user.is_superuser %}
+      <a class="float_right png_bg" href="/blog/modify/{{doc.id}}/"><img src="/site_media/images/modify_btn.png" /></a>
+      {% else %}
+      {% ifequal doc.user.id user.id  %}
+      <a class="float_right png_bg" href="/blog/modify/{{doc.id}}/"><img src="/site_media/images/modify_btn.png" /></a>
+      {% endifequal %}
+      {% endif %}
+
+      <div class="clear_both"></div>
+    </div>
+    <div class="article-content">
+      {% autoescape off %} 
+      {{ doc.content }}
+      {% endautoescape %} 
+    </div> <!-- ~article-content -->
+    <div class="tag-area">
+      <span class="small">TAG&nbsp;▶&nbsp;</span>
+      {% for tag in doc.tag_set.all|order_by:"id" %}
+      <span><a href="/tag/{{tag.name}}/">{{ tag.name }}</a>{% if not forloop.last %},&nbsp;{% endif %}</span>
+      {% endfor %}
+    </div>
+    {% include "blog_comment.html" %}
+  </div> <!-- ~article -->
+  {% else %}
+  {% for doc in docs %}
+
+  <div class="blog-top">
+    <div class="blog-date">
+      {{ doc.pub_date }}
+    </div>
+    
+    <div class="blog-category">
+      <a href="/blog/?category={{doc.category}}">{{ doc.category_name }} blog</a>
+    </div>
+  </div>
+
+  <div class="clear_both"></div>
+  <div class="article">
+    <div class="article-title">
+      <a class="float_left" href="/blog/view/{{doc.id}}/">{{ doc.title }}</a>
+      
+      {% if user.is_superuser %}
+      <a class="float_right" href="/blog/modify/{{doc.id}}/"><img src="/site_media/images/modify_btn.png" /></a>
+      {% else %}
+      {% ifequal doc.user.id user.id  %}
+      <a class="float_right" href="/blog/modify/{{doc.id}}/"><img src="/site_media/images/modify_btn.png" /></a>
+      {% endifequal %}
+      {% endif %}
+      
+      <div class="clear_both"></div>
+    </div>
+    <div class="article-content">
+      {% autoescape off %} 
+      {{ doc.content }}
+      {% endautoescape %} 
+    </div> <!-- ~article-content -->
+    <div class="tag-area">
+      <span class="small">TAG&nbsp;▶&nbsp;</span>
+      {% for tag in doc.tag_set.all|order_by:"id" %}
+      <span><a href="/tag/{{tag.name}}/">{{ tag.name }}</a>{% if not forloop.last %},&nbsp;{% endif %}</span>
+      {% endfor %}
+    </div>
+    {% include "blog_comment.html" %}
+  </div> <!-- ~article -->
+  {% endfor %}
+  {% endif %}
+
+  <div class="float_left"><img src="/site_media/images/bttn_admin.png" alt="admin" /></div>
+  <div class="float_right"><a href="/blog/write/"><img src="/site_media/images/bttn_write.png" class="" alt="write" /></a></div>
+
+
+  <div class="blog_pagination">
+    {% if prev_page %}
+    <a class="prev-btn" href="/blog/1/{{option_string}}" ><img src="/site_media/images/first_btn.png" alt="previous" /></a>&nbsp;
+    <a class="prev-btn" href="/blog/{{prev_page}}/{{option_string}}" ><img src="/site_media/images/prev_btn.png" alt="previous" /></a>&nbsp;
+    {% endif %}
+    
+    {% for page in pages %}
+    {% ifequal page page_number %}
+    <a href="/blog/{{page}}/{{option_string}}" style="font-weight:bold"><span class="page-number">{{page}}</span></a>
+    {% else %}
+    <a href="/blog/{{page}}/{{option_string}}" ><span class="page-number">{{page}}</span></a>
+    {% endifequal %}
+
+    {% endfor %}
+    
+    {% if next_page %}
+    &nbsp;<a class="next-btn" href="/blog/{{next_page}}/{{option_string}}" ><img src="/site_media/images/next_btn.png" alt="next" /></a>
+    <a class="prev-btn" href="/blog/{{last_page}}/{{option_string}}" ><img src="/site_media/images/last_btn.png" alt="previous" /></a>&nbsp;
+    {% endif %}
+  </div>
+
+  
+  <div class="clear_both"></div>
+
+  {% include "search_area.html" %}
+  <!-- <div id="search_area" class="float_right"> -->
+  <!--   <form method="get" action="/blog/"> -->
+  <!--     <input type="text" name="query" value="" id="input_search" /> -->
+  <!--     <input type="image" src="/site_media/images/bttn_search.png" id="search_button" /> -->
+  <!--   </form> -->
+  <!-- </div> -->
+  
+</div>
+{% endblock %}

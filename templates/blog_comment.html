@@ -1,0 +1,95 @@
+{% load document_filter %}
+<div class="comment-area">
+  {% if doc.comment_set %}
+  <ul>
+    {% for cmt in doc.comment_set.all|dictsort:"pub_date" %}
+    <li>
+      <div class="comment-username float_left">
+	{% if cmt.username %}
+	{{ cmt.username }}
+	{% else %}
+
+	{% if cmt.user.nick_name %}
+	{{ cmt.user.nick_name }}
+	{% else %}
+	{{ cmt.user.username }}
+	{% endif %}
+
+	{% endif %}
+      </div>
+      <div class="comment-content" style="width:500px;">
+	{% if cmt|has_view_auth_on_cmt:user %}
+	{{ cmt.content|linebreaksbr }}
+	{% else %}
+	{% ifequal doc.user.id user.id %}
+	{{ cmt.content|linebreaksbr }}
+	{% else %}
+	비밀댓글 입니다.
+	{% endifequal %}
+	{% endif %}
+	<br />
+	{{ cmt.pub_date.date }}&nbsp;
+	<a href="/comment_reply/{{doc.id}}/?cmt_id={{cmt.id}}&depth={{cmt.depth}}&module_name={{module_name}}">[Reply]</a>&nbsp;
+	<a href="/edit_comment/{{cmt.id}}/?module_name={{module_name}}">[Edit]</a>&nbsp;
+	<a onclick="moveWithConfirm('정말 삭제 합니까?','/delete_comment/{{cmt.id}}/?refer=/blog/{{page_number}}?category={{category}}')" >[Delete]</a>
+      </div>
+      <div class="clear_left"></div>
+    </li>
+    {% if cmt.comment_set %}
+    {% for inner in cmt.comment_set.all|dictsort:"pub_date" %}
+    <li>
+      <div style="background-color:#eeeeee;">
+	<img src="/site_media/images/indentArrow.png" class="arrow" alt="reply" />
+	<div class="comment-username float_left">
+	  {% if inner.username %}
+	  {{ inner.username }}
+	  {% else %}
+
+	  {% if inner.user.nick_name %}
+	  {{ inner.user.nick_name }}
+	  {% else %}
+	  {{ inner.user.username }}
+	  {% endif %}
+
+	  {% endif %}
+	</div>
+	<div class="comment-content" style="width: 510px;">
+	  {% if inner|has_view_auth_on_inner:user %}
+	  {{ inner.content|linebreaksbr|spacify }}
+	  {% else %}
+	  {% ifequal doc.user.id user.id %}
+	  {{ inner.content|linebreaksbr|spacify }}
+	  {% else %}
+	  비밀댓글 입니다.
+	  {% endifequal %}
+	  {% endif %}
+	  {{ inner.pub_date.date }}&nbsp;
+	  <br />
+	  <a href="/edit_comment/{{inner.id}}/?module_name={{module_name}}">[Edit]</a>&nbsp;
+	  <a onclick="moveWithConfirm('정말 삭제 합니까?','/delete_comment/{{inner.id}}/?refer=/blog/{{page_number}}/?category={{category}}')">[Delete]</a>
+	</div>
+	<div class="clear_left"></div>
+      </div>
+    </li>
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+  <form method="post" action="/{{module_name}}/write_comment/{{doc.id}}/" name="comment_write_form">
+    <textarea class="comment-textarea input" name="content"></textarea>
+    <div class="comment-bottom-wrap">
+      <input class="float_right" type="image" src="/site_media/images/confirm_btn.png" />
+      <span class="small float_right" style="margin:3px;">Secret</span>
+      <input class="float_right" type="checkbox" name="is_secret" />
+      <div class="clear_both"></div>
+    </div>
+  </form>
+</div>
+
+<script type="text/javascript">
+  window.onload = function() {
+  var oFrmvalidator = new Validator("comment_write_form");
+  oFrmvalidator.addValidation("content", "req", "내용을 입력해주세요.");
+  }
+</script>

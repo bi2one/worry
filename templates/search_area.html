@@ -1,0 +1,22 @@
+<form name="search_area_form" id="search_area" method="GET" action="/{{category_name}}">
+  <input type="checkbox" name="content" id="contents-checkbox" class="hidden-input" />
+  <input type="checkbox" name="username" id="name-checkbox" class="hidden-input" />
+  <input type="checkbox" name="title" id="subject-checkbox" class="hidden-input"/>
+
+  <div class="checkbox_block">
+    <div id="search-label-wrap">
+      <img id="name-check" class="chk_box png_bg" src="/site_media/images/search_name_checkbox.gif" />
+      <img id="name-check-label" class="png_bg" src="/site_media/images/search_name.png" />
+      <img id="subject-check" class="chk_box png_bg" src="/site_media/images/search_subject_checkbox.gif"/>
+      <img id="subject-check-label" class="png_bg" src="/site_media/images/lbl_subject.png" style="margin-top:2px;vertical-align:text-top;"/>
+      <img id="content-check" class="chk_box png_bg" src="/site_media/images/search_content_checkbox.gif" />
+      <img id="content-check-label" class="png_bg" src="/site_media/images/search_content.png" />
+    </div>
+  </div>
+
+  <div class="searchtext-block" >
+    <a style="cursor:pointer" onclick="search_submit($('#search_area'))"><img  style="cursor:pointer" name="search_btn" src="/site_media/images/bttn_search.png" id="search_button" class="float_right png_bg" /></a>
+    <input type="text" name="query" onkeypress="return submitenter(this,event)" value="" class="float_right png_bg" id="input_search" />
+  </div>
+  <input type="hidden" name="category" value="{{category}}" />
+</form>

@@ -1,0 +1,67 @@
+#login-wrap * {
+/*     border: 1px solid black; */
+}
+
+#login-wrap {
+    width: 310px;
+}
+
+#login-wrap ul.login-form-list {
+    list-style-type: none;
+    list-style-image: none;
+    height: 80px;
+    width: auto;
+    padding-left: 0;
+    margin: 0;
+}
+
+#login-wrap #login-form {
+    /* width: 320px; */
+}
+
+#login-wrap .login-form-list li {
+    width: auto;
+    height: 26px;
+    margin-left: 0;
+}
+
+#login-wrap #id_username,
+#login-wrap #id_password {
+    margin-left: -11px;
+}
+
+#login-wrap #id_username {
+    float: left;
+}
+
+#login-wrap .pw-label {
+    margin-left: 2px;
+}
+
+#login-wrap .submit-block {
+    margin-left: 30px;
+    overflow: hidden;
+}
+
+#login-wrap .login-button {
+    margin-left: 4px;
+}
+
+#login-wrap .rpxnow {
+    margin-left: 58px;
+}
+
+#login-wrap .alter-login-block {
+    margin-top: 110px;
+    height: auto;
+}
+
+#login-wrap .join-button {
+    cursor: pointer;
+}
+
+#login-wrap .login-auth-error {
+    width: 300px;
+    /* float: left; */
+    margin-left: -200px;
+}

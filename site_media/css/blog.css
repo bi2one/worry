@@ -1,0 +1,319 @@
+
+
+#search_area {
+    margin-top: 22px;
+}
+
+.blog-date {
+    background: #f7f6f4 url(../images/date.gif) left no-repeat;
+    padding-left: 16px;
+    font-size:12px;
+    color:#aaaaaa;
+    float:left;
+}
+
+.blog-category {
+    padding-right: 5px;
+    font-size:12px;
+    color:#aaaaaa;
+    float:right;
+}
+
+
+#blog_wrap {
+    width: 650px;
+    margin: auto;
+    margin-top:22px;
+    padding: 20px;
+}
+
+.article {
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+
+    overflow:hidden;
+    border: 1px solid #bbbbbb;
+    margin: auto;
+    margin-bottom:30px;
+    font-size:0.75em;
+    font-family: serif, 명조체;
+    color:gray;
+}
+
+
+div.article-title {
+    padding : 20px;
+    font-size:12px;
+    padding-top: 20px;
+    border:0;
+    border-bottom: 1px solid #bbbbbb;
+    font-size: 1.0em;
+}
+
+div.article-title a {
+    font-weight:bold;
+    text-decoration: none;
+    border:0;
+}
+
+
+
+div.article-title a:hover {
+    color:gray;
+    font-weight:bold;
+    text-decoration: none;
+    border:0;
+}
+
+
+
+div.article-tag {
+    overflow:hidden;
+    padding : 10px;
+}
+
+
+
+div.article-content {
+    overflow:hidden;
+    width: 608px;
+    padding : 20px;
+}
+
+div.article-content p {
+    line-height:180%;
+    margin:0;
+}
+
+div.tag-area {
+    color: #aaaaaa;
+    overflow:hidden;
+    padding : 20px;    
+}
+
+
+div.article-content p {
+
+}
+
+/* comment */
+
+.comment-area  {
+    font-family: serif, 명조체;
+    color:black;
+    margin: 20px 10px 0 10px;
+}
+
+.comment-area * {
+    color:black;
+}
+
+
+.comments {
+    overflow: hidden;
+}
+
+.comments ul {
+    list-style:none;
+    list-style-position: inside;
+    margin:0;
+    padding:0;
+}
+
+.comment {
+    color:black;
+    overflow: hidden;
+    margin: 10px;
+/*    opacity: 0.90; */
+    opacity: 0.90;
+    filter:alpha(opacity=40); 
+    padding: 10px;
+    background-color:#eeeeee;
+    
+
+    /\* background: #f0f0f0 url(../images/board_bg.jpg) repeat; \*/
+    /\* overflow: hidden; \*/
+    /\* margin: 10px; \*/
+    /\* padding: 10px; \*/
+}
+
+.comment-username {
+    width: 90px;
+    float:left;
+    margin-left: 10px;
+}
+
+.comment-content {
+    color:black;
+    padding: 0;
+    float:left;
+    margin-left: 10px;
+    line-height: 180%;
+}
+
+.inner-comment-content {
+    padding: 0;
+    margin-left: 69px;
+}
+
+
+
+.comment-write {}
+
+.background {
+
+}
+
+.comment_textarea {
+    width: 603px;
+    height: 80px;
+    font-size: 1em;
+}
+
+.comment_reply_textarea {
+    width: 600px;
+    height: 80px;
+    font-size: 1em;
+}
+
+
+.input {
+    border: 1px solid #bbbbbb;
+}
+
+.blog_pagination {
+    text-align: center;
+    font-size: 0.8em;
+    margin: auto;
+    width: 500px;
+}
+
+.blog_pagination a img {
+    vertical-align:text-top;
+}
+
+
+.pagination {
+    text-align: center;
+    font-size: 0.8em;
+}
+
+.comment-bottom-wrap {
+    padding: 10px;
+}
+
+
+div.article-tag ul {
+    list-style:none;
+    list-style-position:inside;
+    padding-left:10px;
+    margin: 0;
+}
+
+div.article-tag ul li {
+    line-height: 20px;
+}
+
+span.date {
+    margin-right:8px;
+}
+
+#login-join {
+    margin-bottom:10px;
+}
+
+#side-menu-wrap {
+    margin-left: 80px;
+    margin-top: 280px;
+    font-size:0.8em;
+}
+
+#side-menu-wrap div {
+    margin-bottom:5px;
+}
+
+
+#side-menu-wrap ul li a{
+    color: #555555;
+    line-height:25px;
+}
+
+#side-menu-wrap ul li a:hover {
+    color:gray;
+}
+
+.page-number {
+
+}
+
+.next-btn {
+
+}
+
+.prev-btn {
+
+}
+
+
+
+
+
+/* comment */
+
+
+.comment-content {
+    padding: 0;
+    float: left;
+}
+
+.background {
+    background-image: url(../images/board_bg.jpg);
+}
+
+.comment-textarea {
+    width: 626px;
+    height: 80px;
+    font-size: 1em;
+}
+
+.comment-area ul {
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+
+.comment-area ul li {
+    background-color: #eeeeee;
+    color: black;
+    margin: 10px auto;
+    padding: 10px;
+    opacity: 0.4;
+    filter:alpha(opacity=70);
+    z-index: 100;
+}
+
+/* div.comment-li { */
+/*     border: 1px solid red; */
+/*     background-color: #eeeeee; */
+/*     color: black; */
+/*     opacity: 0.4; */
+/*     padding: 10px; */
+/*     margin-top: 10px; */
+/*     /\* z-index: 100; *\/ */
+/* } */
+
+.arrow {
+    float: left;
+    margin: 3px 48px 0 20px;
+    padding-bottom: 20px;
+}
+
+.comment-username {
+    width: 70px;
+/*     margin-left: 0; */
+}
+
+.arrow-reply {
+    float: left;
+    margin: 0 0 10px 15px;
+}

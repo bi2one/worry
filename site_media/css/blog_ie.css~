@@ -1,0 +1,10 @@
+#side-menu-wrap {
+    margin-left: 10px;
+    margin-top: 285px;
+    font-size:0.9em;
+}
+
+#side-menu-wrap div {
+    margin-bottom:5px;
+}
+

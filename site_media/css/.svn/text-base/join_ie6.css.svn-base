@@ -1,0 +1,67 @@
+#join-wrap ul {
+    list-style-type: none;
+    list-style-image: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+#content #join-wrap .id-label {
+    margin: 2px 0 0 15px;
+}
+
+#content #join-wrap .pw-label {
+    margin: 11px 0 0 15px;
+}
+
+#content #join-wrap #id_username,
+#content #join-wrap #id_password,
+#content #join-wrap #id_password_confirm,
+#content #join-wrap #id_nick_name,
+#content #join-wrap #id_email {
+    position: relative;
+}
+
+#content #join-wrap #id_password_confirm {
+    margin: 2px 0 0 9px;
+    float: left;
+}
+
+#content #join-wrap .name-label {
+    margin: 11px 0 0 1px;
+}
+
+#content #join-wrap #id_nick_name {
+    margin: 5px 0 0 8px;
+    float: left;
+}
+
+#content #join-wrap .email-label {
+    margin: 11px 0 0 1px;
+}
+
+#content #join-wrap #id_email {
+    margin: 5px 0 0 8px;
+    float: left;
+}
+
+#content #join-wrap li.pw-input {
+    margin-top: 0;
+}
+
+#content #join-wrap .email-input {
+    margin-top: -5px;
+}
+
+
+#content #join-wrap .alter-picture {
+    width: 270px;
+    height: 60px;
+}
+
+#content #join-wrap .alter-login-block {
+    width: 332px;
+}
+
+.rpxnow {
+    margin-left: 3px;
+}

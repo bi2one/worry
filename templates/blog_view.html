@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+{% load document_filter %}
+{% block title %}blog view{% endblock %}
+{% block link %}
+<link rel="stylesheet" type="text/css" href="/site_media/css/blog.css" />
+{% endblock %}
+
+
+
+{% block content %}
+<!-- <a href="/blog/"><img src="/site_media/images/bttn_list.png" class="float_right clear_both" alt="list" /></a> -->
+<div id="blog_wrap">
+{% if doc %}
+  <div id="login-join">
+    <img src="/site_media/images/bttn_login.png" alt="login" />
+    <img src="/site_media/images/bttn_join.png" alt="join" />
+  </div>
+
+  <div class="blog-top">
+    <div class="blog-date">
+      {{ doc.pub_date }}
+    </div>
+
+    <div class="blog-category">
+      {{ doc.category_name }} blog
+    </div>
+  </div>
+  <div class="clear_both"></div>
+  <div class="article">
+    <div class="article-title">
+      <a class="float_left" href="/blog/view/{{doc.id}}/">{{ doc.title }}</a>
+
+      {% if user.is_superuser %}
+      <a class="float_right" href="/blog/modify/{{doc.id}}/"><img src="/site_media/images/modify_btn.png" /></a>
+      {% else %}
+      {% ifequal doc.user.id user.id  %}
+      <a class="float_right" href="/blog/modify/{{doc.id}}/"><img src="/site_media/images/modify_btn.png" /></a>
+      {% endifequal %}
+      {% endif %}
+
+
+      <div class="clear_both"></div>
+    </div>
+    <div class="article-content">
+      {% autoescape off %} 
+      {{ doc.content }}
+      {% endautoescape %} 
+    </div> <!-- ~article-content -->
+    <div class="tag-area">
+      <span class="small">TAG&nbsp;▶&nbsp;</span>
+      {% for tag in doc.tag_set.all|order_by:"id" %}
+      <span><a href="#">{{ tag.name }}</a>{% if not forloop.last %},&nbsp;{% endif %}</span>
+      {% endfor %}
+    </div>
+
+
+    {% include "comment.html" %}
+  </div> <!-- ~article -->
+{% else %}
+  {% for doc in docs %}
+  {{ doc.pub_date }}
+  <div class="article">
+    <div class="article-title">
+      <a class="float_left" href="/blog/view/{{doc.id}}/">{{ doc.title }}</a>
+
+      {% if user.is_superuser %}
+      <a class="float_right" href="/blog/modify/{{doc.id}}/"><img src="/site_media/images/modify_btn.png" /></a>
+      {% else %}
+      {% ifequal doc.user.id user.id  %}
+      <a class="float_right" href="/blog/modify/{{doc.id}}/"><img src="/site_media/images/modify_btn.png" /></a>
+      {% endifequal %}
+      {% endif %}
+
+
+      <div class="clear_both"></div>
+    </div>
+    <div class="article-content">
+      {% autoescape off %} 
+      {{ doc.content }}
+      {% endautoescape %} 
+    </div> <!-- ~article-content -->
+    {% include "comment.html" %}
+  </div> <!-- ~article -->
+
+  <div class="tag-area">
+    <span class="small">TAG&nbsp;▶&nbsp;</span>
+    <!--  TAG HERE -->
+    <span><a href="#"></a></span>
+  </div>
+
+  {% endfor %}
+{% endif %}
+
+  <div class="blog_pagination">
+    {% if prev_page %}
+    <a href="/blog/{{prev_page}}/" >&lt; 이전</a>
+    {% endif %}
+
+    {% for page in pages %}
+
+    {% ifequal page page_number %}
+    <a href="/blog/{{page}}/" style="color:red">{{page}}</a>
+    {% else %}
+    <a href="/blog/{{page}}/" >{{page}}</a>
+    {% endifequal %}
+
+    {% endfor %}
+
+    {% if next_page %}
+    <a href="/blog/{{next_page}}/" >다음 &gt;</a>
+    {% endif %}
+  </div>
+
+  <div class="clear_both"></div>
+  <div id="search_area" class="float_right">
+    <form method="get" action="/blog/">
+      <input type="text" name="query" value="" id="input_search" />
+      <input type="image" src="/site_media/images/bttn_search.png" id="search_button" />
+    </form>
+  </div>
+
+</div>
+{% endblock %}

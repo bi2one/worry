@@ -1,0 +1,133 @@
+/* #search_area start */
+
+.name-check {
+    background: url(../images/search_name_checkbox_selected.png) no-repeat;
+}
+
+.subject-check {
+
+}
+
+.content-check {
+
+}
+
+
+
+#search_area {
+    overflow: hidden;
+    height: auto;
+    margin-top: 25px;
+}
+
+#input_search {
+    background:url(../images/inputbox_search.png) no-repeat;
+    border: 0;
+    width: 200px;
+    height: 25px;
+}
+
+#search_area .checkbox_block {
+    clear: both;
+    overflow: hidden;
+    float: right;
+    width: auto;
+}
+
+#search_area .hidden-input {
+    display: none;
+}
+
+#search_area .checkbox-toggle {
+    float: left;
+    width: 10px;
+    height: 10px;
+    margin-left: 7px;
+    /* cursor: pointer; */
+}
+
+/* name */
+
+#search_area .name-checkbox-pic {
+    background: url(../images/search_name_checkbox.png) no-repeat;
+}
+
+#search_area .name-label-pic {
+    float: left;
+    background: url(../images/search_name.png) no-repeat;
+    width: 34px;
+    height: 10px;
+    margin-left: 2px;
+}
+
+/* subject */
+#search_area .subject-toggle {
+    float: left;
+}
+
+#search_area .subject-checkbox-pic {
+    background: url(../images/search_subject_checkbox.png) no-repeat;
+}
+
+#search_area .subject-label-pic {
+    float: left;
+    background: url(../images/search_subject.png) no-repeat;
+    width: 44px;
+    height: 14px;
+    margin: -2px 0 0 2px;
+    /* margin-left: 2px; */
+}
+
+/* contents */
+#search_area .contents-toggle {
+    float: left;
+}
+
+#search_area .contents-checkbox-pic {
+    background: url(../images/search_content_checkbox.png) no-repeat;
+}
+
+#search_area .contents-label-pic {
+    float: left;
+    background: url(../images/search_content.png) no-repeat;
+    width: 52px;
+    height: 14px;
+    margin: -1px 0 0 2px;
+}
+
+/* searchtext-block */
+#search_area .searchtext-block {
+    float: right;
+    clear: both;
+    overflow: hidden;
+    margin: 5px 0 0 0;
+    *width: 154px;
+}
+
+#search_area #search_button {
+    float: right;
+    margin-left: 6px;
+}
+
+#search_area #input_search {
+    background:url(../images/search_input_box.png) no-repeat;
+    border: 0;
+    width: 95px;
+    height: 19px;
+    margin-top: 4px;
+}
+
+/* clicked checkbox */
+#search_area .name-checkbox-pic-clicked {
+    background: url(../images/search_name_checkbox_selected.png) no-repeat;
+}
+
+#search_area .subject-checkbox-pic-clicked {
+    background: url(../images/search_subject_checkbox_selected.png) no-repeat;
+}
+
+#search_area .contents-checkbox-pic-clicked {
+    background: url(../images/search_content_checkbox_selected.png) no-repeat;
+}
+
+/* #search_area end */

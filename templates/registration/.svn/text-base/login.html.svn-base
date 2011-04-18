@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block title %}worry login{% endblock %}
+
+{% block script %}
+<link rel="stylesheet" type="text/css"
+      href="/site_media/css/login.css" />
+<script type="text/javascript">
+    window.onload = function() {
+	var oFrmvalidator = new Validator("login_form");
+	oFrmvalidator.addValidation("username", "req", "아이디 입력해주세요.");
+	oFrmvalidator.addValidation("password", "req", "비밀번호를 입력해주세요.");
+    }
+
+  var rpxJsHost = (("https:" == document.location.protocol) ? "https://" : "http://static.");
+  document.write(unescape("%3Cscript src='" + rpxJsHost +
+"rpxnow.com/js/lib/rpx.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  RPXNOW.overlay = true;
+  RPXNOW.language_preference = 'en';
+</script>
+<!--[if IE ]><link rel="stylesheet" type="text/css" href="/site_media/css/login_ie6.css" /><![endif]--> 
+{% endblock %}
+
+{% block content %}
+<div id="login-wrap">
+  <form method="post" action="/accounts/login/" id="login-form" name="login_form">
+  <input type="hidden" name="next" value="{{next}}" />
+    <div class="login-description-1"></div>
+    <ul class="login-form-list">
+      <li class="id-input">
+	<div class="id-label"></div>
+	{{ form.username }}
+      </li>
+      <li class="pw-input">
+	<div class="pw-label"></div>
+	{{ form.password }}
+      </li>
+    </ul>
+    {% if is_error %}
+    <p class="login-auth-error">아이디와 비밀번호가 일치하지 않습니다.</p>
+    {% endif %}
+    <div class="submit-block">
+      <input type="image" src="/site_media/images/bttn_login.png" class="login-button" alt="login" />
+      <a class="join-button" href="/join/"></a>
+    </div>
+  </form>
+  <div class="alter-login-block">
+    <div class="login-description-2"></div>
+    <div class="alter-picture"></div>
+    <a class="rpxnow" onclick="return false;"
+    href="https://dontworryworry.rpxnow.com/openid/v2/signin?token_url=http%3A%2F%2Fdontworryworry.com%2Faccounts%2Frpx%3Fnext%3D{{next}}"></a>
+  </div>
+</div>
+{% endblock %}

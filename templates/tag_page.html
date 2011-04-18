@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% load document_filter %}
+{% block title %}{% if category_name %}{{category_name}}&nbsp;{%endif%}Tag{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="/site_media/css/blog.css" />
+{% endblock %}
+
+{% block content %}
+{{ option_string }}
+
+<div id="blog_wrap">
+  <!-- <div class="tag-top"> -->
+  <!--   <div class="blog-date"> -->
+  <!--   </div> -->
+  <!-- </div> -->
+  <!-- <div class="clear_both"></div> -->
+
+  <div class="article">
+    <div class="article-title">
+      &#39;{{tag_name}}&#39; 에 해당되는 글 {{docs.count}}건
+      <div class="clear_both"></div>
+    </div>
+
+    <div class="article-tag">
+      <ul>
+      {% for doc in docs %}
+	<li><span class="date">{{doc.pub_date}}</span><a href="/blog/view/{{doc.id}}/">{{doc.title}}</a>&nbsp;&nbsp;<span class="comment-count">&#40;{{doc.comment_set.count}}&#41;</span></li>
+      {% endfor %}
+      </ul>
+    </div> <!-- ~article-content -->
+  </div> <!-- ~article -->
+
+
+  <div class="blog_pagination">
+    {% if prev_page %}
+    <a href="/blog/{{prev_page}}/" >&lt; 이전</a>
+    {% endif %}
+
+    {% for page in pages %}
+
+    {% ifequal page page_number %}
+    <a href="/blog/{{page}}/" style="color:red">{{page}}</a>
+    {% else %}
+    <a href="/blog/{{page}}/" >{{page}}</a>
+    {% endifequal %}
+
+    {% endfor %}
+    {% if next_page %}
+    <a href="/blog/{{next_page}}/" >다음 &gt;</a>
+    {% endif %}
+  </div>
+
+</div>
+{% endblock %}

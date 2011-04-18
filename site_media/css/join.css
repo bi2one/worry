@@ -1,0 +1,203 @@
+#content .clear-both {
+    clear:both;
+}
+
+#content #join-wrap ul {
+    padding: 0;
+}
+
+#content #join-wrap li div {
+    width: 100px;
+    height: 20px;
+    float: left;
+}
+
+#content #join-wrap li {
+    display: block;
+    margin-top: 10px;
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    width: 500px;
+    clear: both;
+}
+
+/* id */
+#content #join-wrap .id-label {
+    background: url(../images/id_label.png) no-repeat;
+    float: left;
+    width: 35px;
+    height: 20px;
+    margin: 4px 0 0 36px;
+}
+
+#content #join-wrap #id_username {
+    background: url(../images/inputbox_id.png) no-repeat;
+    border: 0;
+    width: 106px;
+    height: 25px;
+    display: block;
+    float: left;
+}
+
+#content #join-wrap .id-checkbutton {
+    float: left;
+    width: 63px;
+    height: 35px;
+    margin: -5px 0 0 8px;
+    background: url(../images/bttn_check.png) no-repeat;
+    cursor: pointer;
+    /* clear:both; */
+}
+
+/* password */
+#content #join-wrap li.pw-input {
+    margin-top: 3px;
+    /* padding-top: 6px; */
+}
+
+#content #join-wrap .pw-label {
+    background: url(../images/pw_label.png) no-repeat;
+    float: left;
+    width: 39px;
+    height: 20px;
+    margin: 13px 0 0 36px;
+}
+
+#content #join-wrap #id_password {
+    float: left;
+    background: url(../images/inputbox_pw1.png) no-repeat;
+    border: 0;
+    width: 106px;
+    height: 25px;
+    display: block;
+    margin-top: 3px;
+}
+
+#content #join-wrap #id_password_confirm {
+    background: url(../images/inputbox_pw2.png) no-repeat;
+    border: 0;
+    width: 106px;
+    height: 25px;
+    margin: 0 0 0 12px;
+    padding: 0 0 0 0;
+    /* margin: 0 238px 0 0; */
+}
+
+#content #join-wrap .pw-input {
+    margin-left: -4px;
+}
+
+/* name */
+#content #join-wrap li.name-input {
+    margin: 40px 0 0 0;
+}
+
+#content #join-wrap .name-label {
+    float: left;
+    background: url(../images/name.png) no-repeat;
+    width: 55px;
+    height: 20px;
+    margin: 8px 0 0 6px;
+}
+
+#content #join-wrap #id_nick_name { 
+    background: url(../images/inputbox_name.png) no-repeat;
+    border: 0;
+    width: 106px;
+    height: 25px;
+    margin: -10px 0 0 10px;
+}
+
+/* email */
+#content #join-wrap .email-input {
+    margin-top: 5px;
+}
+
+#content #join-wrap .email-label {
+    float: left;
+    background: url(../images/email.png) no-repeat;
+    width: 55px;
+    height: 20px;
+    margin: 8px 0 0 6px;
+}
+
+#content #join-wrap #id_email {
+    background: url(../images/inputbox_email.png) no-repeat;
+    border: 0;
+    width: 203px;
+    height: 25px;
+    margin: -10px 0 0 9px;
+}
+
+/* submit */
+#content #join-wrap .submit-wrap {
+    margin: 23px 0 0 93px;
+}
+
+#content #join-wrap .join-button {
+    float: left;
+}
+
+#content #join-wrap .cancel-button {
+    float: left;
+    width: 64px;
+    height: 36px;
+    margin: 0 0 0 4px;
+    background: url(../images/bttn_cancle.png) no-repeat;
+    cursor: pointer;
+}
+
+/* alternative login block */
+/* 36 */
+#content #join-wrap .alter-login-block {
+    margin: 95px 0 0 0px;
+}
+
+#content #join-wrap .alter-description {
+    float: left;
+    width: 262px;
+    height: 23px;
+    background: url(../images/test_kor.png) no-repeat;
+}
+
+#content #join-wrap .alter-loginbtn {
+    float: left;
+    width: 64px;
+    height: 32px;
+    margin: -4px 0 0 4px;
+    background: url(../images/bttn_login.png) no-repeat;
+    cursor: pointer;
+}
+
+#content #join-wrap .alter-picture {
+    clear:both;
+    background: url(../images/logos_1.png) no-repeat;
+    width: 270px;
+    height: 60px;
+    margin: 0 0 0 22px;
+}
+
+#content #join-wrap {
+    width: 330px;
+    margin: 78px 0 0 31%;
+    /* margin: auto; */
+    /* margin: 80px 0 0 276px; */
+}
+
+#content #join-wrap .check-result {
+    clear:both;
+    margin: 0 0 0 33px;
+    padding: 2px 0 0 5px;
+    font-size: 0.75em;
+    font-family: serif, 명조체;
+    color:#8A8A8A;
+    font-weight: bold;
+}
+
+.rpxnow {
+    float: right;
+    width: 64px;
+    height: 32px;
+    background: url(../images/large_login_btn.png) no-repeat;
+    cursor: pointer;
+}

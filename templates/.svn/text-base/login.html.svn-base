@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}LOGIN{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<script>
+//  var obj = parent.top;
+//  if (obj == null)
+//      obj = top.frames[0];
+//  alert(obj);
+  main.location.href="/intro";
+</script>
+{% else %}
+{% endif %}
+
+<div id="content">
+  <div id="join"
+  <form method="" id="" action="">
+    <input type="hidden" name="next" value={{next}}/>
+    <ul class="join-form-list">
+      <li class="id-input">
+	<div class="id-label"></div>
+	<input class="id-inputbox" name="id" />
+	<button class="id-checkbutton" onclick=""></button>
+      </li>
+      <li class="pw-input">
+	<div class="pw-label"></div>
+	<input class="pw-inputbox" type="password" name="password" />
+	<input blass="pw-confirm-inputbox" type="password"
+	name="password_confirm" />
+      </li>
+      <li class="name-input">
+	<div class="name-label"></div>
+	<input class="name-inputbox" name="name" />
+      </li>
+      <li class="email-input">
+	<div class="email-label"></div>
+	<input class="email-inputbox" name="email" />
+      </li>
+    </ul>
+    <div class="submit-wrap">
+      
+  </form>
+  <div class="id-label"></div>
+</div>
+{% endblock %}

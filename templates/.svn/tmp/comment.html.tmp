@@ -1,0 +1,105 @@
+<div class="comment-area">
+  <div class="comments">
+    {% if doc.comment_set.all %}
+    <ul>
+      {% for cmt in doc.comment_set.all %}
+      <li id="comment_{{cmt.id}}">
+	<div class="comment">
+	  <div class="comment-username">
+	    {% if cmt.user.nick_name %}
+	    {{ cmt.user.nick_name }}
+	    {% else %}
+	    {{ cmt.user.username }}
+	    {% endif %}
+	  </div>
+	  <div class="comment-content">
+	    <div style="margin-bottom: 10px;">
+	      {{ cmt.pub_date.date }}
+	      <a href="/comment_reply/{{doc.id}}/?cmt_id={{cmt.id}}&depth={{cmt.depth}}&module_name={{module_name}}">[Reply]</a>
+	      <a href="/edit_comment/{{cmt.id}}/?module_name={{module_name}}">[Edit]</a>
+	      <a href="/delete_comment/{{cmt.id}}/">[Delete]</a><br />
+	    </div>
+	      {% if cmt.is_secret %}
+	      {% if user.is_superuser %}
+	      {{ cmt.content|linebreaksbr }}
+	      {% else %}{% ifequal user.id cmt.user.id %}
+	      {{ cmt.content|linebreaksbr }}
+	      {% else %}
+	      비밀댓글 입니다.
+	      {% endifequal %}
+	      {% endif %}
+	      {% else  %}
+	      {{ cmt.content|linebreaksbr }}
+	      {% endif %}
+	  </div> <!-- ~comment-entry -->
+	  <div class="clear_right"></div>
+	</div> <!-- ~comment-item -->
+      </li>
+      {% if cmt.comment_set.all %}
+      <ul>
+	{% for inner in cmt.comment_set.all %}
+	<li style="margin-left:10px;">
+	  <div class="arrow"></div>
+	  <div class="comment">
+	    <div class="comment-username">
+	      {% if inner.user.nick_name %}
+	      {{ inner.user.nick_name }}
+	      {% else %}
+	      {{ inner.user.username }}
+	      {% endif %}
+	    </div>
+	    <div class="comment-content">
+	      <div style="margin-bottom: 10px;">
+		{{ inner.pub_date.date }}
+		<a href="/edit_comment/{{inner.id}}/?module_name={{module_name}}">[Edit]</a>
+		<a href="/delete_comment/{{inner.id}}/">[Delete]</a><br />
+	      </div>
+	      {% if inner.is_secret %}
+	      {% if user.is_superuser %}
+	      {{ inner.content|linebreaksbr }}
+	      {% else %}{% ifequal user.id inner.user.id %}
+	      {{ inner.content|linebreaksbr }}
+	      {% else %}
+	      비밀댓글 입니다.
+	      {% endifequal %}
+	      {% endif %}
+	      {% else  %}
+	      {{ inner.content|linebreaksbr }}
+	      {% endif %}
+	    </div>
+	    <div class="clear_both"></div>
+	  </div>
+	</li>
+	{% endfor%} <!-- inner -->
+      </ul>
+      {% endif %}
+      {% endfor %} <!-- comments -->
+    </ul>
+    {% endif %}
+    <form method="post" action="/write_comment/{{doc.id}}/" name="comment_write_form">
+      <div class="comment-write" style="margin-right:10px;">
+	<div class="right">
+	  <textarea class="comment_textarea input" name="content"></textarea>
+	</div>
+
+	<div class="comment-bottom-wrap">
+	  <div class="float_right">
+	    <input type="image" src="/site_media/images/confirm_btn.png" />
+	  </div>
+
+	  <div class="float_right" style="margin-right:10px">
+	    <input type="checkbox" name="is_secret" />
+	    <span class="small">Secret</span>
+	  </div>
+	  <div class="clear_both"></div>
+	</div>
+      </div>
+    </form>
+  </div>
+</div>
+<script type="text/javascript">
+    window.onload = function() {
+	var oFrmvalidator = new Validator("comment_write_form");
+	oFrmvalidator.addValidation("content", "req", "내용을 입력해주세요.");
+    }
+</script>
