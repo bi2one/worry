@@ -1,0 +1,5 @@
+#!/bin/sh
+
+python del.py
+python manage.py syncdb
+python conv.py

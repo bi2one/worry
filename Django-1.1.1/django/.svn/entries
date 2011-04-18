@@ -1,0 +1,141 @@
+10
+
+dir
+133
+svn://mgsmurf.net/dontworry/Django-1.1.1/django
+svn://mgsmurf.net/dontworry
+
+
+
+2010-04-01T14:05:13.913338Z
+117
+worry
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+a4df684d-a0ca-4a9d-961d-52a43587e49e
+
+http
+dir
+
+test
+dir
+
+conf
+dir
+
+db
+dir
+
+__init__.py
+file
+
+
+
+
+2010-04-01T11:36:02.000000Z
+954dc0206e08713d3240edd13217cec6
+2010-04-01T11:35:37.288269Z
+116
+worry
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+549
+
+forms
+dir
+
+core
+dir
+
+__init__.pyc
+file
+
+
+
+
+2010-04-01T11:36:11.000000Z
+a16d305e3223b0d83ce809e9d1055531
+2010-04-01T14:05:13.913338Z
+117
+worry
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+792
+
+templatetags
+dir
+
+views
+dir
+
+shortcuts
+dir
+
+dispatch
+dir
+
+contrib
+dir
+
+utils
+dir
+
+bin
+dir
+
+template
+dir
+
+middleware
+dir
+

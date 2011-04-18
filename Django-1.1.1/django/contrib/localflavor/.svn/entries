@@ -1,0 +1,143 @@
+10
+
+dir
+133
+svn://mgsmurf.net/dontworry/Django-1.1.1/django/contrib/localflavor
+svn://mgsmurf.net/dontworry
+
+
+
+2010-04-01T11:35:37.288269Z
+116
+worry
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+a4df684d-a0ca-4a9d-961d-52a43587e49e
+
+uk
+dir
+
+ro
+dir
+
+ca
+dir
+
+mx
+dir
+
+__init__.py
+file
+
+
+
+
+2010-04-01T11:36:02.000000Z
+d41d8cd98f00b204e9800998ecf8427e
+2010-04-01T11:35:37.288269Z
+116
+worry
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+0
+
+us
+dir
+
+de
+dir
+
+ch
+dir
+
+fi
+dir
+
+cl
+dir
+
+ar
+dir
+
+br
+dir
+
+at
+dir
+
+pe
+dir
+
+in_
+dir
+
+au
+dir
+
+fr
+dir
+
+es
+dir
+
+jp
+dir
+
+nl
+dir
+
+is_
+dir
+
+za
+dir
+
+pl
+dir
+
+generic
+dir
+
+cz
+dir
+
+it
+dir
+
+no
+dir
+
+sk
+dir
+

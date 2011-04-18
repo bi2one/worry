@@ -1,0 +1,44 @@
+
+--This line, and those below, will be ignored--
+
+M    accounts/views.py
+M    settings.py
+M    pagination/views.py
+D    Django-1.1.1
+M    templates/board_list.html
+M    templates/blog.html
+M    templates/guest_doc_element.html
+M    templates/write.html
+M    templates/frame.html
+M    templates/comment.html
+M    templates/guest_comment.html
+M    templates/layout.html
+M    templates/guest.html
+M    templates/board.html
+M    templates/blog_comment.html
+M    templates/index.html
+M    twitter/admin.py
+M    twitter/views.py
+M    twitter/last_timeline_id
+M    twitter/worry_oauth.py
+M    site_media/music.html
+M    site_media/css/intro.css
+M    site_media/css/guest_ie.css
+M    site_media/css/blog.css
+M    site_media/css/guest_ie6.css
+M    site_media/css/board_ie6.css
+M    site_media/css/layout.css
+M    site_media/css/blog_ie6.css
+M    site_media/css/board.css
+M    site_media/css/guest.css
+M    site_media/js/common.js
+M    site_media/js/gen_validatorv31.js
+M    file_manager/views.py
+M    django.wsgi
+M    urls.py
+M    document/admin.py
+M    document/util.py
+M    document/views.py
+M    document/templatetags/document_filter.py
+M    document/templatetags/document_filter.pyc
+M    document/urls.py

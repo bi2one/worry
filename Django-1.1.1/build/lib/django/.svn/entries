@@ -1,0 +1,107 @@
+10
+
+dir
+133
+svn://mgsmurf.net/dontworry/Django-1.1.1/build/lib/django
+svn://mgsmurf.net/dontworry
+
+
+
+2010-04-01T11:35:37.288269Z
+116
+worry
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+a4df684d-a0ca-4a9d-961d-52a43587e49e
+
+test
+dir
+
+http
+dir
+
+db
+dir
+
+conf
+dir
+
+forms
+dir
+
+__init__.py
+file
+
+
+
+
+2010-04-01T11:35:58.000000Z
+954dc0206e08713d3240edd13217cec6
+2010-04-01T11:35:37.288269Z
+116
+worry
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+549
+
+core
+dir
+
+templatetags
+dir
+
+views
+dir
+
+shortcuts
+dir
+
+dispatch
+dir
+
+utils
+dir
+
+contrib
+dir
+
+bin
+dir
+
+template
+dir
+
+middleware
+dir
+

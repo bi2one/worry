@@ -1,0 +1,41 @@
+import os
+
+from django.conf.urls.defaults import *
+from django.conf import settings
+from django.contrib import admin
+admin.autodiscover()
+
+urlpatterns = patterns('',
+    (r'^mig/', 'worry.file_manager.views.mig'),                       
+    (r'^migu/', 'worry.file_manager.views.migu'),                       
+    (r'^admin/', include(admin.site.urls)),
+
+    (r'^site_media/(?P<path>.*)$', 'django.views.static.serve',
+     {'document_root': settings.MEDIA_ROOT}),
+
+    # i18n
+    (r'^i18n/', include('django.conf.urls.i18n')),                       
+
+    # (r'^twitter/', include('worry.twitter.urls')),
+    (r'^(?P<module_name>\w+)/search/$', 'worry.search.views.search'),
+
+    # handle file upload & request
+    (r'^file/(?P<file_id>\d+)$', 'worry.file_manager.views.serve_file'),
+    (r'^upload/$', 'worry.file_manager.views.upload'),
+
+    # Accounts part
+    (r'^accounts/login/$', 'worry.accounts.views.login_user'),
+    (r'^accounts/logout/$', 'worry.accounts.views.logout_user'),
+    (r'^accounts/rpx$', 'worry.accounts.views.rpx'),
+    (r'^join/$', 'worry.accounts.views.join_user'),
+    (r'^check_username/$', 'worry.accounts.views.check_username'),
+
+    # for index page
+    (r'^/$', 'worry.document.views.intro'),
+    (r'^$', 'worry.document.views.intro'),
+    (r'^index/$', 'worry.document.views.index'),
+
+    # others
+    (r'^', include('worry.document.urls')),
+)
+
