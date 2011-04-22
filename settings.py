@@ -2,7 +2,7 @@ import os
 
 # Django settings for worry project.
 FORCE_SCRIPT_NAME = ''
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -85,7 +85,8 @@ MIDDLEWARE_CLASSES = (
 
 
 ROOT_URLCONF = 'worry.urls'
-UPLOAD_DIR = os.path.join('/home/worry/worry/site_media/upload/')
+UPLOAD_DIR = os.path.join('/Users/bi2one/public_html/worry/site_media/upload/')
+# UPLOAD_DIR = os.path.join('/home/worry/worry/site_media/upload/')
 # UPLOAD_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), '/site_media/upload/')
 RESIZE_SIZE = 570
 THUMB_SIZE = 128

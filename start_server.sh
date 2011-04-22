@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Replace these three settings.
-PROJDIR="/home/worry/worry"
+PROJDIR="/Users/bi2one/public_html/worry"
 PIDFILE="$PROJDIR/worry.pid"
 SOCKET="$PROJDIR/worry.sock"
 
@@ -13,5 +13,5 @@ fi
 
 /usr/bin/env - \
 PYTHONPATH="../python:.." \
-python manage.py runfcgi socket=$SOCKET pidfile=$PIDFILE 
+python manage.py runfcgi socket=$SOCKET pidfile=$PIDFILE
 chmod 777 ./worry.sock

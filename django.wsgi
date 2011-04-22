@@ -1,8 +1,8 @@
 import os
 import sys
 #sys.path.append(os.path.abspath(os.path.dirname(__file__)))
-sys.path.append('/home/worry')
-sys.path.append('/home/worry/worry')
+sys.path.append('/Users/bi2one/public_html')
+sys.path.append('/Users/bi2one/public_html/worry')
 
 os.environ['DJANGO_SETTINGS_MODULE'] = 'worry.settings'
 
