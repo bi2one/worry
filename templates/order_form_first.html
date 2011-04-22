@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}입금, 배송정보{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="/site_media/css/order.css" />
+{% endblock %}
+
+{% block content %}
+<image src="/site_media/images/order_form1_title.png" class="order-title" />
+
+<div class="order-form-wrap">
+  <form method="post" name="order_first_form" action="/order/form2/">
+    <div class="name-wrap">
+      <div class="sender-name-label order-label"></div>
+      {{ form.sender_name }}
+    </div>
+
+    <div class="phone-wrap">
+      <div class="sender-phone-label order-label"></div>
+      {{ form.sender_phone_1 }}
+      <span class="phone-number-hyphen">-</span>
+      {{ form.sender_phone_2 }}
+      <span class="phone-number-hyphen">-</span>
+      {{ form.sender_phone_3 }}
+    </div>
+
+    <div class="product-wrap">
+      <div class="product-label order-label"></div>
+      <div class="doll-count-label order-product-label"></div>
+      {{ form.doll_count }}
+      <div class="phonedoll-count-label order-product-label"></div>
+      {{ form.phonedoll_count }}
+    </div>
+    
+    <div class="worry-label order-label"></div>
+    <div class="worry-desc1"></div>
+    {{ form.content }}
+    <div class="worry-desc2"></div>
+
+    <div class="submit-wrap">
+      <div class="cancel-button" onclick="javascript:window.location='/shop/'"></div>
+      <input type="image" src="/site_media/images/bttn_order_next.png" class="next-button" alt="order_next" />
+    </div>
+    <div class="clear-both"></div>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,150 @@
+.order-title {
+    margin: 40px 0 60px 60px;
+}
+
+.order-form-wrap {
+    margin-left: 144px;
+}
+
+.order-label {
+    width: 63px;
+    height: 27px;
+    float: left;
+    margin-right: 14px;
+    clear:both;
+}
+
+.sender-name-label {
+    background: url(../images/order_name_label.png) no-repeat right;
+    background-position: 27px 0px;
+}
+
+.sender-phone-label {
+    background: url(../images/order_phonenumber_label.png) no-repeat right;
+}
+
+.product-label {
+    background: url(../images/order_product_label.png) no-repeat right;
+    background-position: 5px 0px;
+}
+
+
+.phone-number-hyphen {
+    color: #A7A7A6;
+}
+
+#id_sender_name {
+    border: 1px solid #C7C7C6;
+    float:left;
+    margin-top: 4px;
+    padding: 2px;
+    width: 110px;
+}
+
+.phone-wrap {
+    clear:both;
+}
+
+.product-wrap {
+    clear:both;
+    margin-top: 27px;
+}
+
+#id_sender_phone_1 {
+    border: 1px solid #C7C7C6;
+    margin-top: 6px;
+    padding: 2px;
+    width: 30px;
+}
+
+#id_sender_phone_2 {
+    border: 1px solid #C7C7C6;
+    margin-top: 6px;
+    padding: 2px;
+    width: 30px;
+}
+
+#id_sender_phone_3 {
+    border: 1px solid #C7C7C6;
+    margin-top: 6px;
+    padding: 2px;
+    width: 30px;
+}
+
+.doll-count-label {
+    background: url(../images/order_doll_label.png) no-repeat;
+    background-position: -7px 0px;
+    width: 110px;
+    height: 25px;
+    float: left;
+}
+
+#id_doll_count {
+    margin-top: 6px;
+    float: left;
+}
+
+.phonedoll-count-label {
+    background: url(../images/order_phonedoll_label.png) no-repeat;
+    margin: 0 7px 0 20px;
+    width: 100px;
+    height: 25px;
+    float: left;
+}
+
+#id_phonedoll_count {
+    margin-top: 6px;
+}
+
+.worry-label {
+    background: url(../images/order_worry_label.png) no-repeat right;
+    background-position: 8px 0px;
+    margin-top: 9px;
+    height: 360px;
+}
+
+.worry-desc1 {
+    background: url(../images/order_worry_desc2.png) no-repeat;
+    width: 200px;
+    height: 20px;
+    float: left;
+    margin-top: 10px;
+}
+
+.worry-desc2 {
+    background: url(../images/order_worry_desc1.png) no-repeat;
+    width: 250px;
+    height: 20px;
+    float: left;
+    margin-top: 4px;
+}
+
+#id_content {
+    border: 1px solid #C7C7C6;
+    margin-top: 6px;
+    padding: 4px;
+    float: left;
+    font-size: 14px;
+    width: 390px;
+    height: 270px;
+}
+
+.submit-wrap {
+    clear:both;
+    width: 150px;
+    overflow:hidden;
+    margin: 20px 0 0 180px;
+}
+
+.cancel-button {
+    background: url(../images/bttn_order_cancle.png) no-repeat;
+    height: 35px;
+    width: 63px;
+    float:left;
+}
+
+.next-button {
+    margin: 3px 0 0 3px;
+    float:left;
+}
+

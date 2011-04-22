@@ -25,6 +25,9 @@ urlpatterns = patterns('',
    (r'^site_media/(?P<path>.*)$', 'django.views.static.serve',
     {'document_root': settings.MEDIA_ROOT}),
 
+    # # order
+    (r'^order/', include('worry.order.urls')),
+
     # # twitter
     (r'^twitter/', include('worry.twitter.urls')),
 

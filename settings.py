@@ -134,4 +134,5 @@ INSTALLED_APPS = (
     'worry.twitter',
     'worry.file_manager',
     'worry.accounts',
+    'worry.order',
 )
