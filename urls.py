@@ -40,6 +40,8 @@ urlpatterns = patterns('',
     (r'^upload/$', 'worry.file_manager.views.upload'),
 
     # # Accounts part
+    (r'^accounts/mypage/$', 'worry.accounts.views.mypage'),
+    (r'^accounts/mypage/(?P<page_number>\d+)/$', 'worry.accounts.views.mypage'),
     (r'^accounts/login/$', 'worry.accounts.views.login_user'),
     (r'^accounts/join/$', 'worry.accounts.views.join_user'),
     (r'^accounts/logout/$', 'worry.accounts.views.logout_user'),

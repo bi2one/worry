@@ -1,0 +1,195 @@
+{% extends "layout.html" %}
+
+{% block title %}걱정이 주문{% endblock %}
+
+{% block script %}
+<script src="/site_media/js/jquery.watermarkinput.js" type="text/javascript"></script>
+<script src="/site_media/js/urlEncode.js" type="text/javascript"></script>
+<script type="text/javascript" src="/site_media/js/order.js"></script>
+{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="/site_media/css/order_form2.css" />
+{% endblock %}
+
+{% block content %}
+<!-- popup-layer(address number) -->
+<div id="address_layer">
+  <h1>우편번호 찾기</h1>
+  <div class="layer-search-area">
+    <input type="text" max_length="45" id="search-text"></input>
+    <button onclick="javascript:onAddressSearchClick();">검색</button>
+  </div>
+
+  <table id="layer-address"></table>
+  
+  <div class="division-bar"></div>
+  <button class="layer-close" onclick="javascript:onCloseLayerClick()">닫기</button>
+</div>
+
+<image src="/site_media/images/order_form2_title.png" class="order-title" />
+
+<form class="order-second-form" method="post" name="order_second_form" action="/order/submit/">
+  <table class="order-form-table">
+    <tr>
+      <td class="field-label">이름</td>
+      <td class="field-contents">{{ form.sender_name.data }}</td>
+    </tr>
+    <tr>
+      <td class="field-label">전화번호</td>
+      <td class="field-contents paragraph-gap-1">{{ form.sender_phone.data }}</td>
+    </tr>
+    <tr class="paragraph-gap-1">
+      <td class="field-label">주문상품</td>
+      <td class="field-contents">
+	{% ifnotequal form.doll_count.data "0" %}
+	다섯 걱정이 세트 {{ form.doll_count.data }}개
+	{% ifnotequal form.phonedoll_count.data "0" %}
+	, 걱정이 핸드폰줄 {{ form.phonedoll_count.data }}개
+	{% endifnotequal %}
+	{% else %}
+	{% ifnotequal form.phonedoll_count.data "0" %}
+	걱정이 핸드폰줄 {{ form.phonedoll_count.data }}개
+	{% endifnotequal %}
+	{% endifnotequal %}
+
+	{% ifequal form.doll_count.data "0" %}
+	{% ifequal form.phonedoll_count.data  "0" %}
+	주문 상품이 없습니다.
+	{% endifequal %}
+	{% endifequal %}
+      </td>
+    </tr>
+    <tr>
+      <td class="field-label vertical-top">걱정거리</td>
+      <td class="field-contents">{{ form.content.data|safe }}</td>
+    </tr>
+
+    <tr class="paragraph-gap-2">
+      <td class="field-label">{{ form.bank.label }}</td>
+      <td class="field-contents">{{ form.bank }}</td>
+    </tr>
+    {% if form.bank.errors and not is_first %}
+    <tr>
+      <td></td>
+      <td class="check-result">{{ form.bank.errors.0 }}</td>
+    </tr>
+    {% endif %}
+    
+    <tr>
+      <td class="field-label">예금주</td>
+      <td class="field-contents">김경원</td>
+    </tr>
+
+    <tr>
+      <td class="field-label">{{ form.payment_name.label }}</td>
+      <td class="field-contents inputbox">{{ form.payment_name }}</td>
+    </tr>
+    {% if form.payment_name.errors and not is_first %}
+    <tr>
+      <td></td>
+      <td class="check-result">{{ form.payment_name.errors.0 }}</td>
+    </tr>
+    {% endif %}
+
+    <tr class="paragraph-gap-3">
+      <td class="field-label">{{ form.receiver_name.label }}</td>
+      <td class="field-contents inputbox">{{ form.receiver_name }}</td>
+    {% if form.receiver_name.errors and not is_first %}
+    <tr>
+      <td></td>
+      <td class="check-result">{{ form.receiver_name.errors.0 }}</td>
+    </tr>
+    {% endif %}
+    
+    <tr>
+      <td class="field-label">{{ form.receiver_phone_1.label }}</td>
+      <td class="field-contents inputbox">
+	{{ form.receiver_phone_1 }}
+	-
+	{{ form.receiver_phone_2 }}
+	-
+	{{ form.receiver_phone_3 }}
+      </td>
+    </tr>
+
+    {% if form.receiver_phone_1.errors or form.receiver_phone_2.errors or form.receiver_phone_3.errors %}
+    {% if not is_first %}
+    <tr>
+      <td></td>
+      <td class="check-result">
+	{% if form.receiver_phone_1.errors %}
+	{{ form.receiver_phone_1.errors.0 }}
+	{% else %}{% if form.receiver_phone_2.errors %}
+	{{ form.receiver_phone_2.errors.0 }}
+	{% else %}{% if form.receiver_phone_3.errors %}
+	{{ form.receiver_phone_3.errors.0 }}
+	{% endif %}
+	{% endif %}
+	{% endif %}
+      </td>
+    </tr>
+    {% endif %}
+    {% endif %}
+    
+    <tr>
+      <td class="field-label">{{ form.receiver_address_number.label }}</td>
+      <td class="field-contents inputbox vertical-center">
+	{{ form.receiver_address_number }}
+	<a class="address-number-button" onclick="javascript:onOpenLayerClick();"></a>
+      </td>
+    </tr>
+
+    {% if form.receiver_address_number.errors and not is_first %}
+    <tr>
+      <td></td>
+      <td class="check-result">{{ form.receiver_address_number.errors.0 }}</td>
+    </tr>
+    {% endif %}
+    
+    <tr>
+      <td></td>
+      <td class="field_contents inputbox">
+	{{ form.receiver_address_1 }}
+	{{ form.receiver_address_2 }}
+      </td>
+    </tr>
+    {% if form.receiver_address_1.errors or form.receiver_address_2.errors %}
+    {% if not is_first %}
+    <tr>
+      <td></td>
+      <td class="check-result">
+	{% if form.receiver_address_1.errors %}
+	{{ form.receiver_address_1.errors.0 }}
+	{% else %}{% if form.receiver_address_2.errors %}
+	{{ form.receiver_address_2.errors.0 }}
+	{% endif %}
+	{% endif %}
+      </td>
+    </tr>
+    {% endif %}
+    {% endif %}
+
+    <tr>
+      <td class="field-label vertical-top">{{ form.send_issue.label }}</td>
+      <td class="field-contents issue-textarea">
+	{{ form.send_issue }}
+	<p class="send-issue-desc">
+	  택배회사 송장에 출력되는 메시지입니다.
+	</p>
+      </td>
+    </tr>
+  </table>
+  {{ form.sender_name }}
+  {{ form.sender_phone }}
+  {{ form.doll_count }}
+  {{ form.phonedoll_count }}
+  {{ form.content }}
+
+  <div class="submit-wrap">
+    <a class="cancel-button" href="/shop/"></a>
+    <a class="prev-button" href="javascript:history.go(-1)"></a>
+    <input class="order-button" type="image" src="/site_media/images/bttn_order_form2_order.png" />
+  </div>
+</form>
+{% endblock %}

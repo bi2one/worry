@@ -1,0 +1,198 @@
+{% extends "layout.html" %}
+{% load account_filter %}
+{% block title %}Worrydolls Products{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="/site_media/css/mypage.css" />
+{% endblock %}
+
+{% block content %}
+<image src="/site_media/images/mypage_title.png" class="mypage-title" alt="worrydolls products"/>
+
+<table class="personal-info-area">
+  <tr>
+    <td class="info-head">개인정보</td>
+    <td class="info-contents-head">이름</td>
+    <td class="info-contents">{{ user.username }}</td>
+    <td class="info-modify">수정</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td class="info-contents-head">이메일주소</td>
+    <td class="info-contents">{{ user.email }}</td>
+    <td></td>
+  </tr>
+</table>
+
+{% if recent_order %}
+<table class="recent-order-info-area">
+  <tr>
+    <td class="info-head">최근주문정보</td>
+    <td class="info-contents-head">주문상품</td>
+    <td class="info-contents">
+      {% ifnotequal recent_order.doll_count 0 %}
+      다섯 걱정이 세트 {{ recent_order.doll_count }}개
+      {% ifnotequal recent_order.phonedoll_count 0 %}
+      , 걱정이 핸드폰줄 {{ recent_order.phonedoll_count }}개
+      {% endifnotequal %}
+      {% else %}
+      {% ifnotequal recent_order.phonedoll_count 0 %}
+      걱정이 핸드폰줄 {{ recent_order.phonedoll_count }}개
+      {% endifnotequal %}
+      {% endifnotequal %}
+
+      {% ifequal recent_order.doll_count 0 %}
+      {% ifequal recent_order.phonedoll_count  0 %}
+      주문 상품이 없습니다.
+      {% endifequal %}
+      {% endifequal %}
+    <td class="info-modify">수정</td>
+  </tr>
+  <tr class="vertical-top">
+    <td></td>
+    <td class="info-contents-head">걱정거리</td>
+    <td class="info-contents">{{ recent_order.content|safe }}</td>
+    <td></td>
+  </tr>
+
+  <tr class="table-paragraph1">
+    <td></td>
+    <td class="info-contents-head">입금은행</td>
+    <td class="info-contents">{{ recent_order.bank.number }} {{ recent_order.bank.name }}</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td class="info-contents-head">예금주</td>
+    <td class="info-contents">{{ recent_order.bank.depositor_name }}</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td class="info-contents-head">입금자명</td>
+    <td class="info-contents">{{ recent_order.payment_name }}</td>
+    <td></td>
+  </tr>
+
+  <tr class="table-paragraph1">
+    <td></td>
+    <td class="info-contents-head">받으실 분</td>
+    <td class="info-contents">{{ recent_order.receiver_name }}</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td class="info-contents-head">연락처</td>
+    <td class="info-contents">{{ recent_order.receiver_phone }}</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td class="info-contents-head">배송지 주소</td>
+    <td class="info-contents">{{ recent_order.receiver_address }}</td>
+    <td></td>
+  </tr>
+
+  <tr class="table-paragraph1">
+    <td></td>
+    <td class="info-contents-head">주문상태</td>
+    <td class="info-contents">
+      {{ recent_order.state }}
+      {% ifequal recent_order.state "before_payment" %}
+      <span id="before-payment" class="state-selected">입금전</span>
+      {% else %}
+      <span id="before-payment" class="state-unselected">입금전</span>
+      {% endif %}
+      {% ifequal recent_order.state "create" %}
+      <span id="on-create" class="state-selected">&gt; 제작중</span>
+      {% else %}
+      <span id="on-create" class="state-unselected">&gt; 제작중</span>
+      {% endif %}
+      {% ifequal recent_order.state "send" %}
+      <span id="on-deliver" class="state-unselected">&gt; 배송중</span>
+      {% else %}
+      <span id="on-deliver" class="state-unselected">&gt; 배송중</span>
+      {% endif %}
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td>
+      <div class="state-animation">
+      </div>
+    </td>
+    <td></td>
+  </tr>
+</table>
+{% else %}
+<div class="not-recent-order-desc">
+  최근 주문 내역이 없습니다.
+</div>
+{% endif %}
+
+{% if docs %}
+<table class="order-info-area">
+  <tr>
+    <th class="info-head">이전주문내역</th>
+    <th class="info-contents-list">주문일자</th>
+    <th class="info-contents-list">주문내역</th>
+    <th class="info-contents-list">주문상태</th>
+  </tr>
+
+  {% for doc in docs %}
+  <tr>
+    <td></td>
+    <td class="info-contents-list">{{ doc.pub_date.date }}</td>
+    <td class="info-contents-list">
+      {% ifnotequal doc.doll_count 0 %}
+      다섯 걱정이 세트 {{ doc.doll_count }}개
+      {% ifnotequal doc.phonedoll_count 0 %}
+      , 걱정이 핸드폰줄 {{ doc.phonedoll_count }}개
+      {% endifnotequal %}
+      {% else %}
+      {% ifnotequal doc.phonedoll_count 0 %}
+      걱정이 핸드폰줄 {{ doc.phonedoll_count }}개
+      {% endifnotequal %}
+      {% endifnotequal %}
+
+      {% ifequal doc.doll_count 0 %}
+      {% ifequal doc.phonedoll_count  0 %}
+      주문 상품이 없습니다.
+      {% endifequal %}
+      {% endifequal %}
+    </td>
+    <td class="info-contents-list">{{ doc.state|make_state_readable }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<div class="pagination">
+  {% if prev_page %}
+  <a href="/accounts/mypage/1/"><img src="/site_media/images/first_btn.png" alt="first" /></a>
+  <a href="/accounts/mypage/{{prev_page}}/"><img src="/site_media/images/prev_btn.png" alt="previous" /></a>
+  {% endif %}
+  {% for page in pages %}
+  <a href="/accounts/mypage/{{page}}">
+    <span class="page-number">
+      {% ifequal page current_page %}
+      <span style="font-weight:bold">{{ page }}</span>
+      {% else %}
+      {{ page }}
+      {% endifequal %}
+    </span>
+  </a>
+  {% endfor %}
+  {% if next_page %}
+  <a href="/accounts/mypage/{{next_page}}"><img style="vertical-align:text-bottom;" src="/site_media/images/next_btn.png" alt="next" /></a>
+  <a href="/accounts/mypage/{{last_page}}"><img style="vertical-align:text-bottom;" src="/site_media/images/last_btn.png" alt="last" /></a>
+  {% endif %}
+</div>
+
+{% else %}
+<div class="not-order-desc">
+  주문 내역이 없습니다.
+</div>
+{% endif %}
+{% endblock %}

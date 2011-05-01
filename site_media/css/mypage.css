@@ -1,0 +1,87 @@
+.mypage-title {
+    margin: 44px 0 69px 55px;
+}
+
+#content TABLE {
+    margin-left: 79px;
+    font-family: serif, 명조체;
+}
+
+#content TABLE TR {
+    vertical-align: top;
+}
+
+.info-head {
+    width: 122px;
+    font-size: 0.9em;
+    color:#7A7A7A;
+}
+
+.info-contents-head {
+    width: 94px;
+    font-size: 0.85em;
+}
+
+.info-contents {
+    width: 360px;
+    font-size: 0.85em;
+    color:#2A2A2A;
+    padding-bottom: 7px;
+}
+
+.vertical-top {
+    vertical-align: top;
+}
+
+.vertical-center {
+    vertical-align: center;
+}
+
+.recent-order-info-area {
+    margin-top: 40px;
+}
+
+.table-paragraph1 TD {
+    padding-top: 20px;
+}
+
+.pagination {
+    font-size: 0.85em;
+    text-align: center;
+    margin: auto;
+    width: 500px;
+}
+
+.state-animation {
+    width: 250px;
+    height: 120px;
+    background: #ddd;
+}
+
+.info-modify {
+    font-size: 0.85em;
+    color:#7A7A7A;
+}
+
+.order-info-area {
+    margin-top: 60px;
+    margin-bottom: 10px;
+}
+
+.order-info-area TH {
+    font-weight: normal;
+    text-align: left;
+}
+
+.info-contents-list {
+    font-size: 0.85em;
+    padding: 0 10px 0 10px;
+}
+
+.state-selected {
+    color: #000;
+}
+
+.state-unselected {
+    color:#9A9A9A;
+}

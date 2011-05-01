@@ -4,16 +4,17 @@ from django.contrib.auth import authenticate, login, logout
 # from django.views.decorators.cache import never_cache
 # from django.views.decorators.cache import cache_control
 
-
-
 from django.contrib.auth.forms import AuthenticationForm
 from worry.accounts.forms import JoinForm
 from worry.document.util import *
+from worry.order.models import Bank, Order
+from worry.pagination.views import pagination
 
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib.auth.models import User, Group
+from django.contrib.auth.decorators import user_passes_test
 from django.core.exceptions import ObjectDoesNotExist
 
 import json
@@ -180,3 +181,25 @@ def check_username(request):
                 return HttpResponse('사용 가능한 아이디입니다.')
             return HttpResponse('이미 사용중인 아이디 입니다.')
     return HttpResponse('')
+
+@user_passes_test(lambda u: u.has_perm('document.can_add'))
+def mypage(request, page_number=1):
+    user = request.user
+    orders = Order.objects.all().order_by('-pub_date')
+
+    variables = {}
+    if (len(orders) != 0) :
+        recent_order = orders[0]
+        variables = pagination(request, orders, page_number, 2)
+
+        if recent_order.state != "done" and recent_order.state != "fail":
+            variables.update({'recent_order': recent_order})
+    
+    variables.update({
+        'user': user,
+        })
+
+    return render_to_response(
+        'mypage.html',
+        variables,
+        context_instance=RequestContext(request))

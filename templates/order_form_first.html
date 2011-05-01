@@ -3,7 +3,7 @@
 {% block title %}입금, 배송정보{% endblock %}
 
 {% block link %}
-<link rel="stylesheet" type="text/css" href="/site_media/css/order.css" />
+<link rel="stylesheet" type="text/css" href="/site_media/css/order_form1.css" />
 {% endblock %}
 
 {% block content %}
@@ -14,6 +14,7 @@
     <div class="name-wrap">
       <div class="sender-name-label order-label"></div>
       {{ form.sender_name }}
+      <p class="check-result">{{ form.sender_name.errors.0 }}</p>
     </div>
 
     <div class="phone-wrap">
@@ -23,6 +24,15 @@
       {{ form.sender_phone_2 }}
       <span class="phone-number-hyphen">-</span>
       {{ form.sender_phone_3 }}
+      {% if form.sender_phone_1.errors %}
+      <p class="check-result">{{ form.sender_phone_1.errors.0 }}</p>
+      {% else %}{% if form.sender_phone_2.errors %}
+      <p class="check-result">{{ form.sender_phone_2.errors.0 }}</p>
+      {% else %}{% if form.sender_phone_3.errors %}
+      <p class="check-result">{{ form.sender_phone_3.errors.0 }}</p>
+      {% endif %}
+      {% endif %}
+      {% endif %}
     </div>
 
     <div class="product-wrap">
@@ -31,6 +41,7 @@
       {{ form.doll_count }}
       <div class="phonedoll-count-label order-product-label"></div>
       {{ form.phonedoll_count }}
+      <p class="check-result">{{ form.doll_count.errors.0 }}</p>
     </div>
     
     <div class="worry-label order-label"></div>

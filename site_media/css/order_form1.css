@@ -39,6 +39,7 @@
     margin-top: 4px;
     padding: 2px;
     width: 110px;
+    font-family: serif, 명조체;
 }
 
 .phone-wrap {
@@ -127,6 +128,7 @@
     font-size: 14px;
     width: 390px;
     height: 270px;
+    font-family: serif, 명조체;
 }
 
 .submit-wrap {
@@ -141,6 +143,7 @@
     height: 35px;
     width: 63px;
     float:left;
+    cursor: pointer;
 }
 
 .next-button {
@@ -148,3 +151,12 @@
     float:left;
 }
 
+.check-result {
+    clear:both;
+    margin: 0 0 0 73px;
+    padding: 2px 0 0 5px;
+    font-size: 0.75em;
+    font-family: serif, 명조체;
+    color:#8A8A8A;
+    font-weight: bold;
+}

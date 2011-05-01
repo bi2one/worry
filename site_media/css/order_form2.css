@@ -1,0 +1,189 @@
+.order-title {
+    margin: 30px 0 0 60px;
+}
+
+.order-form-table {
+    margin: 40px 0 32px 80px;
+    width: 100%;
+}
+
+.order-form-table TR {
+    font-family: serif, 명조체;
+    font-size: 0.8em;
+    /* display: inline; */
+}
+
+.order-form-table TR TD {
+    padding-bottom: 5px;
+}
+
+.paragraph-gap-1 TD {
+    padding-top: 24px;
+}
+
+.paragraph-gap-2 TD {
+    padding-top: 32px;
+}
+
+.paragraph-gap-3 TD {
+    padding-top: 50px;
+}
+
+.hidden-value {
+    visibility: hidden;
+    height: 1px;
+}
+
+.field-label {
+    width: 120px;
+    text-align: right;
+    padding-right: 30px;
+}
+
+.vertical-top {
+    vertical-align: top;
+}
+
+.vertical-center {
+    vertical-align: center;
+}
+
+.field-contents {
+    color:#2A2A2A;
+    text-align: left;
+}
+
+.field-contents UL {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.field-contents LI {
+    display: inline-block;
+    width: 222px;
+}
+
+.inputbox INPUT {
+    border: 1px solid #C7C7C6;
+    padding: 2px;
+    font-size: 0.9em;
+    width: 100px;
+}
+
+.issue-textarea TEXTAREA {
+    border: 1px solid #C7C7C6;
+    height: 50px;
+    width: 74%;
+    font-size: 0.9em;
+}
+
+.clear-both {
+    clear: both;
+}
+
+#id_receiver_phone_1 {
+    width: 30px;
+}
+
+#id_receiver_phone_2 {
+    width: 30px;
+}
+
+#id_receiver_phone_3 {
+    width: 30px;
+}
+
+
+#id_receiver_address_number {
+    width: 65px;
+}
+
+.address-number-button {
+    background: url(../images/bttn_address_number.png) no-repeat;
+    display: inline-block;
+    width: 50px;
+    height: 20px;
+    margin: 0 0 -6px 2px;
+}
+
+#id_receiver_address_1 {
+    width: 170px;
+}
+
+#id_receiver_address_2 {
+    width: 170px;
+}
+
+.send-issue-desc {
+    margin: 6px 0 0 0;
+    color:#8A8A8A;
+}
+
+.submit-wrap {
+    text-align: center;
+}
+
+.submit-wrap A {
+    display: inline-block;
+    width: 60px;
+    height: 35px;
+}
+
+.cancel-button {
+    background: url(../images/bttn_order_form2_cancel.png) no-repeat;
+}
+
+.prev-button {
+    background: url(../images/bttn_order_form2_prev.png) no-repeat;
+}
+
+.order-button {
+    margin-left: 3px;
+}
+
+.check-result {
+    clear:both;
+    font-size: 0.9em;
+    font-family: serif, 명조체;
+    color:#1A1A1A;
+    font-weight: bold;
+    padding: 0;
+}
+
+#address_layer {
+    position: absolute;
+    left: 485px;
+    top: 480px;
+    background: #fff;
+    padding: 10px;
+    border: 4px solid #ddd;
+    font-family: serif, 명조체;
+}
+
+#address_layer H1 {
+    font-size: 1.0em;
+    margin: 0 0 5px 0;
+}
+
+#address_layer .division-bar {
+    background: #aaa;
+    margin: 0;
+    padding: 0;
+    height: 1px;
+}
+
+#search-text {
+    width: 190px;
+}
+
+.layer-close {
+    display: block;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.addr-field {
+    font-size: 0.9em;
+}

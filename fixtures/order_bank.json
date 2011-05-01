@@ -1,0 +1,20 @@
+[
+   {
+      "model":"order.bank",
+      "pk":1,
+      "fields": {
+         "name":"국민은행",
+	 "number":"045502-04-246429",
+	 "depositor_name":"김경원"
+      }
+   },
+   {
+      "model":"order.bank",
+      "pk":2,
+      "fields": {
+         "name":"기업은행",
+	 "number":"130-021735-03-011",
+	 "depositor_name":"김경원"
+      }
+   }
+]
