@@ -97,22 +97,21 @@
     <td></td>
     <td class="info-contents-head">주문상태</td>
     <td class="info-contents">
-      {{ recent_order.state }}
       {% ifequal recent_order.state "before_payment" %}
       <span id="before-payment" class="state-selected">입금전</span>
       {% else %}
       <span id="before-payment" class="state-unselected">입금전</span>
-      {% endif %}
+      {% endifequal %}
       {% ifequal recent_order.state "create" %}
       <span id="on-create" class="state-selected">&gt; 제작중</span>
       {% else %}
       <span id="on-create" class="state-unselected">&gt; 제작중</span>
-      {% endif %}
+      {% endifequal %}
       {% ifequal recent_order.state "send" %}
       <span id="on-deliver" class="state-unselected">&gt; 배송중</span>
       {% else %}
       <span id="on-deliver" class="state-unselected">&gt; 배송중</span>
-      {% endif %}
+      {% endifequal %}
     </td>
     <td></td>
   </tr>
