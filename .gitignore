@@ -1,1 +1,4 @@
 *.pyc
+settings.py
+start_server.sh
+urls.py

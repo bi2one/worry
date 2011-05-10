@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Replace these three settings.
-PROJDIR="/Users/bi2one/public_html/worry"
+PROJDIR="/home/worry/worry_test/worry"
 PIDFILE="$PROJDIR/worry.pid"
 SOCKET="$PROJDIR/worry.sock"
 
