@@ -29,6 +29,7 @@ class Order(models.Model) :
     receiver_name = models.CharField(max_length=255, null=False)
     receiver_phone = models.CharField(max_length=255, null=True)
     receiver_address = models.CharField(max_length=255, null=False)
+    receiver_detail_address = models.CharField(max_length=255, null=False)
     receiver_address_number = models.CharField(max_length=255, null=False)
 
     send_issue = models.TextField(null=True)

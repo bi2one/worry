@@ -46,7 +46,8 @@
 
     {% ifequal module_name "shop" %}
     <a class="float_left" style="margin:0 0 0 5px" href="/{{module_name}}/?category={{category}}"><img class="png_bg" src="/site_media/images/bttn_list.png" alt="list" /></a>
-    <a class="float_right" style="margin: -5px 0 0 0;" href="/{{module_name}}/write/?category={{category}}"><img class="png_bg" src="/site_media/images/shoppage_order_btn.png" alt="write" /></a>
+    <!-- <a class="float_right" style="margin: -5px 0 0 0;" href="/{{module_name}}/write/?category={{category}}"><img class="png_bg" src="/site_media/images/shoppage_order_btn.png" alt="write" /></a> -->
+    <a class="float_right" style="margin: -5px 0 0 0;" href="/order/form1/"><img class="png_bg" src="/site_media/images/shoppage_order_btn.png" alt="write" /></a>
     {% else %}
     <a class="float_right" href="/{{module_name}}/write/?category={{category}}"><img class="png_bg" src="/site_media/images/bttn_write.png" alt="write" /></a>
     <a class="float_right" href="/{{module_name}}/?category={{category}}"><img class="png_bg" src="/site_media/images/bttn_list.png" alt="list" /></a>

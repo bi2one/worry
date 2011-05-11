@@ -185,15 +185,16 @@ def check_username(request):
 @user_passes_test(lambda u: u.has_perm('document.can_add'))
 def mypage(request, page_number=1):
     user = request.user
-    orders = Order.objects.all().order_by('-pub_date')
+    all_orders = Order.objects.filter(user=user).order_by('-pub_date')
+    progress_orders = all_orders.exclude(state="done").exclude(state="fail")
 
     variables = {}
-    if (len(orders) != 0) :
-        recent_order = orders[0]
-        variables = pagination(request, orders, page_number, 2)
-
-        if recent_order.state != "done" and recent_order.state != "fail":
-            variables.update({'recent_order': recent_order})
+    if len(all_orders) != 0:
+        variables = pagination(request, all_orders, page_number, 5)
+            
+    if len(progress_orders) != 0:
+        recent_order = progress_orders[0]
+        variables.update({'recent_order': recent_order})
     
     variables.update({
         'user': user,

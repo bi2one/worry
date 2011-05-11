@@ -41,8 +41,8 @@ function onAddressSearchClick() {
 
 function onAddressNumberClick(addr_number, addr) {
     $("#id_receiver_address_number").val(addr_number);
-    $("#id_receiver_address_1").val(addr)
-    $("#id_receiver_address_2").focus();
+    $("#id_receiver_address").val(addr)
+    $("#id_receiver_detail_address").focus();
     onCloseLayerClick();
 }
 

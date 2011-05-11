@@ -150,19 +150,19 @@
     <tr>
       <td></td>
       <td class="field_contents inputbox">
-	{{ form.receiver_address_1 }}
-	{{ form.receiver_address_2 }}
+	{{ form.receiver_address }}
+	{{ form.receiver_detail_address }}
       </td>
     </tr>
-    {% if form.receiver_address_1.errors or form.receiver_address_2.errors %}
+    {% if form.receiver_address.errors or form.receiver_detail_address.errors %}
     {% if not is_first %}
     <tr>
       <td></td>
       <td class="check-result">
-	{% if form.receiver_address_1.errors %}
-	{{ form.receiver_address_1.errors.0 }}
-	{% else %}{% if form.receiver_address_2.errors %}
-	{{ form.receiver_address_2.errors.0 }}
+	{% if form.receiver_address.errors %}
+	{{ form.receiver_address.errors.0 }}
+	{% else %}{% if form.receiver_detail_address.errors %}
+	{{ form.receiver_detail_address.errors.0 }}
 	{% endif %}
 	{% endif %}
       </td>

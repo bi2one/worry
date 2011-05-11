@@ -107,11 +107,11 @@
     margin: 0 0 -6px 2px;
 }
 
-#id_receiver_address_1 {
+#id_receiver_address {
     width: 170px;
 }
 
-#id_receiver_address_2 {
+#id_receiver_detail_address {
     width: 170px;
 }
 

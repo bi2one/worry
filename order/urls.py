@@ -12,4 +12,8 @@ urlpatterns = patterns('',
     (r'^form2/$', 'worry.order.views.form2'),
     (r'^submit/$', 'worry.order.views.submit'),
     (r'^ajax_address_number/$', 'worry.order.views.ajax_address_number'),
+    (r'^modify/(?P<order_id>\d+)/$', 'worry.order.views.modify'),
+    (r'^admin/(?P<page_number>\d+)/$', 'worry.order.views.admin'),
+    (r'^admin/$', 'worry.order.views.admin'),
+    (r'^admin/view/(?P<order_id>\d+)/$', 'worry.order.views.admin_view'),
 )

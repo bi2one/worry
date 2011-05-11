@@ -7,14 +7,14 @@
 {% endblock %}
 
 {% block content %}
-<image src="/site_media/images/mypage_title.png" class="mypage-title" alt="worrydolls products"/>
+<!-- <image src="/site_media/images/mypage_title.png" class="mypage-title" alt="worrydolls products"/> -->
 
 <table class="personal-info-area">
   <tr>
     <td class="info-head">개인정보</td>
     <td class="info-contents-head">이름</td>
     <td class="info-contents">{{ user.username }}</td>
-    <td class="info-modify">수정</td>
+    <!-- <td class="info-modify">수정</td> -->
   </tr>
   <tr>
     <td></td>
@@ -24,10 +24,10 @@
   </tr>
 </table>
 
-{% if recent_order %}
 <table class="recent-order-info-area">
+  {% if recent_order %}
   <tr>
-    <td class="info-head">최근주문정보</td>
+    <td class="info-head">주문정보</td>
     <td class="info-contents-head">주문상품</td>
     <td class="info-contents">
       {% ifnotequal recent_order.doll_count 0 %}
@@ -46,7 +46,15 @@
       주문 상품이 없습니다.
       {% endifequal %}
       {% endifequal %}
-    <td class="info-modify">수정</td>
+    {% ifequal recent_order.state "before_payment" %}
+    <td class="info-modify"><a href="/order/modify/{{ recent_order.id }}">수정</a></td>
+    {% else %}
+    {% ifequal recent_order.state "create" %}
+    <td class="info-modify"><a href="/order/modify/{{ recent_order.id }}">수정</a></td>
+    {% else %}
+    <td></td>
+    {% endifequal %}
+    {% endifequal %}
   </tr>
   <tr class="vertical-top">
     <td></td>
@@ -89,7 +97,7 @@
   <tr>
     <td></td>
     <td class="info-contents-head">배송지 주소</td>
-    <td class="info-contents">{{ recent_order.receiver_address }}</td>
+    <td class="info-contents">{{ recent_order.receiver_address }} {{ recent_order.receiver_detail_address }}</td>
     <td></td>
   </tr>
 
@@ -108,7 +116,7 @@
       <span id="on-create" class="state-unselected">&gt; 제작중</span>
       {% endifequal %}
       {% ifequal recent_order.state "send" %}
-      <span id="on-deliver" class="state-unselected">&gt; 배송중</span>
+      <span id="on-deliver" class="state-selected">&gt; 배송중</span>
       {% else %}
       <span id="on-deliver" class="state-unselected">&gt; 배송중</span>
       {% endifequal %}
@@ -119,17 +127,26 @@
     <td></td>
     <td></td>
     <td>
-      <div class="state-animation">
-      </div>
+      {% ifequal recent_order.state "before_payment" %}
+      <img class="state-animation" alt="before-payment" src="/site_media/images/mypage_before_payment.png"/>
+      {% endifequal %}
+      {% ifequal recent_order.state "create" %}
+      <img class="state-animation" alt="on-create" src="/site_media/images/mypage_order_on_create.png"/>
+      {% endifequal %}
+      {% ifequal recent_order.state "send" %}
+      <img class="state-animation" alt="on-deliver" src="/site_media/images/mypage_order_on_deliver.png"/>
+      {% endifequal %}
     </td>
     <td></td>
   </tr>
+  {% else %}
+  <tr>
+    <td class="info-head">주문정보</td>
+    <td class="info-contents">주문하신 내역이 없습니다</td>
+    <td></td>
+  </tr>
+  {% endif %}
 </table>
-{% else %}
-<div class="not-recent-order-desc">
-  최근 주문 내역이 없습니다.
-</div>
-{% endif %}
 
 {% if docs %}
 <table class="order-info-area">

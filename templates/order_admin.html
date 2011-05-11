@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% load account_filter %}
+{% block title %}Worrydolls Products{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="/site_media/css/order_admin.css" />
+{% endblock %}
+
+{% block content %}
+
+{% if docs %}
+<table>
+  <tr class="table-head">
+    <!-- <th>이메일</th> -->
+    <!-- <th>보내실분 연락처</th> -->
+    <!-- <th>배송주소</th> -->
+    <!-- <th>우편번호</th> -->
+    <th>성명</th>
+    <th>주문내역</th>
+    <th>입금은행</th>
+    <th>입금자명</th>
+    <th>상태</th>
+    <th>주문 날짜, 시간</th>
+    <!-- <th>받으실분</th> -->
+    <!-- <th>받으실분 연락처</th> -->
+  </tr>
+  {% for doc in docs %}
+  <tr>
+    <td>{{ doc.sender_name }}</td>
+    <!-- <td>{{ doc.receiver_address }} {{ doc.receiver_detail_address }}</td> -->
+    <!-- <td>{{ doc.receiver_address_number }}</td> -->
+    <td>
+      <a href="/order/admin/view/{{ doc.id }}">
+	 걱정인형 {{ doc.doll_count }}, 핸드폰줄 {{ doc.phonedoll_count }}
+      </a>
+    </td>
+    <td>{{ doc.bank.name }} {{ doc.bank.number }}</td>
+    <td>{{ doc.payment_name }}</td>
+    <td>{{ doc.state|make_state_readable }}</td>
+    <td>{{ doc.pub_date }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+
+<div class="pagination">
+  {% if prev_page %}
+  <a href="/order/admin/1/"><img src="/site_media/images/first_btn.png" alt="first" /></a>
+  <a href="/order/admin/{{prev_page}}/"><img src="/site_media/images/prev_btn.png" alt="previous" /></a>
+  {% endif %}
+  {% for page in pages %}
+  <a href="/order/admin/{{page}}">
+    <span class="page-number">
+      {% ifequal page current_page %}
+      <span style="font-weight:bold">{{ page }}</span>
+      {% else %}
+      {{ page }}
+      {% endifequal %}
+    </span>
+  </a>
+  {% endfor %}
+  {% if next_page %}
+  <a href="/order/admin/{{next_page}}"><img style="vertical-align:text-bottom;" src="/site_media/images/next_btn.png" alt="next" /></a>
+  <a href="/order/admin/{{last_page}}"><img style="vertical-align:text-bottom;" src="/site_media/images/last_btn.png" alt="last" /></a>
+  {% endif %}
+</div>
+{% endblock %}

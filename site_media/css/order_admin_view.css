@@ -1,0 +1,66 @@
+TABLE {
+    margin: 20px 0 0 130px;
+}
+
+TABLE TR {
+    vertical-align: top;
+}
+
+TABLE TR TD {
+    padding: 2px 0 2px 0;
+}
+
+.table-h1 {
+    font-weight: bold;
+    width: 102px;
+    color:#7A7A7A;
+}
+
+.table-h2 {
+    width: 130px;
+    font-size: 0.85em;
+    color:#4A4A4A;
+}
+
+.table-contents {
+    font-size: 0.85em;
+}
+
+.paragraph-gap-1 TD {
+    padding-top: 28px;
+}
+
+.paragraph-gap-2 TD {
+    padding-top: 20px;
+}
+
+#state-change-form {
+    margin: 0 0 0 130px;
+}
+
+#state-change-form H3 {
+    color:#7A7A7A;
+    font-size: 1.0em;
+    margin-bottom: 6px;
+}
+
+#state-change-form UL {
+    display: inline-block;
+    margin: 0 0 5px 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+#state-change-form UL LI {
+    display: inline-block;
+    width: 96px;
+    font-size: 0.85em;
+}
+
+#state-change-form BUTTON {
+}
+
+#back-to-adminpage {
+    margin-top: 10px;
+    margin-left: 130px;
+}

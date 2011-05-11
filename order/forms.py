@@ -46,8 +46,8 @@ class OrderFormSecond(forms.Form) :
     receiver_phone_2 = forms.CharField(label="연락처", max_length=4, required=True)
     receiver_phone_3 = forms.CharField(label="연락처", max_length=4, required=True)
     receiver_address_number = forms.CharField(label="배송지 주소", max_length=10, required=True)
-    receiver_address_1 = forms.CharField(label="배송지 주소", max_length=127, required=True)
-    receiver_address_2 = forms.CharField(label="배송지 주소", max_length=127, required=True)
+    receiver_address = forms.CharField(label="배송지 주소", max_length=127, required=True)
+    receiver_detail_address = forms.CharField(label="배송지 주소", max_length=127, required=True)
 
     send_issue = forms.CharField(widget=forms.Textarea, label="배송시 요청사항", required=False)
 
@@ -58,5 +58,42 @@ class OrderFormSecond(forms.Form) :
     def cleaned_data_receiver_phone(self) :
         return str(self.cleaned_data['receiver_phone_1']) + "-" + str(self.cleaned_data['receiver_phone_2']) + "-" + str(self.cleaned_data['receiver_phone_3'])
 
-    def cleaned_data_receiver_address(self) :
-        return self.cleaned_data['receiver_address_1'] + " " + self.cleaned_data['receiver_address_2']
+class OrderFormModify(forms.Form) :
+    doll_count = forms.ChoiceField(label="다섯 걱정이 세트", choices=map((lambda x:(x, x)), range(0, 11)))
+    phonedoll_count = forms.ChoiceField(label="두 걱정이 핸드폰줄", choices=map((lambda x:(x, x)), range(0, 11)))
+    content = forms.CharField(label="걱정거리", widget=forms.Textarea)
+
+    bank_objects = Bank.objects.all()
+    bank_name_numbers = map((lambda bank:(bank.id, bank.name + " " + bank.number)),
+                            bank_objects)
+    bank = forms.ChoiceField(widget=forms.RadioSelect,
+                            label="입금은행",
+                            choices=bank_name_numbers,
+                            required=True)
+    
+    payment_name = forms.CharField(label="입금자명", max_length=45, required=True)
+
+    receiver_name = forms.CharField(label="받으실 분", max_length=45, required=True)
+    receiver_phone_1 = forms.CharField(label="연락처", max_length=4, required=True)
+    receiver_phone_2 = forms.CharField(label="연락처", max_length=4, required=True)
+    receiver_phone_3 = forms.CharField(label="연락처", max_length=4, required=True)
+    receiver_address_number = forms.CharField(label="배송지 주소", max_length=10, required=True)
+    receiver_address = forms.CharField(label="배송지 주소", max_length=127, required=True)
+    receiver_detail_address = forms.CharField(label="배송지 주소", max_length=127, required=True)
+
+    def cleaned_data_receiver_phone(self) :
+        return str(self.cleaned_data['receiver_phone_1']) + "-" + str(self.cleaned_data['receiver_phone_2']) + "-" + str(self.cleaned_data['receiver_phone_3'])
+
+    def clean_content(self) :
+        content = self.cleaned_data['content']
+        return content.replace('\n', '<br>')
+
+class OrderFormState(forms.Form) :
+    state = forms.ChoiceField(widget=forms.RadioSelect,
+                              label="주문 상태 변경",
+                              choices=[("before_payment", "입금전"),
+                                       ("create", "제작중"),
+                                       ("send", "배송중"),
+                                       ("done", "배송완료"),
+                                       ("fail", "배송실패")],
+                              required=True)

@@ -212,7 +212,7 @@ def delete(request, module_name, doc_id) :
         category = get_category_id(canonical_module_name, module_name)
     doc = Document.objects.get(id=doc_id)
 
-    if not user.is_superuser : 
+    if not user.is_superuser :
         if doc.user :
             if doc.user.id != user.id :
                 # TODO : invalid message

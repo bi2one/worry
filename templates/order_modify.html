@@ -1,0 +1,185 @@
+{% extends "layout.html" %}
+
+{% block title %}Order Modify{% endblock %}
+
+{% block script %}
+<script src="/site_media/js/jquery.watermarkinput.js" type="text/javascript"></script>
+<script src="/site_media/js/urlEncode.js" type="text/javascript"></script>
+<script type="text/javascript" src="/site_media/js/order.js"></script>
+{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="/site_media/css/order_modify.css" />
+{% endblock %}
+
+{% block content %}
+<!-- popup-layer(address number) -->
+<div id="address_layer">
+  <h1>우편번호 찾기</h1>
+  <div class="layer-search-area">
+    <input type="text" max_length="45" id="search-text"></input>
+    <button onclick="javascript:onAddressSearchClick();">검색</button>
+  </div>
+
+  <table id="layer-address"></table>
+  
+  <div class="division-bar"></div>
+  <button class="layer-close" onclick="javascript:onCloseLayerClick()">닫기</button>
+</div>
+<!-- popup-layer end -->
+
+<form method="post" name="order_first_form" action="/order/modify/{{ order_id }}/">
+  <table class="personal-info-area">
+    <tr>
+      <td class="info-head">주문정보수정</td>
+      <td class="info-contents-head">주문상품</td>
+      <td class="info-contents">
+	<span class="order-product-label doll-count-label">{{ form.doll_count.label }}</span>
+	{{ form.doll_count }}
+	<span class="order-product-label phonedoll-count-label">{{ form.phonedoll_count.label }}</span>
+	{{ form.phonedoll_count }}
+      </td>
+    </tr>
+    {% if form.doll_count.errors %}
+    <tr>
+      <td></td>
+      <td></td>
+      <td class="check-result">{{ form.doll_count.errors.0 }}</td>
+    </tr>
+    {% endif %}
+    
+    <tr>
+      <td></td>
+      <td class="info-contents-head">{{ form.content.label }}</td>
+      <td class="info-contents">{{ form.content }}</td>
+    </tr>
+    {% if form.content.errors %}
+    <tr>
+      <td></td>
+      <td></td>
+      <td class="check-result">{{ form.content.errors.0 }}</td>
+    </tr>
+    {% endif %}
+
+    <tr class="paragraph-gap-1">
+      <td></td>
+      <td class="info-contents-head">{{ form.bank.label }}</td>
+      <td class="info-contents">{{ form.bank }}</td>
+    </tr>
+    {% if form.bank.errors %}
+    <tr>
+      <td></td>
+      <td></td>
+      <td class="check-result">{{ form.bank.errors.0 }}</td>
+    </tr>
+    {% endif %}
+
+    <tr>
+      <td></td>
+      <td class="info-contents-head">예금주</td>
+      <td class="info-contents">김경원</td>
+    </tr>
+
+    <tr>
+      <td></td>
+      <td class="info-contents-head center-vertical">{{ form.payment_name.label }}</td>
+      <td class="info-contents">{{ form.payment_name }}</td>
+    </tr>
+    {% if form.payment_name.errors %}
+    <tr>
+      <td></td>
+      <td></td>
+      <td class="check-result">{{ form.payment_name.errors.0 }}</td>
+    </tr>
+    {% endif %}
+
+    <tr class="paragraph-gap-2">
+      <td></td>
+      <td class="info-contents-head">{{ form.receiver_name.label }}</td>
+      <td class="info-contents">{{ form.receiver_name }}</td>
+    </tr>
+    {% if form.receiver_name.errors %}
+    <tr>
+      <td></td>
+      <td></td>
+      <td class="check-result">{{ form.receiver_name.errors.0 }}</td>
+    </tr>
+    {% endif %}
+
+    <tr>
+      <td></td>
+      <td class="info-contents-head">{{ form.receiver_phone_1.label }}</td>
+      <td class="info-contents phone-contents">
+	{{ form.receiver_phone_1 }}
+	-
+	{{ form.receiver_phone_2 }}
+	-
+	{{ form.receiver_phone_3 }}
+      </td>
+    </tr>
+    {% if form.receiver_phone_1.errors or form.receiver_phone_2.errors or form.receiver_phone_3.errors %}
+    <tr>
+      <td></td>
+      <td></td>
+      <td class="check-result">
+	{% if form.receiver_phone_1.errors %}
+	{{ form.receiver_phone_1.errors.0 }}
+	{% else %}{% if form.receiver_phone_2.errors %}
+	{{ form.receiver_phone_2.errors.0 }}
+	{% else %}{% if form.receiver_phone_3.errors %}
+	{{ form.receiver_phone_3.errors.0 }}
+	{% endif %}
+	{% endif %}
+	{% endif %}
+      </td>
+    </tr>
+    {% endif %}
+
+    <tr>
+      <td></td>
+      <td class="info-contents-head">{{ form.receiver_address_number.label }}</td>
+      <td class="info-contents">
+	{{ form.receiver_address_number }}
+	<a class="address-number-button" onclick="javascript:onOpenLayerClick();"></a>
+      </td>
+    </tr>
+    {% if form.receiver_address_number.errors %}
+    <tr>
+      <td></td>
+      <td></td>
+      <td class="check-result">{{ form.receiver_address_number.errors.0 }}</td>
+    </tr>
+    {% endif %}
+
+    <tr>
+      <td></td>
+      <td></td>
+      <td class="info-contents address-contents">
+	{{ form.receiver_address }}
+	{{ form.receiver_detail_address }}
+      </td>
+    </tr>
+    {% if form.receiver_address.errors or form.receiver_detail_address.errors %}
+    <tr>
+      <td></td>
+      <td></td>
+      <td class="check-result">
+	{% if form.receiver_address.errors %}
+	{{ form.receiver_address.errors.0 }}
+	{% else %}{% if form.receiver_detail_address.errors %}
+	{{ form.receiver_detail_address.errors.0 }}
+	{% endif %}
+	{% endif %}
+      </td>
+    </tr>
+    {% endif %}
+  </table>
+
+  <div class="submit-wrap">
+    <input class="modify-button" type="image" src="/site_media/images/bttn_order_modify.png" />
+    <a class="cancel-button" href="/accounts/mypage">
+      <img src="/site_media/images/bttn_order_cancel.png" alt="cancel" />
+    </a>
+  </div>
+</form>
+{% endblock %}

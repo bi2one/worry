@@ -1,0 +1,136 @@
+TEXTAREA {
+    font-size: 1.0em;
+    border: 1px solid #C7C7C6;
+    width: 350px;
+    height: 40px;
+}
+
+#address_layer {
+    position: absolute;
+    left: 485px;
+    top: 440px;
+    background: #fff;
+    padding: 10px;
+    border: 4px solid #ddd;
+    font-family: serif, 명조체;
+}
+
+#address_layer H1 {
+    font-size: 1.0em;
+    margin: 0 0 5px 0;
+}
+
+#address_layer .division-bar {
+    background: #aaa;
+    margin: 0;
+    padding: 0;
+    height: 1px;
+}
+
+.layer-close {
+    display: block;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#search-text {
+    width: 190px;
+}
+
+.personal-info-area {
+    margin-top: 80px;
+    margin-left: 69px;
+    font-family: serif, 명조체;
+}
+
+#content TABLE TR {
+    vertical-align: top;
+}
+
+.info-head {
+    width: 125px;
+    font-size: 0.85em;
+    color:#7A7A7A;
+}
+
+.info-contents-head {
+    width: 84px;
+    font-size: 0.8em;
+}
+
+.info-contents {
+    width: 470px;
+    font-size: 0.8em;
+    color:#2A2A2A;
+    padding-bottom: 7px;
+}
+
+.info-contents > INPUT {
+    border: 1px solid #C7C7C6;
+    padding: 2px;
+    width: 110px;
+    font-family: serif, 명조체;
+}
+
+
+.order-product-label {
+    display: inline-block;
+    margin: 0 3px 0 0;
+}
+
+.phonedoll-count-label {
+    margin-left: 20px;
+}
+
+.info-contents UL {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.info-contents LI {
+    display: inline-block;
+    width: 225px;
+}
+
+.paragraph-gap-1 TD {
+    padding-top: 10px;
+}
+
+.paragraph-gap-2 TD {
+    padding-top: 26px;
+}
+
+.phone-contents INPUT {
+    width: 36px;
+}
+
+#id_receiver_address_number {
+    width: 70px;
+}
+
+.address-number-button {
+    background: url(../images/bttn_address_number.png) no-repeat;
+    display: inline-block;
+    width: 50px;
+    height: 20px;
+    margin: 0 0 -7px 2px;
+}
+
+.address-contents INPUT {
+    width: 180px;
+}
+
+ .submit-wrap {
+    margin-top: 36px;
+    text-align: center;
+}
+
+.check-result {
+    font-size: 0.85em;
+    font-family: serif, 명조체;
+    color:#1A1A1A;
+    font-weight: bold;
+    padding: 0;
+}

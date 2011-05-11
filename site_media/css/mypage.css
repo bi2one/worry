@@ -53,9 +53,9 @@
 }
 
 .state-animation {
-    width: 250px;
-    height: 120px;
-    background: #ddd;
+    /* width: 250px; */
+    /* height: 120px; */
+    /* background: #ddd; */
 }
 
 .info-modify {
@@ -84,4 +84,8 @@
 
 .state-unselected {
     color:#9A9A9A;
+}
+
+.personal-info-area {
+    margin-top: 90px;
 }

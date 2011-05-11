@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+{% load account_filter %}
+{% block title %}Worrydolls Products{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="/site_media/css/order_admin_view.css" />
+{% endblock %}
+
+{% block content %}
+<table>
+  <tr>
+    <td class="table-h1">회원정보</td>
+    <td class="table-h2">아이디</td>
+    <td class="table-contents">{{ order.user.username }}</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td class="table-h2">이메일</td>
+    <td class="table-contents">{{ order.user.email }}</td>
+  <tr class="paragraph-gap-1">
+    <td class="table-h1">주문정보</td>
+    <td class="table-h2">성명</td>
+    <td class="table-contents">{{ order.sender_name }}<td>
+  </tr>
+  <tr>
+    <td></td>
+    <td class="table-h2">보내실분 연락처</td>
+    <td class="table-contents">{{ order.sender_phone }}<td>
+  </tr>
+  <tr>
+    <td></td>
+    <td class="table-h2">주문내역</td>
+    <td class="table-contents">
+      걱정인형 {{ order.doll_count }},
+      핸드폰줄 {{ order.phonedoll_count }}
+    <td>
+  </tr>
+  <tr>
+    <td></td>
+    <td class="table-h2">걱정거리</td>
+    <td class="table-contents">{{ order.content|safe }}<td>
+  </tr>
+  <tr class="paragraph-gap-2">
+    <td></td>
+    <td class="table-h2">입금자명</td>
+    <td class="table-contents">{{ order.payment_name }}<td>
+  </tr>
+  <tr>
+    <td></td>
+    <td class="table-h2">계좌번호</td>
+    <td class="table-contents">{{ order.bank.name }} {{ order.bank.number }}<td>
+  </tr>
+  <tr class="paragraph-gap-2">
+    <td></td>
+    <td class="table-h2">받는사람</td>
+    <td class="table-contents">{{ order.receiver_name }}<td>
+  </tr>
+  <tr>
+    <td></td>
+    <td class="table-h2">받는사람 전화번호</td>
+    <td class="table-contents">{{ order.receiver_phone }}<td>
+  </tr>
+  <tr>
+    <td></td>
+    <td class="table-h2">받는사람 주소</td>
+    <td class="table-contents">
+      {{ order.receiver_address }}
+      {{ order.receiver_detail_address }}
+    <td>
+  </tr>
+  <tr>
+    <td></td>
+    <td class="table-h2">받는사람 우편번호</td>
+    <td class="table-contents">{{ order.receiver_address_number }}<td>
+  </tr>
+  <tr>
+    <td></td>
+    <td class="table-h2">송신시 주의사항</td>
+    <td class="table-contents">{{ order.send_issue|safe }}<td>
+  </tr>
+  <tr class="paragraph-gap-2">
+    <td></td>
+    <td class="table-h2">주문 시간</td>
+    <td class="table-contents">{{ order.pub_date }}<td>
+  </tr>
+  <tr>
+    <td></td>
+    <td class="table-h2">주문 상태</td>
+    <td class="table-contents">{{ order.state|make_state_readable }}<td>
+  </tr>
+</table>
+
+<form id="state-change-form" method="post" name="order_admin_state_form" action=".">
+  <h3>{{ form.state.label }}</h3>
+  {{ form.state }}
+  {% if form.errors %}
+  <p class="error-contents">
+    {{ form.errors.0 }}
+  </p>
+  {% endif %}
+  <button type="submit">변경완료</button>
+</form>
+<button id="back-to-adminpage" onclick="javascript:window.location='/order/admin/'">관리페이지로 돌아가기</button>
+{% endblock %}

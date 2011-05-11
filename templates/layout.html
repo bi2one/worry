@@ -52,6 +52,7 @@
       <div id="top">
 	{% if user.is_superuser %}
 	  <a style="font-size:0.9em; float:left;margin-top:5px;text-decoration:underline" href="/traffic">[Site traffic]</a>
+	  <a style="font-size:0.9em; float:left;margin-top:5px;text-decoration:underline" href="/order/admin/">[주문내역 관리]</a>
 	{% endif %}
 	<div id="english-kor">
 	  <form action="/i18n/setlang/" method="post">
@@ -66,9 +67,14 @@
 	  </form>
 	</div>
 
-
 	<div id="music-on-off" onclick="javascript:musicToggle();"></div>
 <!--	<div id="sunray-smile"></div> -->
+	{% if user %}
+	<a class="mypage-link" href="/accounts/mypage/">
+	  <img alt="move-to-mypage" src="/site_media/images/bttn_mypage.png" />
+	</a>
+	{% endif %}
+
 	<div class="clear_both"></div>
       </div>
 
