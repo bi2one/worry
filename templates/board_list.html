@@ -11,7 +11,7 @@
     <tr>
       {% ifequal module_name "shop" %}
       {% ifequal doc.content "" %}
-      <td style="text-align:left" class="td-padding"><a href="/accounts/mypage/">
+      <td style="text-align:left" class="td-padding"><a href="./">
       {% else %}
       <td style="text-align:left" class="td-padding"><a href="/{{ module_name }}/view/{{ doc.id }}/{{ option_string }}&current_page={{current_page}}">
       {% endifequal %}
