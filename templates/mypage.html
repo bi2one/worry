@@ -65,6 +65,18 @@
 
   <tr class="table-paragraph1">
     <td></td>
+    <td class="info-contents-head">선물용</td>
+    <td class="info-contents">
+      {% if recent_order.is_gift %}
+      선물용 입니다.
+      {% else %}
+      선물용이 아닙니다.
+      {% endif %}
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
     <td class="info-contents-head">입금은행</td>
     <td class="info-contents">{{ recent_order.bank.number }} {{ recent_order.bank.name }}</td>
     <td></td>
@@ -204,11 +216,6 @@
   <a href="/accounts/mypage/{{next_page}}"><img style="vertical-align:text-bottom;" src="/site_media/images/next_btn.png" alt="next" /></a>
   <a href="/accounts/mypage/{{last_page}}"><img style="vertical-align:text-bottom;" src="/site_media/images/last_btn.png" alt="last" /></a>
   {% endif %}
-</div>
-
-{% else %}
-<div class="not-order-desc">
-  주문 내역이 없습니다.
 </div>
 {% endif %}
 {% endblock %}

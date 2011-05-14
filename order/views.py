@@ -8,6 +8,9 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.utils import simplejson
 
 from worry.order.models import Bank, Order, Address
+from worry.order.util import *
+from worry.document.models import Document
+from worry.document.util import *
 from worry.order.forms import OrderFormFirst, OrderFormSecond, OrderFormModify, OrderFormState
 from worry.pagination.views import pagination
 
@@ -78,12 +81,29 @@ def submit(request):
             receiver_detail_address = form.cleaned_data['receiver_detail_address']
             receiver_address_number = form.cleaned_data['receiver_address_number']
             send_issue = form.cleaned_data['send_issue']
+            is_gift = form.cleaned_data['is_gift']
             state = 'before_payment'
             bank = Bank.objects.get(id=bank_id)
+            module_name = get_canonical_module_name("shop")
+            category = 2
+
+            document = Document(
+                user = request.user,
+                module_id = get_module_id(module_name),
+                module_name = module_name,
+                category = category,
+                category_name = get_category_name(module_name, category),
+                is_notice = False,
+                title = make_title(doll_count, phonedoll_count, is_gift),
+                content = "",
+                ipaddress = get_ipaddress(request),
+                hit=0)
+            document.save()
             
             order = Order(
                 user = request.user,
                 bank = bank,
+                document  = document,
                 sender_name = sender_name,
                 sender_phone = sender_phone,
                 doll_count = doll_count,
@@ -96,6 +116,7 @@ def submit(request):
                 receiver_detail_address = receiver_detail_address,
                 receiver_address_number = receiver_address_number,
                 send_issue = send_issue,
+                is_gift = is_gift,
                 state = state)
             order.save()
             return HttpResponseRedirect('/accounts/mypage/')
@@ -159,6 +180,7 @@ def modify(request, order_id):
             receiver_address_number = form.cleaned_data['receiver_address_number']
             receiver_address = form.cleaned_data['receiver_address']
             receiver_detail_address = form.cleaned_data['receiver_detail_address']
+            is_gift = form.cleaned_data['is_gift']
 
             order.doll_count = doll_count
             order.phonedoll_count = phonedoll_count
@@ -170,6 +192,12 @@ def modify(request, order_id):
             order.receiver_address_number = receiver_address_number
             order.receiver_address = receiver_address
             order.receiver_detail_address = receiver_detail_address
+            order.is_gift = is_gift
+            doc = order.document
+            
+            doc.title = make_title(doll_count, phonedoll_count, is_gift)
+
+            doc.save()
             order.save()
             
             return HttpResponseRedirect('/accounts/mypage/')
@@ -197,7 +225,8 @@ def modify(request, order_id):
             'receiver_phone_3': receiver_phone[2],
             'receiver_address_number': order.receiver_address_number,
             'receiver_address': order.receiver_address,
-            'receiver_detail_address': order.receiver_detail_address
+            'receiver_detail_address': order.receiver_detail_address,
+            'is_gift': order.is_gift,
             }
         
         form = OrderFormModify(default_data)
@@ -218,7 +247,7 @@ def admin(request, page_number=1):
 
     orders = Order.objects.all().order_by('-pub_date')
 
-    variables = pagination(request, orders, page_number, 15)
+    variables = pagination(request, orders, page_number, 30)
     
     return render_to_response(
         'order_admin.html',
@@ -261,3 +290,13 @@ def admin_view(request, order_id):
         variables,
         context_instance=RequestContext(request))
         
+@user_passes_test(lambda u: u.has_perm('document.can_add'))
+def delete(request, order_id):
+    user = request.user
+
+    if not user.is_superuser :
+        raise Http404
+
+    order = Order.objects.get(id=order_id)
+    order.document.delete()
+    return HttpResponseRedirect('/order/admin/')

@@ -24,7 +24,9 @@
   <table id="layer-address"></table>
   
   <div class="division-bar"></div>
-  <button class="layer-close" onclick="javascript:onCloseLayerClick()">닫기</button>
+  <div class="layer-close">
+    <button onclick="javascript:onCloseLayerClick()">닫기</button>
+  </div>
 </div>
 <!-- popup-layer end -->
 
@@ -62,6 +64,11 @@
     {% endif %}
 
     <tr class="paragraph-gap-1">
+      <td></td>
+      <td class="info-contents-head">{{ form.is_gift.label }}</td>
+      <td class="info-contents">{{ form.is_gift }}</td>
+    </tr>
+    <tr>
       <td></td>
       <td class="info-contents-head">{{ form.bank.label }}</td>
       <td class="info-contents">{{ form.bank }}</td>

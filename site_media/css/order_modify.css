@@ -28,10 +28,8 @@ TEXTAREA {
 }
 
 .layer-close {
-    display: block;
+    text-align: center;
     margin-top: 5px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 #search-text {
@@ -133,4 +131,8 @@ TEXTAREA {
     color:#1A1A1A;
     font-weight: bold;
     padding: 0;
+}
+
+#id_is_gift {
+    width: 15px;
 }

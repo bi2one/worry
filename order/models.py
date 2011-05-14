@@ -2,6 +2,8 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+from worry.document.models import Document
+
 class Bank(models.Model) :
     def __unicode__(self) :
         return self.name + " _ " + self.depositor_name
@@ -16,6 +18,7 @@ class Order(models.Model) :
 
     user = models.ForeignKey(User, null=True)
     bank = models.ForeignKey(Bank, null=True)
+    document = models.ForeignKey(Document, null=False)
 
     sender_name = models.CharField(max_length=255)
     sender_phone = models.CharField(max_length=255)
@@ -41,6 +44,8 @@ class Order(models.Model) :
                                       (2, 'send'),
                                       (3, 'done'),
                                       (4, 'fail')))
+
+    is_gift = models.BooleanField(default=False)
 
 class Address(models.Model) :
     def __unicode__(self) :

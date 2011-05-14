@@ -313,6 +313,9 @@ def save(request, module_name, doc_id) :
 # TODO
 # @user_passes_test(lambda u: u.has_perm('document.can_change'))
 def view(request, module_name, doc_id=None) :
+    if module_name == "shop" and Document.objects.get(id=doc_id).content == "":
+        return HttpResponseRedirect('/accounts/mypage/')
+    
 #     current_page = int(request.GET['current_page'])
 #     category_name = module_name
     canonical_module_name = get_canonical_module_name(module_name)

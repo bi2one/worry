@@ -11,7 +11,7 @@ class OrderFormFirst(forms.Form) :
     sender_phone_3 = forms.CharField(label="전화번호(끝)", max_length=4, required=True)
     doll_count = forms.ChoiceField(label="다섯걱정이 세트", choices=map((lambda x:(x, x)), range(0, 11)))
     phonedoll_count = forms.ChoiceField(label="두 걱정이 핸드폰줄", choices=map((lambda x:(x, x)), range(0, 11)))
-    content = forms.CharField(widget=forms.Textarea, label="걱정거리")
+    content = forms.CharField(widget=forms.Textarea, label="걱정거리", required=False)
 
     def cleaned_data_phone(self) :
         return str(self.cleaned_data['sender_phone_1']) + "-" + str(self.cleaned_data['sender_phone_2']) + "-" + str(self.cleaned_data['sender_phone_3'])
@@ -51,6 +51,8 @@ class OrderFormSecond(forms.Form) :
 
     send_issue = forms.CharField(widget=forms.Textarea, label="배송시 요청사항", required=False)
 
+    is_gift = forms.BooleanField(required=False, label="선물용")
+
     def clean_send_issue(self) :
         issue = self.cleaned_data['send_issue']
         return issue.replace('\n', '<br>')
@@ -80,6 +82,7 @@ class OrderFormModify(forms.Form) :
     receiver_address_number = forms.CharField(label="배송지 주소", max_length=10, required=True)
     receiver_address = forms.CharField(label="배송지 주소", max_length=127, required=True)
     receiver_detail_address = forms.CharField(label="배송지 주소", max_length=127, required=True)
+    is_gift = forms.BooleanField(required=False, label="선물용")
 
     def cleaned_data_receiver_phone(self) :
         return str(self.cleaned_data['receiver_phone_1']) + "-" + str(self.cleaned_data['receiver_phone_2']) + "-" + str(self.cleaned_data['receiver_phone_3'])

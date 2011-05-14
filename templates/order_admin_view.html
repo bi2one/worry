@@ -2,6 +2,17 @@
 {% load account_filter %}
 {% block title %}Worrydolls Products{% endblock %}
 
+{% block script %}
+<script type="text/javascript">
+  function deleteOrder(order_id) {
+      var result = confirm("정말 삭제하시겠습니까?");
+      if (result) {
+	  window.location = '/order/delete/' + order_id + '/';
+      }
+  }
+</script>
+{% endblock %}
+
 {% block link %}
 <link rel="stylesheet" type="text/css" href="/site_media/css/order_admin_view.css" />
 {% endblock %}
@@ -33,6 +44,17 @@
     <td class="table-contents">
       걱정인형 {{ order.doll_count }},
       핸드폰줄 {{ order.phonedoll_count }}
+    <td>
+  </tr>
+  <tr>
+    <td></td>
+    <td class="table-h2">선물용</td>
+    <td class="table-contents">
+      {% if order.is_gift %}
+      선물용 주문입니다.
+      {% else %}
+      선물용이 아닙니다.
+      {% endif %}
     <td>
   </tr>
   <tr>
@@ -101,4 +123,6 @@
   <button type="submit">변경완료</button>
 </form>
 <button id="back-to-adminpage" onclick="javascript:window.location='/order/admin/'">관리페이지로 돌아가기</button>
+<button id="delete-order" onclick="javascript:deleteOrder({{order.id}});">주문 삭체처리</button>
+
 {% endblock %}
