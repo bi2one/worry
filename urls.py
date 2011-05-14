@@ -22,8 +22,8 @@ urlpatterns = patterns('',
 #    (r'^mem/', 'worry.file_manager.views.mem'),
     (r'^admin/', include(admin.site.urls)),
 
-# (r'^site_media/(?P<path>.*)$', 'django.views.static.serve',
-#  {'document_root': settings.MEDIA_ROOT}),
+(r'^site_media/(?P<path>.*)$', 'django.views.static.serve',
+ {'document_root': settings.MEDIA_ROOT}),
 
     # # order
     (r'^order/', include('worry.order.urls')),

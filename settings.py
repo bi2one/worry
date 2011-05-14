@@ -85,8 +85,8 @@ MIDDLEWARE_CLASSES = (
 
 
 ROOT_URLCONF = 'worry.urls'
-#UPLOAD_DIR = os.path.join('/Users/bi2one/public_html/worry/site_media/upload/')
-UPLOAD_DIR = os.path.join('/home/worry/worry_test/worry/site_media/upload/')
+UPLOAD_DIR = os.path.join('/Users/bi2one/public_html/worry/site_media/upload/')
+#UPLOAD_DIR = os.path.join('/home/worry/worry_test/worry/site_media/upload/')
 #UPLOAD_DIR = os.path.join('/home/worry/worry/site_media/upload/')
 # UPLOAD_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), '/site_media/upload/')
 RESIZE_SIZE = 570

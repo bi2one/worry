@@ -11,7 +11,7 @@
     <tr>
       {% ifequal module_name "shop" %}
       {% ifequal doc.content "" %}
-      <td style="text-align:left" class="td-padding"><a href="./">
+      <td style="text-align:left" class="td-padding">
       {% else %}
       <td style="text-align:left" class="td-padding"><a href="/{{ module_name }}/view/{{ doc.id }}/{{ option_string }}&current_page={{current_page}}">
       {% endifequal %}
@@ -31,7 +31,13 @@
 	  {% ifnotequal doc.comment_set.count 0 %}
 	  ({{ doc.comment_set.count }})
 	  {% endifnotequal %}
+	{% ifnotequal module_name "shop" %}
 	</a>
+	{% else %}
+	{% ifnotequal doc.content "" %}
+	</a>
+	{% endifnotequal %}
+	{% endifnotequal %}
 	<div class="clear_right"></div>
       </td>
 
@@ -55,8 +61,13 @@
 
     {% ifequal module_name "shop" %}
     <a class="float_left" style="margin:0 0 0 5px" href="/{{module_name}}/?category={{category}}"><img class="png_bg" src="/site_media/images/bttn_list.png" alt="list" /></a>
-    <!-- <a class="float_right" style="margin: -5px 0 0 0;" href="/{{module_name}}/write/?category={{category}}"><img class="png_bg" src="/site_media/images/shoppage_order_btn.png" alt="write" /></a> -->
+    <!-- <a class="float_right" style="margin: -5px 0 0 0;" href="/{{module_name}}/write/?category={{category}}"><img class="png_bg" src="/site_media/images/shoppage_order_btn.png" alt="write" /></a>
+    -->
     <a class="float_right" style="margin: -5px 0 0 0;" href="/order/form1/"><img class="png_bg" src="/site_media/images/shoppage_order_btn.png" alt="order" /></a>
+    {% if user.is_superuser %}
+    <a class="float_right" href="/{{module_name}}/write/?category={{category}}"><img class="png_bg" src="/site_media/images/bttn_write.png" alt="write" /></a>
+    {% endif %}
+    
     {% else %}
     <a class="float_right" href="/{{module_name}}/write/?category={{category}}"><img class="png_bg" src="/site_media/images/bttn_write.png" alt="write" /></a>
     <a class="float_right" href="/{{module_name}}/?category={{category}}"><img class="png_bg" src="/site_media/images/bttn_list.png" alt="list" /></a>
