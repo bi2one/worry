@@ -115,7 +115,6 @@ def ajax_address_number(request):
     
     if request.method == 'POST':
         search_segment = request.POST['search-text']
-        print search_segment
         addresses = Address.objects.filter(DONG__contains=search_segment).order_by('-SEQ')
 
         ret_data = []
