@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Replace these three settings.
-PROJDIR="/home/worry/worry_test/worry"
+PROJDIR="/home/worry/worry"
 PIDFILE="$PROJDIR/worry.pid"
 SOCKET="$PROJDIR/worry.sock"
 
