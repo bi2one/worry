@@ -26,8 +26,39 @@ worry
 incomplete
 a4df684d-a0ca-4a9d-961d-52a43587e49e
 
-accounts
-dir
+manage.py
+file
+133
+
+
+
+2011-05-17T04:19:52.000000Z
+436d756648d7f458aaa9c72570634e59
+2010-03-28T20:34:54.588718Z
+78
+worry
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+546
 
 django-1.1.1-modified.tgz
 file
@@ -35,7 +66,7 @@ file
 
 
 
-2010-03-28T22:03:34.000000Z
+2011-05-17T04:20:52.000000Z
 9220824620be066421df8bbb353507dd
 2010-03-25T19:26:11.005391Z
 37
@@ -63,39 +94,8 @@ has-props
 
 6503598
 
-manage.py
-file
-133
-
-
-
-2010-03-28T22:03:34.000000Z
-436d756648d7f458aaa9c72570634e59
-2010-03-28T20:34:54.588718Z
-78
-worry
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-546
+accounts
+dir
 
 __init__.py
 file
@@ -131,6 +131,13 @@ worry
 
 0
 
+check.sh
+file
+0
+
+
+add
+
 settings.py
 file
 134
@@ -165,45 +172,25 @@ worry
 
 4225
 
+__init__.pyc
+file
+0
+
+
+add
+
 pagination
 dir
 
 worry_admin
 dir
 
-del.py
+svn-commit.2.tmp
 file
-133
+0
 
 
-
-2010-03-28T22:03:34.000000Z
-d16a4d98d85d79cb15781ff850f85da2
-2010-03-23T17:42:17.320370Z
-8
-worry
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-504
+add
 
 reset.sh
 file
@@ -239,6 +226,54 @@ has-props
 
 64
 
+del.py
+file
+133
+
+
+
+2010-03-28T22:03:34.000000Z
+d16a4d98d85d79cb15781ff850f85da2
+2010-03-23T17:42:17.320370Z
+8
+worry
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+504
+
+initial_data.sh
+file
+0
+
+
+add
+
+svn-commit.3.tmp
+file
+0
+
+
+add
+
 conv.py
 file
 133
@@ -273,8 +308,12 @@ worry
 
 562
 
-templates
-dir
+start_server.sh
+file
+0
+
+
+add
 
 Django-1.1.1
 dir
@@ -282,6 +321,9 @@ dir
 
 
 delete
+
+templates
+dir
 
 worry_twit_cron.py
 file
