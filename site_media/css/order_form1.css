@@ -139,11 +139,12 @@
 }
 
 .cancel-button {
-    background: url(../images/bttn_order_cancle.png) no-repeat;
+    background: url(../images/bttn_order_cancel.png) no-repeat;
     height: 35px;
     width: 63px;
     float:left;
     cursor: pointer;
+    margin-top: 5px;
 }
 
 .next-button {
@@ -159,4 +160,15 @@
     font-family: serif, 명조체;
     color:#8A8A8A;
     font-weight: bold;
+}
+
+.doll-delay-area {
+    clear:both;
+    font-size: 0.80em;
+    font-family: serif, 명조체;
+    color:#111;
+    font-weight: bold;
+    color:#6A6A6A;
+    margin-left: 130px;
+    /* margin-left: 80px; */
 }

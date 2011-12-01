@@ -5,10 +5,12 @@ from django.contrib.auth import authenticate, login, logout
 # from django.views.decorators.cache import cache_control
 
 from django.contrib.auth.forms import AuthenticationForm
-from worry.accounts.forms import JoinForm
+from worry.accounts.forms import JoinForm, FindPasswordForm, NewPasswordForm
 from worry.document.util import *
 from worry.order.models import Bank, Order
+from worry.accounts.models import FindPasswordHash, getHashCode
 from worry.pagination.views import pagination
+from worry import settings
 
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
@@ -204,3 +206,60 @@ def mypage(request, page_number=1):
         'mypage.html',
         variables,
         context_instance=RequestContext(request))
+
+def find_password(request):
+    form = FindPasswordForm()
+    success_msg = ""
+    if request.method == 'POST':
+        form = FindPasswordForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            try:
+                users = User.objects.filter(email=email)
+                for user in users:
+                    hashcode = getHashCode()
+
+                    sendNewPasswordMail("http://" + settings.EMAIL_NEW_PASSWORD_HOST + "/new_password/" + hashcode, user.email);
+
+                    try:
+                        password_hash = FindPasswordHash.objects.get(user = user)
+                        password_hash.hashcode = hashcode
+                    except ObjectDoesNotExist:
+                        password_hash = FindPasswordHash(user = user,
+                                                         hashcode = hashcode)
+                
+                    password_hash.save()
+                success_msg = "비밀번호 확인 메일 전송을 완료하였습니다."
+                
+            except ObjectDoesNotExist:
+                success_msg = "해당 이메일로 가입한 사용자가 없습니다."
+
+    variables = RequestContext(request, {
+        'form': form,
+        'success_msg': success_msg,
+        })
+    return render_to_response('find_password.html', variables)
+    
+def new_password(request, hashcode):
+    form = NewPasswordForm()
+    
+    password_hash = get_object_or_404(FindPasswordHash, hashcode=hashcode)
+    user = password_hash.user
+    
+    if request.method == 'POST':
+        form = NewPasswordForm(request.POST)
+        if form.is_valid():
+            password = form.cleaned_data['password_confirm']
+            user.set_password(password)
+            user.save()
+            password_hash.delete()
+            user = authenticate(username=user.username, password=password)
+            login(request, user)
+            return HttpResponseRedirect('/intro/')
+        
+    variables = RequestContext(request, {
+        'form': form,
+        'hashcode': hashcode,
+        })
+
+    return render_to_response('new_password.html', variables)

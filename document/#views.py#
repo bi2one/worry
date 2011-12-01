@@ -1,4 +1,4 @@
-from django.conf import settings/
+from django.conf import settings
 
 from django.contrib.auth.views import logout
 
@@ -19,6 +19,7 @@ from worry.document.forms import WriteForm, GuestBookForm, WriteCommentForm, Gue
 from worry.accounts.forms import JoinForm
 
 from worry.twitter.views import save_tweet
+import random
 
 def frame(request) :
     if request.GET.has_key('next') :
@@ -60,9 +61,10 @@ def entry(request, module_name, page_number=1) :
 
     if str(module_name) == 'blog' :
         variables = pagination(request, docs, page_number, 10)
+    elif str(module_name) == "shop" :
+        variables = pagination(request, docs, page_number, 15)
     else :
         variables = pagination(request, docs, page_number)
-
 
     variables.update({'category_name':category_name,
                       'category':category,
@@ -209,7 +211,7 @@ def delete(request, module_name, doc_id) :
         category = get_category_id(canonical_module_name, module_name)
     doc = Document.objects.get(id=doc_id)
 
-    if not user.is_superuser : 
+    if not user.is_superuser :
         if doc.user :
             if doc.user.id != user.id :
                 # TODO : invalid message
@@ -310,6 +312,9 @@ def save(request, module_name, doc_id) :
 # TODO
 # @user_passes_test(lambda u: u.has_perm('document.can_change'))
 def view(request, module_name, doc_id=None) :
+    if module_name == "shop" and Document.objects.get(id=doc_id).content == "":
+        return HttpResponseRedirect('/accounts/mypage/')
+    
 #     current_page = int(request.GET['current_page'])
 #     category_name = module_name
     canonical_module_name = get_canonical_module_name(module_name)

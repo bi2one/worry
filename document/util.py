@@ -1,6 +1,9 @@
+# -*- encoding: utf-8 -*-
 from django.conf import settings
 from worry.file_manager.models import File
 from urllib import quote_plus
+from django.core import mail
+# from django.core.mail import send_mail
 
 ## Utility functions
 def get_option_string(request) :
@@ -77,3 +80,8 @@ def isNumber(s):
   except ValueError:
     return False
 
+def sendNewPasswordMail(return_url, to_email):
+    subject = "돈워리컴퍼니 비밀번호 변경"
+    body = "아래 링크로 연결해 주세요.\n\n" + return_url
+    email = mail.EmailMessage(subject, body, 'dontworrycompany@gmail.com', [to_email])
+    email.send()

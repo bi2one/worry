@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
+{% load account_filter %}
 
-{% block title %}걱정이 주문{% endblock %}
+{% block title %}입금, 배송정보{% endblock %}
 
 {% block link %}
 <link rel="stylesheet" type="text/css" href="/site_media/css/order_form1.css" />
@@ -49,6 +50,10 @@
     {{ form.content }}
     <div class="worry-desc2"></div>
 
+    <p class="doll-delay-area">
+      {{ delay_month|pp_delay_date:delay_day }}
+    </p>
+    
     <div class="submit-wrap">
       <div class="cancel-button" onclick="javascript:window.location='/shop/'"></div>
       <input type="image" src="/site_media/images/bttn_order_next.png" class="next-button" alt="order_next" />

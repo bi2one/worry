@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% block title %}입금, 배송정보{% endblock %}
+{% block title %}걱정이 주문{% endblock %}
 
 {% block script %}
 <script src="/site_media/js/jquery.watermarkinput.js" type="text/javascript"></script>
@@ -18,7 +18,7 @@
   <h1>우편번호 찾기</h1>
   <div class="layer-search-area">
     <input type="text" max_length="45" id="search-text"></input>
-    <button onclick="javascript:onAddressSearchClick();">검색</button>
+    <button id="search-submit">검색</button>
   </div>
 
   <table id="layer-address"></table>

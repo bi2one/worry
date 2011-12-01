@@ -22,7 +22,8 @@ class Order(models.Model) :
 
     sender_name = models.CharField(max_length=255)
     sender_phone = models.CharField(max_length=255)
-    
+    invoice_number = models.CharField(max_length=255, null=True)
+
     doll_count = models.PositiveIntegerField(default=0)
     phonedoll_count = models.PositiveIntegerField(default=0)
 
@@ -59,3 +60,7 @@ class Address(models.Model) :
     BLDG = models.CharField(max_length="80", null=True)
     BUNJI = models.CharField(max_length="34", null=True)
     SEQ = models.CharField(max_length="10", null=True)
+
+class Delay(models.Model) :
+    month = models.PositiveIntegerField(default=0)
+    day = models.PositiveIntegerField(default=0)

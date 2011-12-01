@@ -2,33 +2,53 @@
 {% load account_filter %}
 {% block title %}Worrydolls Products{% endblock %}
 
+{% block script %}
+<script type="text/javascript" src="/site_media/js/order_admin.js"></script>
+{% endblock %}
+
 {% block link %}
 <link rel="stylesheet" type="text/css" href="/site_media/css/order_admin.css" />
 {% endblock %}
 
 {% block content %}
+<div class="delay-input-area">
+  <p>현재 필터링: {{ state|make_state_readable }}</p>
+  <p>현재 지연상태: {{ month|pp_delay_date:day }}</p>
+  <form method="POST" action="./">
+    작업 소요기간:
+    {{ form.month }}
+    {{ form.month.label_tag }}
+    {{ form.day }}
+    {{ form.day.label_tag }}
+    <p>
+    {{ form.month.errors.0 }}
+    {{ form.day.errors.0 }}
+    </p>
+    <input type="submit" value="입력완료" />
+  </form>
+</div>
 
 {% if docs %}
 <table>
+  <!-- <colgroup> -->
+  <!--   <col width="70px"> -->
+  <!--   <col width="200px"> -->
+  <!--   <col width="300px"> -->
+  <!--   <col width="70px"> -->
+  <!--   <col width="70px"> -->
+  <!--   <col width="240px"> -->
+  <!-- </colgroup> -->
   <tr class="table-head">
-    <!-- <th>이메일</th> -->
-    <!-- <th>보내실분 연락처</th> -->
-    <!-- <th>배송주소</th> -->
-    <!-- <th>우편번호</th> -->
     <th>성명</th>
     <th>주문내역</th>
     <th>입금은행</th>
     <th>입금자명</th>
     <th>상태</th>
     <th>주문 날짜, 시간</th>
-    <!-- <th>받으실분</th> -->
-    <!-- <th>받으실분 연락처</th> -->
   </tr>
   {% for doc in docs %}
   <tr>
     <td>{{ doc.sender_name }}</td>
-    <!-- <td>{{ doc.receiver_address }} {{ doc.receiver_detail_address }}</td> -->
-    <!-- <td>{{ doc.receiver_address_number }}</td> -->
     <td>
       <a href="/order/admin/view/{{ doc.id }}">
 	 걱정인형 {{ doc.doll_count }}, 핸드폰줄 {{ doc.phonedoll_count }}
@@ -42,14 +62,13 @@
   {% endfor %}
 </table>
 {% endif %}
-
 <div class="pagination">
   {% if prev_page %}
-  <a href="/order/admin/1/"><img src="/site_media/images/first_btn.png" alt="first" /></a>
-  <a href="/order/admin/{{prev_page}}/"><img src="/site_media/images/prev_btn.png" alt="previous" /></a>
+  <a href="/order/admin/1/{{ state }}"><img src="/site_media/images/first_btn.png" alt="first" /></a>
+  <a href="/order/admin/{{prev_page}}/{{ state }}"><img src="/site_media/images/prev_btn.png" alt="previous" /></a>
   {% endif %}
   {% for page in pages %}
-  <a href="/order/admin/{{page}}">
+  <a href="/order/admin/{{page}}/{{ state }}">
     <span class="page-number">
       {% ifequal page current_page %}
       <span style="font-weight:bold">{{ page }}</span>
@@ -60,8 +79,21 @@
   </a>
   {% endfor %}
   {% if next_page %}
-  <a href="/order/admin/{{next_page}}"><img style="vertical-align:text-bottom;" src="/site_media/images/next_btn.png" alt="next" /></a>
-  <a href="/order/admin/{{last_page}}"><img style="vertical-align:text-bottom;" src="/site_media/images/last_btn.png" alt="last" /></a>
+  <a href="/order/admin/{{next_page}}/{{state}}"><img style="vertical-align:text-bottom;" src="/site_media/images/next_btn.png" alt="next" /></a>
+  <a href="/order/admin/{{last_page}}/{{state}}"><img style="vertical-align:text-bottom;" src="/site_media/images/last_btn.png" alt="last" /></a>
   {% endif %}
+</div>
+
+<div class="filter-area" style="text-align: right">
+  <label for="state-selector">상태필터</label>
+  <select id="state-selector">
+    <option value="">모든상태</option>
+    <option value="before_payment">입금전</option>
+    <option value="create">탄생중</option>
+    <option value="send">배송중</option>
+    <option value="done">배송완료</option>
+    <option value="fail">배송실패</option>
+  </select>
+  <button onclick="javascript:stateFilter();">확인</button>
 </div>
 {% endblock %}

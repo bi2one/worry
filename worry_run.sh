@@ -14,5 +14,5 @@ fi
 
 /usr/bin/env - \
 PYTHONPATH="../python:.." \
-python manage.py runfcgi socket=$SOCKET pidfile=$PIDFILE
+python manage.py runfcgi protocol=scgi host=127.0.0.1 port=28406 pidfile=$PIDFILE
 chmod 777 ./worry.sock

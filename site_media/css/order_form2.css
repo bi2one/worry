@@ -102,9 +102,9 @@
 .address-number-button {
     background: url(../images/bttn_address_number.png) no-repeat;
     display: inline-block;
-    width: 50px;
+    width: 60px;
     height: 20px;
-    margin: 0 0 -6px 2px;
+    margin: 0 0 -3px 2px;
 }
 
 #id_receiver_address {

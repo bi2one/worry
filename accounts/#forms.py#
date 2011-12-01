@@ -38,6 +38,7 @@ class FindPasswordForm(forms.Form):
 class NewPasswordForm(forms.Form):
     password = forms.CharField(max_length=128, label="비밀번호", widget=forms.PasswordInput())
     password_confirm = forms.CharField(max_length=128, label="비밀번호확인", widget=forms.PasswordInput())
+    user = forms.CharField(
     
     def clean_password_confirm(self):
         if 'password' in self.cleaned_data:

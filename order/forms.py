@@ -92,11 +92,17 @@ class OrderFormModify(forms.Form) :
         return content.replace('\n', '<br>')
 
 class OrderFormState(forms.Form) :
+    invoice_number = forms.CharField(label="송장번호", max_length=127, required=False)
     state = forms.ChoiceField(widget=forms.RadioSelect,
                               label="주문 상태 변경",
                               choices=[("before_payment", "입금전"),
-                                       ("create", "제작중"),
+                                       ("create", "탄생중"),
                                        ("send", "배송중"),
                                        ("done", "배송완료"),
                                        ("fail", "배송실패")],
                               required=True)
+
+class InsertDelayForm(forms.Form) :
+    month = forms.IntegerField(max_value=12, min_value=0, required=False, label="달")
+    day = forms.IntegerField(max_value=31, min_value=0, required=False, label="일")
+

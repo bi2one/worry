@@ -7,11 +7,11 @@ from django.template import RequestContext
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.utils import simplejson
 
-from worry.order.models import Bank, Order, Address
+from worry.order.models import Bank, Order, Address, Delay
 from worry.order.util import *
 from worry.document.models import Document
 from worry.document.util import *
-from worry.order.forms import OrderFormFirst, OrderFormSecond, OrderFormModify, OrderFormState
+from worry.order.forms import OrderFormFirst, OrderFormSecond, OrderFormModify, OrderFormState, InsertDelayForm
 from worry.pagination.views import pagination
 
 @user_passes_test(lambda u: u.has_perm('document.can_add'))
@@ -19,8 +19,19 @@ def form1(request):
     " order first form "
     form = OrderFormFirst()
 
+    delays = Delay.objects.all()
+    if len(delays) == 0:
+        month = 0
+        day = 0
+    else:
+        delay = delays[0]
+        month = delay.month
+        day = delay.day
+    
     variables = RequestContext(request, {
-        'form': form
+        'form': form,
+        'delay_month': month,
+        'delay_day': day,
     })
     return render_to_response('order_form_first.html', variables, context_instance=RequestContext(request))
 
@@ -238,16 +249,47 @@ def modify(request, order_id):
         return render_to_response('order_modify.html', variables, context_instance=RequestContext(request))
 
 @user_passes_test(lambda u: u.has_perm('document.can_add'))
-def admin(request, page_number=1):
+def admin(request, page_number=1, state=""):
     user = request.user
+    form = InsertDelayForm({
+        'month':0,
+        'day':0,
+        })
+
+    delays = Delay.objects.all()
+    if len(delays) == 0:
+        month = 0
+        day = 0
+    else:
+        delay = delays[0]
+        month = delay.month
+        day = delay.day
     
     # validation check
     if not user.is_superuser :
         raise Http404
 
-    orders = Order.objects.all().order_by('-pub_date')
+    if request.method == 'POST' :
+        form = InsertDelayForm(request.POST)
+        if form.is_valid():
+            month = form.cleaned_data['month']
+            day = form.cleaned_data['day']
+            delay = Delay(month=month, day=day)
+            Delay.objects.all().delete()
+            delay.save()
+
+    if state == "":
+        orders = Order.objects.all().order_by('-pub_date')
+    else:
+        orders = Order.objects.filter(state=state).order_by('-pub_date')
 
     variables = pagination(request, orders, page_number, 30)
+    variables.update({
+        'form':form,
+        'month':month,
+        'day':day,
+        'state':state,
+        })
     
     return render_to_response(
         'order_admin.html',
@@ -263,11 +305,14 @@ def admin_view(request, order_id):
         raise Http404
 
     order = Order.objects.get(id=order_id)
-    form = OrderFormState({'state': order.state})
+    form = OrderFormState({'state': order.state,
+                           'invoice_number': order.invoice_number})
     if request.method == 'POST':
         form = OrderFormState(request.POST)
         if form.is_valid():
             state = form.cleaned_data['state']
+            invoice_number = form.cleaned_data['invoice_number']
+            order.invoice_number = invoice_number
             order.state = state
             order.save()
 

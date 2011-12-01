@@ -17,5 +17,8 @@ TABLE {
 TABLE TD, TH {
     border: 1px solid #DFDFDF;
     padding: 3px 6px 3px 6px;
-    
+}
+
+.delay-input-area {
+    text-align:right;
 }

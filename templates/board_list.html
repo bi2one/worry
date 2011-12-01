@@ -11,7 +11,7 @@
     <tr>
       {% ifequal module_name "shop" %}
       {% ifequal doc.content "" %}
-      <td style="text-align:left" class="td-padding">
+      <td style="text-align:left" class="td-padding"><span class="order-subject">
       {% else %}
       <td style="text-align:left" class="td-padding"><a href="/{{ module_name }}/view/{{ doc.id }}/{{ option_string }}&current_page={{current_page}}">
       {% endifequal %}
@@ -36,6 +36,8 @@
 	{% else %}
 	{% ifnotequal doc.content "" %}
 	</a>
+	{% else %}
+	</span>
 	{% endifnotequal %}
 	{% endifnotequal %}
 	<div class="clear_right"></div>

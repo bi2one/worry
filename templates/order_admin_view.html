@@ -113,14 +113,20 @@
 </table>
 
 <form id="state-change-form" method="post" name="order_admin_state_form" action=".">
-  <h3>{{ form.state.label }}</h3>
-  {{ form.state }}
-  {% if form.errors %}
-  <p class="error-contents">
-    {{ form.errors.0 }}
-  </p>
-  {% endif %}
-  <button type="submit">변경완료</button>
+  <h3>송장번호, 물건상태 변경</h3>
+  <div class="invoice-input">
+    <label for="id_invoice_number">송장번호: </label>
+    {{ form.invoice_number }}
+  </div>
+  <div class="state-input">
+    {{ form.state }}
+    {% if form.errors %}
+    <p class="error-contents">
+      {{ form.errors.0 }}
+    </p>
+    {% endif %}
+  </div>
+  <input class="state-submit" type="submit" value="변경완료" />
 </form>
 <button id="back-to-adminpage" onclick="javascript:window.location='/order/admin/'">관리페이지로 돌아가기</button>
 <button id="delete-order" onclick="javascript:deleteOrder({{order.id}});">주문 삭체처리</button>

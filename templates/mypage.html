@@ -112,7 +112,14 @@
     <td class="info-contents">{{ recent_order.receiver_address }} {{ recent_order.receiver_detail_address }}</td>
     <td></td>
   </tr>
-
+  {% if recent_order.invoice_number %}
+  <tr>
+    <td></td>
+    <td class="info-contents-head">송장번호</td>
+    <td class="info-contents" style="color:red;font-weight:bold;">{{ recent_order.invoice_number }}</td>
+    <td></td>
+  </tr>
+  {% endif %}
   <tr class="table-paragraph1">
     <td></td>
     <td class="info-contents-head">주문상태</td>
@@ -123,9 +130,9 @@
       <span id="before-payment" class="state-unselected">입금전</span>
       {% endifequal %}
       {% ifequal recent_order.state "create" %}
-      <span id="on-create" class="state-selected">&gt; 제작중</span>
+      <span id="on-create" class="state-selected">&gt; 탄생중</span>
       {% else %}
-      <span id="on-create" class="state-unselected">&gt; 제작중</span>
+      <span id="on-create" class="state-unselected">&gt; 탄생중</span>
       {% endifequal %}
       {% ifequal recent_order.state "send" %}
       <span id="on-deliver" class="state-selected">&gt; 배송중</span>

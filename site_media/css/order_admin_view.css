@@ -69,3 +69,19 @@ TABLE TR TD {
     margin-top: 10px;
     margin-left: 130px;
 }
+
+#state-change-form LABEL {
+    margin-bottom: 20px;
+}
+
+.invoice-input {
+    margin: 10px 0;
+}
+
+#id_invoice_number {
+    width: 300px;
+}
+
+.state-submit {
+    margin-top:10px;
+}

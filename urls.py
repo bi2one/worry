@@ -23,7 +23,7 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
 
 #(r'^site_media/(?P<path>.*)$', 'django.views.static.serve',
-# {'document_root': settings.MEDIA_ROOT}),
+#{'document_root': settings.MEDIA_ROOT}),
 
     # # order
     (r'^order/', include('worry.order.urls')),
@@ -47,6 +47,8 @@ urlpatterns = patterns('',
     (r'^accounts/logout/$', 'worry.accounts.views.logout_user'),
     (r'^accounts/rpx$', 'worry.accounts.views.rpx'),
     (r'^join/$', 'worry.accounts.views.join_user'),
+    (r'^find_password/$', 'worry.accounts.views.find_password'),
+    (r'^new_password/(?P<hashcode>\w+)$', 'worry.accounts.views.new_password'),
     (r'^check_username/$', 'worry.accounts.views.check_username'),
 
     # for index page

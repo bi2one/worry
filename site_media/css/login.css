@@ -132,5 +132,14 @@
     cursor: pointer;
 }
 
+.find-password-button {
+    clear: both;
+}
+
+.find-password-button IMG {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
 /* alter-login-block end */
 
